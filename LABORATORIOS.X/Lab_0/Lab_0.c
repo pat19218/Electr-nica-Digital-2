@@ -8,8 +8,8 @@
  * Programa: Dispensador de pastillas con sistema de ventilacion y usuario
  * Hardware: Pic 16f887, transistores, resistencias, leds, button
  * 
- * Created on 
- * Last modification 
+ * Created on 11 de julio 2021, 16:35
+ * Last modification 12 de julio 2021, 19:42
  */
 
 // PIC16F887 Configuration Bit Settings
@@ -76,20 +76,20 @@ void __interrupt()isr(void) {
         }
         RBIF = 0;
     }
-    
-    else if(T0IF == 1){
-        conteo++;
-        
-        if(conteo == 4){
-            segundos++;
-            if (segundos == 255){
-                segundos = 0;
-            }
-        }
-        
-        T0IF = 0;
-        TMR0 = 60;                  //Reinicio del timmer (25ms)
-    }
+//    
+//    else if(T0IF == 1){
+//        conteo++;
+//        
+//        if(conteo == 4){
+//            segundos++;
+//            if (segundos == 255){
+//                segundos = 0;
+//            }
+//        }
+//        
+//        T0IF = 0;
+//        TMR0 = 60;                  //Reinicio del timmer (25ms)
+//    }
     
 }
 
@@ -97,7 +97,7 @@ void __interrupt()isr(void) {
 
 void main(void) {
     ANSEL = 0X00;
-    ANSELH = 0X00;
+    ANSELH = 0X00;     // solo pines digitales
     
     TRISA = 0x00;    
     TRISB = 0b00000111;    
@@ -119,18 +119,18 @@ void main(void) {
     IOCBbits.IOCB2 = 1;
     RBIF = 0;
     
-                                //Config. timmer0 para PWM
-    OPTION_REGbits.T0CS = 0;    //Uso reloj interno
-    OPTION_REGbits.PSA = 0;     //Uso pre-escaler
-    OPTION_REGbits.PS = 0b111;  //PS = 111 / 1:256
-    TMR0 = 60;                  //Reinicio del timmer (25ms)
-    
+//                                //Config. timmer0 
+//    OPTION_REGbits.T0CS = 0;    //Uso reloj interno
+//    OPTION_REGbits.PSA = 0;     //Uso pre-escaler
+//    OPTION_REGbits.PS = 0b111;  //PS = 111 / 1:256
+//    TMR0 = 60;                  //Reinicio del timmer (25ms)
+//    
     
     INTCONbits.GIE = 1;     //habilito interrupciones
     INTCONbits.RBIE = 1;    //activo interrupciones por cambio de estado
     INTCONbits.RBIF = 0;    //bajo la bandera
-    INTCONbits.T0IE = 1;    //activo interrupciones por timmer 0
-    INTCONbits.T0IF = 0;    //bajo la bandera
+//    INTCONbits.T0IE = 1;    //activo interrupciones por timmer 0
+//    INTCONbits.T0IF = 0;    //bajo la bandera
     
     segundos = 0;           //valor incial variable
     conteo = 0;
@@ -184,20 +184,28 @@ void main(void) {
            PORTA = num_display[1];
            RE0 = 1;
            RE1 = 0;
+           __delay_ms(2000);
            inicio = 0;
            activar = 0;
-           __delay_ms(2000);
-           PORTA = 0x00;
+           j1 = 0;
+           j2 = 0;
+           PORTA = 0;
            PORTE = 0X00;
+           PORTC = 0X00;
+           PORTD = 0X00;
        }else if(j2 == 8){
            PORTA = num_display[2];
            RE0 = 0;
            RE1 = 1;
+           __delay_ms(2000);
            inicio = 0;
            activar = 0;
-           __delay_ms(2000);
-           PORTA = 0x00;
+           j1 = 0;
+           j2 = 0;
+           PORTA = 0;
            PORTE = 0X00;
+           PORTC = 0X00;
+           PORTD = 0X00;
        }
     }
     return;

@@ -13,12 +13,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4109
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4109: extern volatile __bit RB2 __attribute__((address(0x32)));
 [v _RB2 `Vb ~T0 @X0 0 e@50 ]
-"4322
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4322: extern volatile __bit T0IF __attribute__((address(0x5A)));
-[v _T0IF `Vb ~T0 @X0 0 e@90 ]
-"59
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
-[v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
 [p mainexit ]
 "3387
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
@@ -526,48 +520,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "78
 [; ;Lab_0/Lab_0.c: 78:     }
 }
-[e $U 147  ]
-"80
-[; ;Lab_0/Lab_0.c: 80:     else if(T0IF == 1){
 [e :U 139 ]
-[e $ ! == -> _T0IF `i -> 1 `i 148  ]
-{
-"81
-[; ;Lab_0/Lab_0.c: 81:         conteo++;
-[e ++ _conteo -> -> 1 `i `uc ]
-"83
-[; ;Lab_0/Lab_0.c: 83:         if(conteo == 4){
-[e $ ! == -> _conteo `i -> 4 `i 149  ]
-{
-"84
-[; ;Lab_0/Lab_0.c: 84:             segundos++;
-[e ++ _segundos -> -> 1 `i `uc ]
-"85
-[; ;Lab_0/Lab_0.c: 85:             if (segundos == 255){
-[e $ ! == -> _segundos `i -> 255 `i 150  ]
-{
-"86
-[; ;Lab_0/Lab_0.c: 86:                 segundos = 0;
-[e = _segundos -> -> 0 `i `uc ]
-"87
-[; ;Lab_0/Lab_0.c: 87:             }
-}
-[e :U 150 ]
-"88
-[; ;Lab_0/Lab_0.c: 88:         }
-}
-[e :U 149 ]
-"90
-[; ;Lab_0/Lab_0.c: 90:         T0IF = 0;
-[e = _T0IF -> -> 0 `i `b ]
-"91
-[; ;Lab_0/Lab_0.c: 91:         TMR0 = 60;
-[e = _TMR0 -> -> 60 `i `uc ]
-"92
-[; ;Lab_0/Lab_0.c: 92:     }
-}
-[e :U 148 ]
-[e :U 147 ]
 "94
 [; ;Lab_0/Lab_0.c: 94: }
 [e :UE 138 ]
@@ -630,18 +583,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "120
 [; ;Lab_0/Lab_0.c: 120:     RBIF = 0;
 [e = _RBIF -> -> 0 `i `b ]
-"123
-[; ;Lab_0/Lab_0.c: 123:     OPTION_REGbits.T0CS = 0;
-[e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
-"124
-[; ;Lab_0/Lab_0.c: 124:     OPTION_REGbits.PSA = 0;
-[e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
-"125
-[; ;Lab_0/Lab_0.c: 125:     OPTION_REGbits.PS = 0b111;
-[e = . . _OPTION_REGbits 0 0 -> -> 7 `i `uc ]
-"126
-[; ;Lab_0/Lab_0.c: 126:     TMR0 = 60;
-[e = _TMR0 -> -> 60 `i `uc ]
 "129
 [; ;Lab_0/Lab_0.c: 129:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
@@ -651,12 +592,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "131
 [; ;Lab_0/Lab_0.c: 131:     INTCONbits.RBIF = 0;
 [e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-"132
-[; ;Lab_0/Lab_0.c: 132:     INTCONbits.T0IE = 1;
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"133
-[; ;Lab_0/Lab_0.c: 133:     INTCONbits.T0IF = 0;
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "135
 [; ;Lab_0/Lab_0.c: 135:     segundos = 0;
 [e = _segundos -> -> 0 `i `uc ]
@@ -692,11 +627,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _PORTE -> -> 0 `i `uc ]
 "150
 [; ;Lab_0/Lab_0.c: 150:     while (1){
-[e :U 153 ]
+[e :U 149 ]
 {
 "151
 [; ;Lab_0/Lab_0.c: 151:        if (inicio == 1){
-[e $ ! == -> _inicio `i -> 1 `i 155  ]
+[e $ ! == -> _inicio `i -> 1 `i 151  ]
 {
 "152
 [; ;Lab_0/Lab_0.c: 152:            RB7 = 1;
@@ -770,10 +705,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "178
 [; ;Lab_0/Lab_0.c: 178:        }
 }
-[e :U 155 ]
+[e :U 151 ]
 "179
 [; ;Lab_0/Lab_0.c: 179:        if(activar == 1){
-[e $ ! == -> _activar `i -> 1 `i 156  ]
+[e $ ! == -> _activar `i -> 1 `i 152  ]
 {
 "180
 [; ;Lab_0/Lab_0.c: 180:            PORTC = ~indicador (j1);
@@ -784,10 +719,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "182
 [; ;Lab_0/Lab_0.c: 182:        }
 }
-[e :U 156 ]
+[e :U 152 ]
 "183
 [; ;Lab_0/Lab_0.c: 183:        if (j1 == 8){
-[e $ ! == -> _j1 `i -> 8 `i 157  ]
+[e $ ! == -> _j1 `i -> 8 `i 153  ]
 {
 "184
 [; ;Lab_0/Lab_0.c: 184:            PORTA = num_display[1];
@@ -799,185 +734,209 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Lab_0/Lab_0.c: 186:            RE1 = 0;
 [e = _RE1 -> -> 0 `i `b ]
 "187
-[; ;Lab_0/Lab_0.c: 187:            inicio = 0;
-[e = _inicio -> -> 0 `i `uc ]
+[; ;Lab_0/Lab_0.c: 187:            _delay((unsigned long)((2000)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "188
-[; ;Lab_0/Lab_0.c: 188:            activar = 0;
-[e = _activar -> -> 0 `i `uc ]
-"189
-[; ;Lab_0/Lab_0.c: 189:            _delay((unsigned long)((2000)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"190
-[; ;Lab_0/Lab_0.c: 190:            PORTA = 0x00;
-[e = _PORTA -> -> 0 `i `uc ]
-"191
-[; ;Lab_0/Lab_0.c: 191:            PORTE = 0X00;
-[e = _PORTE -> -> 0 `i `uc ]
-"192
-[; ;Lab_0/Lab_0.c: 192:        }else if(j2 == 8){
-}
-[e $U 158  ]
-[e :U 157 ]
-[e $ ! == -> _j2 `i -> 8 `i 159  ]
-{
-"193
-[; ;Lab_0/Lab_0.c: 193:            PORTA = num_display[2];
-[e = _PORTA -> *U + &U _num_display * -> -> -> 2 `i `ui `ux -> -> # *U &U _num_display `ui `ux `uc ]
-"194
-[; ;Lab_0/Lab_0.c: 194:            RE0 = 0;
-[e = _RE0 -> -> 0 `i `b ]
-"195
-[; ;Lab_0/Lab_0.c: 195:            RE1 = 1;
-[e = _RE1 -> -> 1 `i `b ]
-"196
-[; ;Lab_0/Lab_0.c: 196:            inicio = 0;
+[; ;Lab_0/Lab_0.c: 188:            inicio = 0;
 [e = _inicio -> -> 0 `i `uc ]
-"197
-[; ;Lab_0/Lab_0.c: 197:            activar = 0;
+"189
+[; ;Lab_0/Lab_0.c: 189:            activar = 0;
 [e = _activar -> -> 0 `i `uc ]
-"198
-[; ;Lab_0/Lab_0.c: 198:            _delay((unsigned long)((2000)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"199
-[; ;Lab_0/Lab_0.c: 199:            PORTA = 0x00;
+"190
+[; ;Lab_0/Lab_0.c: 190:            j1 = 0;
+[e = _j1 -> -> 0 `i `uc ]
+"191
+[; ;Lab_0/Lab_0.c: 191:            j2 = 0;
+[e = _j2 -> -> 0 `i `uc ]
+"192
+[; ;Lab_0/Lab_0.c: 192:            PORTA = 0;
 [e = _PORTA -> -> 0 `i `uc ]
-"200
-[; ;Lab_0/Lab_0.c: 200:            PORTE = 0X00;
+"193
+[; ;Lab_0/Lab_0.c: 193:            PORTE = 0X00;
 [e = _PORTE -> -> 0 `i `uc ]
+"194
+[; ;Lab_0/Lab_0.c: 194:            PORTC = 0X00;
+[e = _PORTC -> -> 0 `i `uc ]
+"195
+[; ;Lab_0/Lab_0.c: 195:            PORTD = 0X00;
+[e = _PORTD -> -> 0 `i `uc ]
+"196
+[; ;Lab_0/Lab_0.c: 196:        }else if(j2 == 8){
+}
+[e $U 154  ]
+[e :U 153 ]
+[e $ ! == -> _j2 `i -> 8 `i 155  ]
+{
+"197
+[; ;Lab_0/Lab_0.c: 197:            PORTA = num_display[2];
+[e = _PORTA -> *U + &U _num_display * -> -> -> 2 `i `ui `ux -> -> # *U &U _num_display `ui `ux `uc ]
+"198
+[; ;Lab_0/Lab_0.c: 198:            RE0 = 0;
+[e = _RE0 -> -> 0 `i `b ]
+"199
+[; ;Lab_0/Lab_0.c: 199:            RE1 = 1;
+[e = _RE1 -> -> 1 `i `b ]
+"200
+[; ;Lab_0/Lab_0.c: 200:            _delay((unsigned long)((2000)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "201
-[; ;Lab_0/Lab_0.c: 201:        }
-}
-[e :U 159 ]
-[e :U 158 ]
+[; ;Lab_0/Lab_0.c: 201:            inicio = 0;
+[e = _inicio -> -> 0 `i `uc ]
 "202
-[; ;Lab_0/Lab_0.c: 202:     }
-}
-[e :U 152 ]
-[e $U 153  ]
-[e :U 154 ]
+[; ;Lab_0/Lab_0.c: 202:            activar = 0;
+[e = _activar -> -> 0 `i `uc ]
+"203
+[; ;Lab_0/Lab_0.c: 203:            j1 = 0;
+[e = _j1 -> -> 0 `i `uc ]
 "204
-[; ;Lab_0/Lab_0.c: 204:     return;
-[e $UE 151  ]
+[; ;Lab_0/Lab_0.c: 204:            j2 = 0;
+[e = _j2 -> -> 0 `i `uc ]
 "205
-[; ;Lab_0/Lab_0.c: 205: }
-[e :UE 151 ]
-}
+[; ;Lab_0/Lab_0.c: 205:            PORTA = 0;
+[e = _PORTA -> -> 0 `i `uc ]
+"206
+[; ;Lab_0/Lab_0.c: 206:            PORTE = 0X00;
+[e = _PORTE -> -> 0 `i `uc ]
+"207
+[; ;Lab_0/Lab_0.c: 207:            PORTC = 0X00;
+[e = _PORTC -> -> 0 `i `uc ]
 "208
-[; ;Lab_0/Lab_0.c: 208: char indicador (char analizar){
+[; ;Lab_0/Lab_0.c: 208:            PORTD = 0X00;
+[e = _PORTD -> -> 0 `i `uc ]
+"209
+[; ;Lab_0/Lab_0.c: 209:        }
+}
+[e :U 155 ]
+[e :U 154 ]
+"210
+[; ;Lab_0/Lab_0.c: 210:     }
+}
+[e :U 148 ]
+[e $U 149  ]
+[e :U 150 ]
+"211
+[; ;Lab_0/Lab_0.c: 211:     return;
+[e $UE 147  ]
+"212
+[; ;Lab_0/Lab_0.c: 212: }
+[e :UE 147 ]
+}
+"215
+[; ;Lab_0/Lab_0.c: 215: char indicador (char analizar){
 [v _indicador `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _indicador ]
 [v _analizar `uc ~T0 @X0 1 r1 ]
 [f ]
-"209
-[; ;Lab_0/Lab_0.c: 209:     char salida;
-[v _salida `uc ~T0 @X0 1 a ]
-"210
-[; ;Lab_0/Lab_0.c: 210:     switch(analizar){
-[e $U 162  ]
-{
-"211
-[; ;Lab_0/Lab_0.c: 211:         case(0):
-[e :U 163 ]
-"212
-[; ;Lab_0/Lab_0.c: 212:             salida = 0b00000000;
-[e = _salida -> -> 0 `i `uc ]
-"213
-[; ;Lab_0/Lab_0.c: 213:             break;
-[e $U 161  ]
-"214
-[; ;Lab_0/Lab_0.c: 214:         case(1):
-[e :U 164 ]
-"215
-[; ;Lab_0/Lab_0.c: 215:             salida = 0b00000001;
-[e = _salida -> -> 1 `i `uc ]
 "216
-[; ;Lab_0/Lab_0.c: 216:             break;
-[e $U 161  ]
+[; ;Lab_0/Lab_0.c: 216:     char salida;
+[v _salida `uc ~T0 @X0 1 a ]
 "217
-[; ;Lab_0/Lab_0.c: 217:         case(2):
-[e :U 165 ]
+[; ;Lab_0/Lab_0.c: 217:     switch(analizar){
+[e $U 158  ]
+{
 "218
-[; ;Lab_0/Lab_0.c: 218:             salida = 0b00000011;
-[e = _salida -> -> 3 `i `uc ]
+[; ;Lab_0/Lab_0.c: 218:         case(0):
+[e :U 159 ]
 "219
-[; ;Lab_0/Lab_0.c: 219:             break;
-[e $U 161  ]
+[; ;Lab_0/Lab_0.c: 219:             salida = 0b00000000;
+[e = _salida -> -> 0 `i `uc ]
 "220
-[; ;Lab_0/Lab_0.c: 220:         case(3):
-[e :U 166 ]
+[; ;Lab_0/Lab_0.c: 220:             break;
+[e $U 157  ]
 "221
-[; ;Lab_0/Lab_0.c: 221:             salida = 0b00000111;
-[e = _salida -> -> 7 `i `uc ]
+[; ;Lab_0/Lab_0.c: 221:         case(1):
+[e :U 160 ]
 "222
-[; ;Lab_0/Lab_0.c: 222:             break;
-[e $U 161  ]
+[; ;Lab_0/Lab_0.c: 222:             salida = 0b00000001;
+[e = _salida -> -> 1 `i `uc ]
 "223
-[; ;Lab_0/Lab_0.c: 223:         case(4):
-[e :U 167 ]
+[; ;Lab_0/Lab_0.c: 223:             break;
+[e $U 157  ]
 "224
-[; ;Lab_0/Lab_0.c: 224:             salida = 0b00001111;
-[e = _salida -> -> 15 `i `uc ]
-"225
-[; ;Lab_0/Lab_0.c: 225:             break;
-[e $U 161  ]
-"226
-[; ;Lab_0/Lab_0.c: 226:         case(5):
-[e :U 168 ]
-"227
-[; ;Lab_0/Lab_0.c: 227:             salida = 0b00011111;
-[e = _salida -> -> 31 `i `uc ]
-"228
-[; ;Lab_0/Lab_0.c: 228:             break;
-[e $U 161  ]
-"229
-[; ;Lab_0/Lab_0.c: 229:         case(6):
-[e :U 169 ]
-"230
-[; ;Lab_0/Lab_0.c: 230:             salida = 0b00111111;
-[e = _salida -> -> 63 `i `uc ]
-"231
-[; ;Lab_0/Lab_0.c: 231:             break;
-[e $U 161  ]
-"232
-[; ;Lab_0/Lab_0.c: 232:         case(7):
-[e :U 170 ]
-"233
-[; ;Lab_0/Lab_0.c: 233:             salida = 0b01111111;
-[e = _salida -> -> 127 `i `uc ]
-"234
-[; ;Lab_0/Lab_0.c: 234:             break;
-[e $U 161  ]
-"235
-[; ;Lab_0/Lab_0.c: 235:         case(8):
-[e :U 171 ]
-"236
-[; ;Lab_0/Lab_0.c: 236:             salida = 0xFF;
-[e = _salida -> -> 255 `i `uc ]
-"237
-[; ;Lab_0/Lab_0.c: 237:             break;
-[e $U 161  ]
-"238
-[; ;Lab_0/Lab_0.c: 238:     }
-}
-[e $U 161  ]
-[e :U 162 ]
-[e [\ -> _analizar `i , $ -> 0 `i 163
- , $ -> 1 `i 164
- , $ -> 2 `i 165
- , $ -> 3 `i 166
- , $ -> 4 `i 167
- , $ -> 5 `i 168
- , $ -> 6 `i 169
- , $ -> 7 `i 170
- , $ -> 8 `i 171
- 161 ]
+[; ;Lab_0/Lab_0.c: 224:         case(2):
 [e :U 161 ]
+"225
+[; ;Lab_0/Lab_0.c: 225:             salida = 0b00000011;
+[e = _salida -> -> 3 `i `uc ]
+"226
+[; ;Lab_0/Lab_0.c: 226:             break;
+[e $U 157  ]
+"227
+[; ;Lab_0/Lab_0.c: 227:         case(3):
+[e :U 162 ]
+"228
+[; ;Lab_0/Lab_0.c: 228:             salida = 0b00000111;
+[e = _salida -> -> 7 `i `uc ]
+"229
+[; ;Lab_0/Lab_0.c: 229:             break;
+[e $U 157  ]
+"230
+[; ;Lab_0/Lab_0.c: 230:         case(4):
+[e :U 163 ]
+"231
+[; ;Lab_0/Lab_0.c: 231:             salida = 0b00001111;
+[e = _salida -> -> 15 `i `uc ]
+"232
+[; ;Lab_0/Lab_0.c: 232:             break;
+[e $U 157  ]
+"233
+[; ;Lab_0/Lab_0.c: 233:         case(5):
+[e :U 164 ]
+"234
+[; ;Lab_0/Lab_0.c: 234:             salida = 0b00011111;
+[e = _salida -> -> 31 `i `uc ]
+"235
+[; ;Lab_0/Lab_0.c: 235:             break;
+[e $U 157  ]
+"236
+[; ;Lab_0/Lab_0.c: 236:         case(6):
+[e :U 165 ]
+"237
+[; ;Lab_0/Lab_0.c: 237:             salida = 0b00111111;
+[e = _salida -> -> 63 `i `uc ]
+"238
+[; ;Lab_0/Lab_0.c: 238:             break;
+[e $U 157  ]
 "239
-[; ;Lab_0/Lab_0.c: 239:     return salida;
-[e ) _salida ]
-[e $UE 160  ]
+[; ;Lab_0/Lab_0.c: 239:         case(7):
+[e :U 166 ]
 "240
-[; ;Lab_0/Lab_0.c: 240: }
-[e :UE 160 ]
+[; ;Lab_0/Lab_0.c: 240:             salida = 0b01111111;
+[e = _salida -> -> 127 `i `uc ]
+"241
+[; ;Lab_0/Lab_0.c: 241:             break;
+[e $U 157  ]
+"242
+[; ;Lab_0/Lab_0.c: 242:         case(8):
+[e :U 167 ]
+"243
+[; ;Lab_0/Lab_0.c: 243:             salida = 0xFF;
+[e = _salida -> -> 255 `i `uc ]
+"244
+[; ;Lab_0/Lab_0.c: 244:             break;
+[e $U 157  ]
+"245
+[; ;Lab_0/Lab_0.c: 245:     }
+}
+[e $U 157  ]
+[e :U 158 ]
+[e [\ -> _analizar `i , $ -> 0 `i 159
+ , $ -> 1 `i 160
+ , $ -> 2 `i 161
+ , $ -> 3 `i 162
+ , $ -> 4 `i 163
+ , $ -> 5 `i 164
+ , $ -> 6 `i 165
+ , $ -> 7 `i 166
+ , $ -> 8 `i 167
+ 157 ]
+[e :U 157 ]
+"246
+[; ;Lab_0/Lab_0.c: 246:     return salida;
+[e ) _salida ]
+[e $UE 156  ]
+"247
+[; ;Lab_0/Lab_0.c: 247: }
+[e :UE 156 ]
 }

@@ -2685,21 +2685,7 @@ void __attribute__((picinterrupt((""))))isr(void) {
         }
         RBIF = 0;
     }
-
-    else if(T0IF == 1){
-        conteo++;
-
-        if(conteo == 4){
-            segundos++;
-            if (segundos == 255){
-                segundos = 0;
-            }
-        }
-
-        T0IF = 0;
-        TMR0 = 60;
-    }
-
+# 94 "Lab_0/Lab_0.c"
 }
 
 
@@ -2727,19 +2713,12 @@ void main(void) {
     IOCBbits.IOCB1 = 1;
     IOCBbits.IOCB2 = 1;
     RBIF = 0;
-
-
-    OPTION_REGbits.T0CS = 0;
-    OPTION_REGbits.PSA = 0;
-    OPTION_REGbits.PS = 0b111;
-    TMR0 = 60;
-
-
+# 129 "Lab_0/Lab_0.c"
     INTCONbits.GIE = 1;
     INTCONbits.RBIE = 1;
     INTCONbits.RBIF = 0;
-    INTCONbits.T0IE = 1;
-    INTCONbits.T0IF = 0;
+
+
 
     segundos = 0;
     conteo = 0;
@@ -2793,23 +2772,30 @@ void main(void) {
            PORTA = num_display[1];
            RE0 = 1;
            RE1 = 0;
+           _delay((unsigned long)((2000)*(8000000/4000.0)));
            inicio = 0;
            activar = 0;
-           _delay((unsigned long)((2000)*(8000000/4000.0)));
-           PORTA = 0x00;
+           j1 = 0;
+           j2 = 0;
+           PORTA = 0;
            PORTE = 0X00;
+           PORTC = 0X00;
+           PORTD = 0X00;
        }else if(j2 == 8){
            PORTA = num_display[2];
            RE0 = 0;
            RE1 = 1;
+           _delay((unsigned long)((2000)*(8000000/4000.0)));
            inicio = 0;
            activar = 0;
-           _delay((unsigned long)((2000)*(8000000/4000.0)));
-           PORTA = 0x00;
+           j1 = 0;
+           j2 = 0;
+           PORTA = 0;
            PORTE = 0X00;
+           PORTC = 0X00;
+           PORTD = 0X00;
        }
     }
-
     return;
 }
 
