@@ -1,4 +1,4 @@
-# 1 "Lab_0/Lab_0.c"
+# 1 "Lab_1/valor_ADC.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,28 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Lab_0/Lab_0.c" 2
-# 18 "Lab_0/Lab_0.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-
+# 1 "Lab_1/valor_ADC.c" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2508,7 +2487,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 37 "Lab_0/Lab_0.c" 2
+# 1 "Lab_1/valor_ADC.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2643,193 +2622,28 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 38 "Lab_0/Lab_0.c" 2
+# 2 "Lab_1/valor_ADC.c" 2
+
+# 1 "Lab_1/valor_ADC.h" 1
+# 14 "Lab_1/valor_ADC.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
+# 14 "Lab_1/valor_ADC.h" 2
 
 
 
+unsigned char data_mayor;
+unsigned char data_menor;
 
 
+char hex_mayor (char in);
+char hex_menor (char in);
+# 3 "Lab_1/valor_ADC.c" 2
 
 
-const char num_display[] = {0xFC, 0x60, 0xDA, 0xF2, 0x66,
-                            0xB6, 0xBE, 0xE0, 0xFE, 0xF6};
-
-char segundos;
-char conteo;
-char inicio;
-char activar, j1, j2;
-char cont1;
-char cont2;
-
-char indicador (char analizar);
-
-
-void __attribute__((picinterrupt((""))))isr(void) {
-
-    if(RBIF == 1){
-        if (RB0 == 0){
-            inicio++;
-        }else if(RB1 == 0 && activar == 1){
-            cont1++;
-            if(cont1 == 10){
-                j1++;
-                cont1 = 0;
-            }
-
-        }else if(RB2 == 0 && activar == 1){
-            cont2++;
-            if(cont2 == 10){
-                j2++;
-                cont2 = 0;
-            }
-        }
-        RBIF = 0;
-    }
-# 94 "Lab_0/Lab_0.c"
+char hex_mayor (char in){
+    data_mayor = in % 16;
 }
 
-
-
-void main(void) {
-    ANSEL = 0X00;
-    ANSELH = 0X00;
-
-    TRISA = 0x00;
-    TRISB = 0b00000111;
-    TRISC = 0x00;
-    TRISD = 0x00;
-    TRISE = 0x00;
-
-    OSCCONbits.IRCF = 0b111;
-    OSCCONbits.SCS = 1;
-
-
-    OPTION_REGbits.nRBPU = 0;
-    WPUBbits.WPUB0 = 1;
-    WPUBbits.WPUB1 = 1;
-    WPUBbits.WPUB2 = 1;
-
-    IOCBbits.IOCB0 = 1;
-    IOCBbits.IOCB1 = 1;
-    IOCBbits.IOCB2 = 1;
-    RBIF = 0;
-# 129 "Lab_0/Lab_0.c"
-    INTCONbits.GIE = 1;
-    INTCONbits.RBIE = 1;
-    INTCONbits.RBIF = 0;
-
-
-
-    segundos = 0;
-    conteo = 0;
-    inicio = 0;
-    activar = 0;
-    j1 = 0;
-    j2 = 0;
-
-    PORTA = 0x00;
-    PORTB = 0x00;
-    PORTC = 0x00;
-    PORTD = 0x00;
-    PORTE = 0x00;
-
-
-
-    while (1){
-       if (inicio == 1){
-           RB7 = 1;
-           RB6 = 0;
-           RB5 = 0;
-           PORTA = num_display[3];
-           _delay((unsigned long)((1000)*(8000000/4000.0)));
-           PORTA = num_display[2];
-           _delay((unsigned long)((1000)*(8000000/4000.0)));
-
-           RB7 = 0;
-           RB6 = 1;
-           RB5 = 0;
-           PORTA = num_display[1];
-           _delay((unsigned long)((600)*(8000000/4000.0)));
-
-           RB7 = 0;
-           RB6 = 0;
-           RB5 = 1;
-           PORTA = num_display[0];
-           _delay((unsigned long)((1000)*(8000000/4000.0)));
-
-           RB7 = 0;
-           RB6 = 0;
-           RB5 = 0;
-           PORTA = 0x00;
-           inicio++;
-           activar = 1;
-       }
-       if(activar == 1){
-           PORTC = ~indicador (j1);
-           PORTD = ~indicador (j2);
-       }
-       if (j1 == 8){
-           PORTA = num_display[1];
-           RE0 = 1;
-           RE1 = 0;
-           _delay((unsigned long)((2000)*(8000000/4000.0)));
-           inicio = 0;
-           activar = 0;
-           j1 = 0;
-           j2 = 0;
-           PORTA = 0;
-           PORTE = 0X00;
-           PORTC = 0X00;
-           PORTD = 0X00;
-       }else if(j2 == 8){
-           PORTA = num_display[2];
-           RE0 = 0;
-           RE1 = 1;
-           _delay((unsigned long)((2000)*(8000000/4000.0)));
-           inicio = 0;
-           activar = 0;
-           j1 = 0;
-           j2 = 0;
-           PORTA = 0;
-           PORTE = 0X00;
-           PORTC = 0X00;
-           PORTD = 0X00;
-       }
-    }
-    return;
-}
-
-
-char indicador (char analizar){
-    char salida;
-    switch(analizar){
-        case(0):
-            salida = 0b00000000;
-            break;
-        case(1):
-            salida = 0b00000001;
-            break;
-        case(2):
-            salida = 0b00000011;
-            break;
-        case(3):
-            salida = 0b00000111;
-            break;
-        case(4):
-            salida = 0b00001111;
-            break;
-        case(5):
-            salida = 0b00011111;
-            break;
-        case(6):
-            salida = 0b00111111;
-            break;
-        case(7):
-            salida = 0b01111111;
-            break;
-        case(8):
-            salida = 0xFF;
-            break;
-    }
-    return salida;
+char hex_menor (char in){
+    data_menor = (in/16) % 16;
 }
