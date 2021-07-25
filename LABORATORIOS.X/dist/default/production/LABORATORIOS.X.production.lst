@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Sun Jul 25 13:24:00 2021
+                                                                                               Sun Jul 25 13:31:37 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	16F887
@@ -1276,7 +1276,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1262  0250                     __ptext4:	
   1263 ;; *************** function _LCD_XY *****************
   1264 ;; Defined at:
-  1265 ;;		line 89 in file "Lab_2/LCD_16_2.c"
+  1265 ;;		line 59 in file "Lab_2/LCD_16_2.c"
   1266 ;; Parameters:    Size  Location     Type
   1267 ;;  x               1    wreg     unsigned char 
   1268 ;;  y               1    4[COMMON] unsigned char 
@@ -1315,7 +1315,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1301  0250  00F5               	movwf	LCD_XY@x
   1302  0251                     l1063:
   1303                           
-  1304                           ;Lab_2/LCD_16_2.c: 90:     if(x>0){
+  1304                           ;Lab_2/LCD_16_2.c: 60:     if(x>0){
   1305  0251  0875               	movf	LCD_XY@x,w
   1306  0252  1903               	btfsc	3,2
   1307  0253  2A55               	goto	u261
@@ -1325,16 +1325,16 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1311  0256                     u260:
   1312  0256                     l1065:
   1313                           
-  1314                           ;Lab_2/LCD_16_2.c: 91:         LCD_8_comando(0xC0 + y);
+  1314                           ;Lab_2/LCD_16_2.c: 61:         LCD_8_comando(0xC0 + y);
   1315  0256  0874               	movf	LCD_XY@y,w
   1316  0257  3EC0               	addlw	192
   1317  0258  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
   1318                           
-  1319                           ;Lab_2/LCD_16_2.c: 92:     }
+  1319                           ;Lab_2/LCD_16_2.c: 62:     }
   1320  025D  2A65               	goto	l100
   1321  025E                     l1067:
   1322                           
-  1323                           ;Lab_2/LCD_16_2.c: 94:         LCD_8_comando(0x80 + y);
+  1323                           ;Lab_2/LCD_16_2.c: 64:         LCD_8_comando(0x80 + y);
   1324  025E  0874               	movf	LCD_XY@y,w
   1325  025F  3E80               	addlw	128
   1326  0260  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
@@ -1437,7 +1437,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1423  0102  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
   1424  0107                     l1029:
   1425                           
-  1426                           ;Lab_2/LCD_16_2.c: 27:     _delay((unsigned long)((5)*(8000000/4000.0)));
+  1426                           ;Lab_2/LCD_16_2.c: 19:     _delay((unsigned long)((5)*(8000000/4000.0)));
   1427  0107  300D               	movlw	13
   1428  0108  00F5               	movwf	??_LCD_Init8+1
   1429  0109  30FB               	movlw	251
@@ -1450,12 +1450,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1436  010F  2910               	nop2
   1437  0110                     l1031:
   1438                           
-  1439                           ;Lab_2/LCD_16_2.c: 29:     LCD_8_comando(0b00110000);
+  1439                           ;Lab_2/LCD_16_2.c: 21:     LCD_8_comando(0b00110000);
   1440  0110  3030               	movlw	48
   1441  0111  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
   1442  0116                     l1033:
   1443                           
-  1444                           ;Lab_2/LCD_16_2.c: 38:     _delay((unsigned long)((100)*(8000000/4000000.0)));
+  1444                           ;Lab_2/LCD_16_2.c: 22:     _delay((unsigned long)((100)*(8000000/4000000.0)));
   1445  0116  3042               	movlw	66
   1446  0117  00F4               	movwf	??_LCD_Init8
   1447  0118                     u507:
@@ -1464,12 +1464,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1450  011A  0000               	nop
   1451  011B                     l1035:
   1452                           
-  1453                           ;Lab_2/LCD_16_2.c: 40:     LCD_8_comando(0b00110000);
+  1453                           ;Lab_2/LCD_16_2.c: 24:     LCD_8_comando(0b00110000);
   1454  011B  3030               	movlw	48
   1455  011C  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
   1456  0121                     l1037:
   1457                           
-  1458                           ;Lab_2/LCD_16_2.c: 49:     _delay((unsigned long)((100)*(8000000/4000000.0)));
+  1458                           ;Lab_2/LCD_16_2.c: 25:     _delay((unsigned long)((100)*(8000000/4000000.0)));
   1459  0121  3042               	movlw	66
   1460  0122  00F4               	movwf	??_LCD_Init8
   1461  0123                     u517:
@@ -1478,12 +1478,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1464  0125  0000               	nop
   1465  0126                     l1039:
   1466                           
-  1467                           ;Lab_2/LCD_16_2.c: 53:     LCD_8_comando(0b00111000);
+  1467                           ;Lab_2/LCD_16_2.c: 29:     LCD_8_comando(0b00111000);
   1468  0126  3038               	movlw	56
   1469  0127  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
   1470  012C                     l1041:
   1471                           
-  1472                           ;Lab_2/LCD_16_2.c: 57:     _delay((unsigned long)((100)*(8000000/4000000.0)));
+  1472                           ;Lab_2/LCD_16_2.c: 30:     _delay((unsigned long)((100)*(8000000/4000000.0)));
   1473  012C  3042               	movlw	66
   1474  012D  00F4               	movwf	??_LCD_Init8
   1475  012E                     u527:
@@ -1492,12 +1492,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1478  0130  0000               	nop
   1479  0131                     l1043:
   1480                           
-  1481                           ;Lab_2/LCD_16_2.c: 59:     LCD_8_comando(0b00001000);
+  1481                           ;Lab_2/LCD_16_2.c: 32:     LCD_8_comando(0b00001000);
   1482  0131  3008               	movlw	8
   1483  0132  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
   1484  0137                     l1045:
   1485                           
-  1486                           ;Lab_2/LCD_16_2.c: 63:     _delay((unsigned long)((100)*(8000000/4000000.0)));
+  1486                           ;Lab_2/LCD_16_2.c: 33:     _delay((unsigned long)((100)*(8000000/4000000.0)));
   1487  0137  3042               	movlw	66
   1488  0138  00F4               	movwf	??_LCD_Init8
   1489  0139                     u537:
@@ -1506,12 +1506,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1492  013B  0000               	nop
   1493  013C                     l1047:
   1494                           
-  1495                           ;Lab_2/LCD_16_2.c: 65:     LCD_8_comando(0b00000001);
+  1495                           ;Lab_2/LCD_16_2.c: 35:     LCD_8_comando(0b00000001);
   1496  013C  3001               	movlw	1
   1497  013D  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
   1498  0142                     l1049:
   1499                           
-  1500                           ;Lab_2/LCD_16_2.c: 66:     _delay((unsigned long)((100)*(8000000/4000000.0)));
+  1500                           ;Lab_2/LCD_16_2.c: 36:     _delay((unsigned long)((100)*(8000000/4000000.0)));
   1501  0142  3042               	movlw	66
   1502  0143  00F4               	movwf	??_LCD_Init8
   1503  0144                     u547:
@@ -1520,12 +1520,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1506  0146  0000               	nop
   1507  0147                     l1051:
   1508                           
-  1509                           ;Lab_2/LCD_16_2.c: 68:     LCD_8_comando(0b00000100);
+  1509                           ;Lab_2/LCD_16_2.c: 38:     LCD_8_comando(0b00000100);
   1510  0147  3004               	movlw	4
   1511  0148  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
   1512  014D                     l1053:
   1513                           
-  1514                           ;Lab_2/LCD_16_2.c: 69:     _delay((unsigned long)((100)*(8000000/4000000.0)));
+  1514                           ;Lab_2/LCD_16_2.c: 39:     _delay((unsigned long)((100)*(8000000/4000000.0)));
   1515  014D  3042               	movlw	66
   1516  014E  00F4               	movwf	??_LCD_Init8
   1517  014F                     u557:
@@ -1534,7 +1534,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1520  0151  0000               	nop
   1521  0152                     l1055:
   1522                           
-  1523                           ;Lab_2/LCD_16_2.c: 71:     _delay((unsigned long)((100)*(8000000/4000000.0)));
+  1523                           ;Lab_2/LCD_16_2.c: 41:     _delay((unsigned long)((100)*(8000000/4000000.0)));
   1524  0152  3042               	movlw	66
   1525  0153  00F4               	movwf	??_LCD_Init8
   1526  0154                     u567:
@@ -1543,12 +1543,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1529  0156  0000               	nop
   1530  0157                     l1057:
   1531                           
-  1532                           ;Lab_2/LCD_16_2.c: 72:     LCD_8_comando(0x06);
+  1532                           ;Lab_2/LCD_16_2.c: 42:     LCD_8_comando(0x06);
   1533  0157  3006               	movlw	6
   1534  0158  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
   1535  015D                     l1059:
   1536                           
-  1537                           ;Lab_2/LCD_16_2.c: 73:     LCD_8_comando(0x0C);
+  1537                           ;Lab_2/LCD_16_2.c: 43:     LCD_8_comando(0x0C);
   1538  015D  300C               	movlw	12
   1539  015E  120A  118A  2266  120A  118A  	fcall	_LCD_8_comando
   1540  0163                     l92:
@@ -1559,7 +1559,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1545  0266                     __ptext6:	
   1546 ;; *************** function _LCD_8_comando *****************
   1547 ;; Defined at:
-  1548 ;;		line 77 in file "Lab_2/LCD_16_2.c"
+  1548 ;;		line 47 in file "Lab_2/LCD_16_2.c"
   1549 ;; Parameters:    Size  Location     Type
   1550 ;;  dato            1    wreg     unsigned char 
   1551 ;; Auto vars:     Size  Location     Type
@@ -1598,21 +1598,21 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1584  0266  00F3               	movwf	LCD_8_comando@dato
   1585  0267                     l931:
   1586                           
-  1587                           ;Lab_2/LCD_16_2.c: 78:     PORTD = dato;
+  1587                           ;Lab_2/LCD_16_2.c: 48:     PORTD = dato;
   1588  0267  0873               	movf	LCD_8_comando@dato,w
   1589  0268  1283               	bcf	3,5	;RP0=0, select bank0
   1590  0269  1303               	bcf	3,6	;RP1=0, select bank0
   1591  026A  0088               	movwf	8	;volatile
   1592  026B                     l933:
   1593                           
-  1594                           ;Lab_2/LCD_16_2.c: 79:     PORTCbits.RC5 = 0;
+  1594                           ;Lab_2/LCD_16_2.c: 49:     PORTCbits.RC5 = 0;
   1595  026B  1287               	bcf	7,5	;volatile
   1596  026C                     l935:
   1597                           
-  1598                           ;Lab_2/LCD_16_2.c: 80:     PORTCbits.RC6 = 0;
+  1598                           ;Lab_2/LCD_16_2.c: 50:     PORTCbits.RC6 = 0;
   1599  026C  1307               	bcf	7,6	;volatile
   1600                           
-  1601                           ;Lab_2/LCD_16_2.c: 81:     _delay((unsigned long)((20)*(8000000/4000000.0)));
+  1601                           ;Lab_2/LCD_16_2.c: 51:     _delay((unsigned long)((20)*(8000000/4000000.0)));
   1602  026D  300D               	movlw	13
   1603  026E  00F2               	movwf	??_LCD_8_comando
   1604  026F                     u577:
@@ -1620,12 +1620,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1606  0270  2A6F               	goto	u577
   1607  0271                     l937:
   1608                           
-  1609                           ;Lab_2/LCD_16_2.c: 82:     PORTCbits.RC7 = 1;
+  1609                           ;Lab_2/LCD_16_2.c: 52:     PORTCbits.RC7 = 1;
   1610  0271  1283               	bcf	3,5	;RP0=0, select bank0
   1611  0272  1303               	bcf	3,6	;RP1=0, select bank0
   1612  0273  1787               	bsf	7,7	;volatile
   1613                           
-  1614                           ;Lab_2/LCD_16_2.c: 83:     _delay((unsigned long)((20)*(8000000/4000000.0)));
+  1614                           ;Lab_2/LCD_16_2.c: 53:     _delay((unsigned long)((20)*(8000000/4000000.0)));
   1615  0274  300D               	movlw	13
   1616  0275  00F2               	movwf	??_LCD_8_comando
   1617  0276                     u587:
@@ -1633,7 +1633,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1619  0277  2A76               	goto	u587
   1620  0278                     l939:
   1621                           
-  1622                           ;Lab_2/LCD_16_2.c: 84:     PORTCbits.RC7 = 0;
+  1622                           ;Lab_2/LCD_16_2.c: 54:     PORTCbits.RC7 = 0;
   1623  0278  1283               	bcf	3,5	;RP0=0, select bank0
   1624  0279  1303               	bcf	3,6	;RP1=0, select bank0
   1625  027A  1387               	bcf	7,7	;volatile
@@ -1645,7 +1645,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1631  01F5                     __ptext7:	
   1632 ;; *************** function _LCD_Cadena *****************
   1633 ;; Defined at:
-  1634 ;;		line 98 in file "Lab_2/LCD_16_2.c"
+  1634 ;;		line 68 in file "Lab_2/LCD_16_2.c"
   1635 ;; Parameters:    Size  Location     Type
   1636 ;;  dato            1    wreg     PTR const unsigned char 
   1637 ;;		 -> STR_2(8), STR_1(10), 
@@ -1685,11 +1685,11 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1671  01F5  00F5               	movwf	LCD_Cadena@dato
   1672  01F6                     l1069:
   1673                           
-  1674                           ;Lab_2/LCD_16_2.c: 99:     while(*dato){
+  1674                           ;Lab_2/LCD_16_2.c: 69:     while(*dato){
   1675  01F6  2A0C               	goto	l1077
   1676  01F7                     l1071:
   1677                           
-  1678                           ;Lab_2/LCD_16_2.c: 100:         _delay((unsigned long)((100)*(8000000/4000000.0)));
+  1678                           ;Lab_2/LCD_16_2.c: 70:         _delay((unsigned long)((100)*(8000000/4000000.0)));
   1679  01F7  3042               	movlw	66
   1680  01F8  00F4               	movwf	??_LCD_Cadena
   1681  01F9                     u597:
@@ -1698,21 +1698,21 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1684  01FB  0000               	nop
   1685  01FC                     l1073:
   1686                           
-  1687                           ;Lab_2/LCD_16_2.c: 101:         LCD_Data(*dato);
+  1687                           ;Lab_2/LCD_16_2.c: 71:         LCD_Data(*dato);
   1688  01FC  0875               	movf	LCD_Cadena@dato,w
   1689  01FD  0084               	movwf	4
   1690  01FE  120A  118A  21CD  120A  118A  	fcall	stringdir
   1691  0203  120A  118A  2235  120A  118A  	fcall	_LCD_Data
   1692  0208                     l1075:
   1693                           
-  1694                           ;Lab_2/LCD_16_2.c: 102:         dato++;
+  1694                           ;Lab_2/LCD_16_2.c: 72:         dato++;
   1695  0208  3001               	movlw	1
   1696  0209  00F4               	movwf	??_LCD_Cadena
   1697  020A  0874               	movf	??_LCD_Cadena,w
   1698  020B  07F5               	addwf	LCD_Cadena@dato,f
   1699  020C                     l1077:
   1700                           
-  1701                           ;Lab_2/LCD_16_2.c: 99:     while(*dato){
+  1701                           ;Lab_2/LCD_16_2.c: 69:     while(*dato){
   1702  020C  0875               	movf	LCD_Cadena@dato,w
   1703  020D  0084               	movwf	4
   1704  020E  120A  118A  21CD  120A  118A  	fcall	stringdir
@@ -1731,7 +1731,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1717  0235                     __ptext8:	
   1718 ;; *************** function _LCD_Data *****************
   1719 ;; Defined at:
-  1720 ;;		line 106 in file "Lab_2/LCD_16_2.c"
+  1720 ;;		line 76 in file "Lab_2/LCD_16_2.c"
   1721 ;; Parameters:    Size  Location     Type
   1722 ;;  data            1    wreg     unsigned char 
   1723 ;; Auto vars:     Size  Location     Type
@@ -1769,7 +1769,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1755  0235  00F3               	movwf	LCD_Data@data
   1756  0236                     l943:
   1757                           
-  1758                           ;Lab_2/LCD_16_2.c: 107:     _delay((unsigned long)((100)*(8000000/4000000.0)));
+  1758                           ;Lab_2/LCD_16_2.c: 77:     _delay((unsigned long)((100)*(8000000/4000000.0)));
   1759  0236  3042               	movlw	66
   1760  0237  00F2               	movwf	??_LCD_Data
   1761  0238                     u607:
@@ -1777,21 +1777,21 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1763  0239  2A38               	goto	u607
   1764  023A  0000               	nop
   1765                           
-  1766                           ;Lab_2/LCD_16_2.c: 109:     PORTD = data;
+  1766                           ;Lab_2/LCD_16_2.c: 79:     PORTD = data;
   1767  023B  0873               	movf	LCD_Data@data,w
   1768  023C  1283               	bcf	3,5	;RP0=0, select bank0
   1769  023D  1303               	bcf	3,6	;RP1=0, select bank0
   1770  023E  0088               	movwf	8	;volatile
   1771  023F                     l945:
   1772                           
-  1773                           ;Lab_2/LCD_16_2.c: 111:     PORTCbits.RC6 = 0;
+  1773                           ;Lab_2/LCD_16_2.c: 81:     PORTCbits.RC6 = 0;
   1774  023F  1307               	bcf	7,6	;volatile
   1775  0240                     l947:
   1776                           
-  1777                           ;Lab_2/LCD_16_2.c: 112:     PORTCbits.RC5 = 1;
+  1777                           ;Lab_2/LCD_16_2.c: 82:     PORTCbits.RC5 = 1;
   1778  0240  1687               	bsf	7,5	;volatile
   1779                           
-  1780                           ;Lab_2/LCD_16_2.c: 113:     _delay((unsigned long)((20)*(8000000/4000000.0)));
+  1780                           ;Lab_2/LCD_16_2.c: 83:     _delay((unsigned long)((20)*(8000000/4000000.0)));
   1781  0241  300D               	movlw	13
   1782  0242  00F2               	movwf	??_LCD_Data
   1783  0243                     u617:
@@ -1799,12 +1799,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1785  0244  2A43               	goto	u617
   1786  0245                     l949:
   1787                           
-  1788                           ;Lab_2/LCD_16_2.c: 114:     PORTCbits.RC7 = 1;
+  1788                           ;Lab_2/LCD_16_2.c: 84:     PORTCbits.RC7 = 1;
   1789  0245  1283               	bcf	3,5	;RP0=0, select bank0
   1790  0246  1303               	bcf	3,6	;RP1=0, select bank0
   1791  0247  1787               	bsf	7,7	;volatile
   1792                           
-  1793                           ;Lab_2/LCD_16_2.c: 115:     _delay((unsigned long)((20)*(8000000/4000000.0)));
+  1793                           ;Lab_2/LCD_16_2.c: 85:     _delay((unsigned long)((20)*(8000000/4000000.0)));
   1794  0248  300D               	movlw	13
   1795  0249  00F2               	movwf	??_LCD_Data
   1796  024A                     u627:
@@ -1812,7 +1812,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1798  024B  2A4A               	goto	u627
   1799  024C                     l951:
   1800                           
-  1801                           ;Lab_2/LCD_16_2.c: 116:     PORTCbits.RC7 = 0;
+  1801                           ;Lab_2/LCD_16_2.c: 86:     PORTCbits.RC7 = 0;
   1802  024C  1283               	bcf	3,5	;RP0=0, select bank0
   1803  024D  1303               	bcf	3,6	;RP1=0, select bank0
   1804  024E  1387               	bcf	7,7	;volatile
@@ -2081,7 +2081,7 @@ DATA                 0      0      19      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Sun Jul 25 13:24:00 2021
+Symbol Table                                                                                   Sun Jul 25 13:31:37 2021
 
                       l7 0283                        pc 0002                       l10 0234  
                      l92 0163                       l95 027B             ___awdiv@sign 0021  

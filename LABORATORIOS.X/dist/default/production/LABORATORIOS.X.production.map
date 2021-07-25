@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.31\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\LABORATORIOS.X.production.sym \
   --cmf=dist/default/production\LABORATORIOS.X.production.cmf -z -Q16F887 \
-  -oC:\Users\isaac\AppData\Local\Temp\sft8.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\isaac\AppData\Local\Temp\s54g.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/LABORATORIOS.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK \
   -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\isaac\AppData\Local\Temp\sft8.o \
+  -pfunctab=ENTRY -k C:\Users\isaac\AppData\Local\Temp\s54g.o \
   dist/default/production\LABORATORIOS.X.production.o 
 
 Object code version is 3.11
@@ -28,7 +28,7 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\isaac\AppData\Local\Temp\sft8.o
+C:\Users\isaac\AppData\Local\Temp\s54g.o
                 end_init                              C        C        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2        0       4
@@ -468,7 +468,7 @@ Total ram usage:        2 bytes
 
  *************** function _LCD_XY *****************
  Defined at:
-		line 89 in file "Lab_2/LCD_16_2.c"
+		line 59 in file "Lab_2/LCD_16_2.c"
  Parameters:    Size  Location     Type
   x               1    wreg     unsigned char 
   y               1    4[COMMON] unsigned char 
@@ -529,7 +529,7 @@ Total ram usage:        2 bytes
 
  *************** function _LCD_8_comando *****************
  Defined at:
-		line 77 in file "Lab_2/LCD_16_2.c"
+		line 47 in file "Lab_2/LCD_16_2.c"
  Parameters:    Size  Location     Type
   dato            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -560,7 +560,7 @@ Total ram usage:        2 bytes
 
  *************** function _LCD_Cadena *****************
  Defined at:
-		line 98 in file "Lab_2/LCD_16_2.c"
+		line 68 in file "Lab_2/LCD_16_2.c"
  Parameters:    Size  Location     Type
   dato            1    wreg     PTR const unsigned char 
 		 -> STR_2(8), STR_1(10), 
@@ -592,7 +592,7 @@ Total ram usage:        2 bytes
 
  *************** function _LCD_Data *****************
  Defined at:
-		line 106 in file "Lab_2/LCD_16_2.c"
+		line 76 in file "Lab_2/LCD_16_2.c"
  Parameters:    Size  Location     Type
   data            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type

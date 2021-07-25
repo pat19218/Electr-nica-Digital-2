@@ -30,7 +30,7 @@ bssBANK0 BANK0 1 28 28 5 1
 strings STRING 0 1CD 1CD 28 2
 bssCOMMON COMMON 1 7A 7A 2 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\isaac\AppData\Local\Temp\sft8.o
+$C:\Users\isaac\AppData\Local\Temp\s54g.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -80,49 +80,49 @@ STRING 28B-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\LABORATORIOS.X.production.o
-F cinit CODE >844:C:\Users\isaac\AppData\Local\Temp\sft8.s
-F cinit CODE >847:C:\Users\isaac\AppData\Local\Temp\sft8.s
-F cinit CODE >879:C:\Users\isaac\AppData\Local\Temp\sft8.s
-10 cinit CODE >880:C:\Users\isaac\AppData\Local\Temp\sft8.s
-11 cinit CODE >883:C:\Users\isaac\AppData\Local\Temp\sft8.s
-12 cinit CODE >884:C:\Users\isaac\AppData\Local\Temp\sft8.s
-13 cinit CODE >885:C:\Users\isaac\AppData\Local\Temp\sft8.s
-14 cinit CODE >886:C:\Users\isaac\AppData\Local\Temp\sft8.s
-15 cinit CODE >887:C:\Users\isaac\AppData\Local\Temp\sft8.s
-16 cinit CODE >888:C:\Users\isaac\AppData\Local\Temp\sft8.s
-17 cinit CODE >889:C:\Users\isaac\AppData\Local\Temp\sft8.s
-18 cinit CODE >895:C:\Users\isaac\AppData\Local\Temp\sft8.s
-18 cinit CODE >897:C:\Users\isaac\AppData\Local\Temp\sft8.s
-19 cinit CODE >898:C:\Users\isaac\AppData\Local\Temp\sft8.s
+F cinit CODE >844:C:\Users\isaac\AppData\Local\Temp\s54g.s
+F cinit CODE >847:C:\Users\isaac\AppData\Local\Temp\s54g.s
+F cinit CODE >879:C:\Users\isaac\AppData\Local\Temp\s54g.s
+10 cinit CODE >880:C:\Users\isaac\AppData\Local\Temp\s54g.s
+11 cinit CODE >883:C:\Users\isaac\AppData\Local\Temp\s54g.s
+12 cinit CODE >884:C:\Users\isaac\AppData\Local\Temp\s54g.s
+13 cinit CODE >885:C:\Users\isaac\AppData\Local\Temp\s54g.s
+14 cinit CODE >886:C:\Users\isaac\AppData\Local\Temp\s54g.s
+15 cinit CODE >887:C:\Users\isaac\AppData\Local\Temp\s54g.s
+16 cinit CODE >888:C:\Users\isaac\AppData\Local\Temp\s54g.s
+17 cinit CODE >889:C:\Users\isaac\AppData\Local\Temp\s54g.s
+18 cinit CODE >895:C:\Users\isaac\AppData\Local\Temp\s54g.s
+18 cinit CODE >897:C:\Users\isaac\AppData\Local\Temp\s54g.s
+19 cinit CODE >898:C:\Users\isaac\AppData\Local\Temp\s54g.s
 4 intentry CODE >57:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/Lab_2.c
 284 text9 CODE >57:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/Lab_2.c
 284 text9 CODE >60:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/Lab_2.c
-235 text8 CODE >106:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-236 text8 CODE >107:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-23B text8 CODE >109:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-23F text8 CODE >111:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-240 text8 CODE >112:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-241 text8 CODE >113:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-245 text8 CODE >114:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-248 text8 CODE >115:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-24C text8 CODE >116:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-24F text8 CODE >119:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-1F5 text7 CODE >98:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-1F6 text7 CODE >99:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-1F7 text7 CODE >100:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-1FC text7 CODE >101:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-208 text7 CODE >102:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-20C text7 CODE >99:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-218 text7 CODE >104:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-266 text6 CODE >77:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-267 text6 CODE >78:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-26B text6 CODE >79:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-26C text6 CODE >80:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-26D text6 CODE >81:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-271 text6 CODE >82:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-274 text6 CODE >83:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-278 text6 CODE >84:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-27B text6 CODE >87:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+235 text8 CODE >76:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+236 text8 CODE >77:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+23B text8 CODE >79:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+23F text8 CODE >81:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+240 text8 CODE >82:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+241 text8 CODE >83:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+245 text8 CODE >84:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+248 text8 CODE >85:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+24C text8 CODE >86:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+24F text8 CODE >89:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+1F5 text7 CODE >68:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+1F6 text7 CODE >69:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+1F7 text7 CODE >70:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+1FC text7 CODE >71:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+208 text7 CODE >72:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+20C text7 CODE >69:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+218 text7 CODE >74:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+266 text6 CODE >47:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+267 text6 CODE >48:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+26B text6 CODE >49:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+26C text6 CODE >50:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+26D text6 CODE >51:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+271 text6 CODE >52:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+274 text6 CODE >53:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+278 text6 CODE >54:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+27B text6 CODE >57:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
 EA text5 CODE >6:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
 EA text5 CODE >7:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
 ED text5 CODE >8:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
@@ -134,29 +134,29 @@ F6 text5 CODE >13:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATO
 F7 text5 CODE >14:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
 F8 text5 CODE >16:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
 101 text5 CODE >18:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-107 text5 CODE >27:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-110 text5 CODE >29:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-116 text5 CODE >38:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-11B text5 CODE >40:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-121 text5 CODE >49:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-126 text5 CODE >53:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-12C text5 CODE >57:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-131 text5 CODE >59:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-137 text5 CODE >63:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-13C text5 CODE >65:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-142 text5 CODE >66:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-147 text5 CODE >68:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-14D text5 CODE >69:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-152 text5 CODE >71:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-157 text5 CODE >72:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-15D text5 CODE >73:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-163 text5 CODE >75:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-250 text4 CODE >89:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-251 text4 CODE >90:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-256 text4 CODE >91:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-25D text4 CODE >92:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-25E text4 CODE >94:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
-265 text4 CODE >96:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+107 text5 CODE >19:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+110 text5 CODE >21:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+116 text5 CODE >22:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+11B text5 CODE >24:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+121 text5 CODE >25:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+126 text5 CODE >29:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+12C text5 CODE >30:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+131 text5 CODE >32:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+137 text5 CODE >33:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+13C text5 CODE >35:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+142 text5 CODE >36:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+147 text5 CODE >38:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+14D text5 CODE >39:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+152 text5 CODE >41:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+157 text5 CODE >42:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+15D text5 CODE >43:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+163 text5 CODE >45:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+250 text4 CODE >59:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+251 text4 CODE >60:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+256 text4 CODE >61:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+25D text4 CODE >62:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+25E text4 CODE >64:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+265 text4 CODE >66:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
 27C text3 CODE >5:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/valor_ADC.c
 27D text3 CODE >6:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/valor_ADC.c
 282 text3 CODE >7:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/valor_ADC.c
@@ -256,22 +256,22 @@ __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __end_of_LCD_XY 4CC 0 CODE 0 text4 dist/default/production\LABORATORIOS.X.production.o
 __Hstrings 0 0 ABS 0 strings -
 _LCD_Cadena 3EA 0 CODE 0 text7 dist/default/production\LABORATORIOS.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\isaac\AppData\Local\Temp\sft8.o
+___sp 0 0 STACK 2 stack C:\Users\isaac\AppData\Local\Temp\s54g.o
 _main 38 0 CODE 0 maintext dist/default/production\LABORATORIOS.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-start 18 0 CODE 0 init C:\Users\isaac\AppData\Local\Temp\sft8.o
+start 18 0 CODE 0 init C:\Users\isaac\AppData\Local\Temp\s54g.o
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _LCD_Data 46A 0 CODE 0 text8 dist/default/production\LABORATORIOS.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
 __end_of_LCD_Data 4A0 0 CODE 0 text8 dist/default/production\LABORATORIOS.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sft8.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sft8.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sft8.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sft8.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sft8.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sft8.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\s54g.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\s54g.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\s54g.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\s54g.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\s54g.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\s54g.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
@@ -297,8 +297,8 @@ ___awdiv@divisor 72 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS
 __end_of___awdiv 39A 0 CODE 0 text2 dist/default/production\LABORATORIOS.X.production.o
 _dato_menor_1 2A 0 BANK0 1 bssBANK0 dist/default/production\LABORATORIOS.X.production.o
 _dato_menor_2 28 0 BANK0 1 bssBANK0 dist/default/production\LABORATORIOS.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\isaac\AppData\Local\Temp\sft8.o
-___stacklo 0 0 ABS 0 - C:\Users\isaac\AppData\Local\Temp\sft8.o
+___stackhi 0 0 ABS 0 - C:\Users\isaac\AppData\Local\Temp\s54g.o
+___stacklo 0 0 ABS 0 - C:\Users\isaac\AppData\Local\Temp\s54g.o
 _LCD_XY 4A0 0 CODE 0 text4 dist/default/production\LABORATORIOS.X.production.o
 _LCD_8_comando 4CC 0 CODE 0 text6 dist/default/production\LABORATORIOS.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\LABORATORIOS.X.production.o
@@ -306,7 +306,7 @@ _TRISCbits 87 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
 __end_of_num_display 3C6 0 STRING 0 strings dist/default/production\LABORATORIOS.X.production.o
 __size_of_LCD_XY 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\isaac\AppData\Local\Temp\sft8.o
+___int_sp 0 0 STACK 2 stack C:\Users\isaac\AppData\Local\Temp\s54g.o
 __end_of_LCD_Init8 2C8 0 CODE 0 text5 dist/default/production\LABORATORIOS.X.production.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
@@ -359,7 +359,7 @@ saved_w 7E 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __end_of_isr 516 0 CODE 0 text9 dist/default/production\LABORATORIOS.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __stringtab 39A 0 STRING 0 strings dist/default/production\LABORATORIOS.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\isaac\AppData\Local\Temp\sft8.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\isaac\AppData\Local\Temp\s54g.o
 __end_of_LCD_8_comando 4F8 0 CODE 0 text6 dist/default/production\LABORATORIOS.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 ___awdiv 2C8 0 CODE 0 text2 dist/default/production\LABORATORIOS.X.production.o

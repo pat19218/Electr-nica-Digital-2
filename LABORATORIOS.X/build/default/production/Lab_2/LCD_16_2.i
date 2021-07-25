@@ -2656,29 +2656,20 @@ void LCD_Init8(void){
     _delay((unsigned long)((16)*(8000000/4000.0)));
 
     LCD_8_comando(0b00110000);
-# 27 "Lab_2/LCD_16_2.c"
     _delay((unsigned long)((5)*(8000000/4000.0)));
 
     LCD_8_comando(0b00110000);
-# 38 "Lab_2/LCD_16_2.c"
     _delay((unsigned long)((100)*(8000000/4000000.0)));
 
     LCD_8_comando(0b00110000);
-# 49 "Lab_2/LCD_16_2.c"
     _delay((unsigned long)((100)*(8000000/4000000.0)));
 
 
 
     LCD_8_comando(0b00111000);
-
-
-
     _delay((unsigned long)((100)*(8000000/4000000.0)));
 
     LCD_8_comando(0b00001000);
-
-
-
     _delay((unsigned long)((100)*(8000000/4000000.0)));
 
     LCD_8_comando(0b00000001);
