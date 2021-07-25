@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Lab_1/valor_ADC.h</itemPath>
+      <itemPath>Lab_2/LCD_16_2.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -16,6 +17,8 @@
       <itemPath>Lab_0/Lab_0.c</itemPath>
       <itemPath>Lab_1/LAB_1.c</itemPath>
       <itemPath>Lab_1/valor_ADC.c</itemPath>
+      <itemPath>Lab_2/Lab_2.c</itemPath>
+      <itemPath>Lab_2/LCD_16_2.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -155,6 +158,8 @@
         </XC8-CO>
         <XC8-config-global>
         </XC8-config-global>
+      </item>
+      <item path="Lab_1/LAB_1.c" ex="true" overriding="false">
       </item>
       <Simulator>
         <property key="codecoverage.enabled" value="Disable"/>

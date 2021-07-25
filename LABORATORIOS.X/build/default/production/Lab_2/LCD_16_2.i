@@ -1,4 +1,4 @@
-# 1 "Lab_1/LAB_1.c"
+# 1 "Lab_2/LCD_16_2.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,28 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Lab_1/LAB_1.c" 2
-# 18 "Lab_1/LAB_1.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-
+# 1 "Lab_2/LCD_16_2.c" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2508,7 +2487,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 37 "Lab_1/LAB_1.c" 2
+# 1 "Lab_2/LCD_16_2.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2643,154 +2622,117 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 38 "Lab_1/LAB_1.c" 2
+# 2 "Lab_2/LCD_16_2.c" 2
 
-# 1 "Lab_1/valor_ADC.h" 1
-# 14 "Lab_1/valor_ADC.h"
+# 1 "Lab_2/LCD_16_2.h" 1
+# 15 "Lab_2/LCD_16_2.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 14 "Lab_1/valor_ADC.h" 2
-
-
-
-unsigned char data_mayor;
-unsigned char data_menor;
-
-
-char hex_mayor (char in);
-char hex_menor (char in);
-# 39 "Lab_1/LAB_1.c" 2
+# 15 "Lab_2/LCD_16_2.h" 2
 
 
 
 
 
 
-
-const char num_display[] = {0xFC, 0x60, 0xDA, 0xF2, 0x66,
-                            0xB6, 0xBE, 0xE0, 0xFE, 0xF6,
-
-
-                            0xEE, 0x3E, 0x9C, 0x7A, 0x9E, 0x8E};
-char ref;
-char turno;
-char valor_adc;
-char dato_mayor, dato_menor;
+void LCD_Init8(void);
+void LCD_8_comando(unsigned char dato);
+void LCD_XY(unsigned char x,unsigned char y);
+void LCD_Cadena(const char *dato);
+void LCD_Data(char data);
+# 3 "Lab_2/LCD_16_2.c" 2
 
 
 
+void LCD_Init8(void){
+    PORTD = PORTD & 0x00;
+    TRISD = 0x00;
+    TRISCbits.TRISC5 = 0;
+    TRISCbits.TRISC6 = 0;
+    TRISCbits.TRISC7 = 0;
+    PORTCbits.RC5 = 0;
+    PORTCbits.RC6 = 0;
+    PORTCbits.RC7 = 0;
 
-void __attribute__((picinterrupt((""))))isr(void){
+    _delay((unsigned long)((16)*(8000000/4000.0)));
 
-    if(RBIF == 1){
-        if (RB0 == 0){
-            ref++;
-        }else if(RB1 == 0){
-            ref--;
-        }
-        RBIF = 0;
-    }
+    LCD_8_comando(0b00110000);
+# 27 "Lab_2/LCD_16_2.c"
+    _delay((unsigned long)((5)*(8000000/4000.0)));
 
-    else if(T0IF == 1){
+    LCD_8_comando(0b00110000);
+# 38 "Lab_2/LCD_16_2.c"
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
 
-        PORTD = 0x00;
+    LCD_8_comando(0b00110000);
+# 49 "Lab_2/LCD_16_2.c"
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
 
-        if (turno == 1){
-            PORTC = (num_display[dato_mayor]);
-            RD1 = 1;
-            turno = 0;
-        }else if(turno == 0){
-            PORTC = (num_display[dato_menor]);
-            RD0 = 1;
-            turno = 1;
-        }
 
-        T0IF = 0;
-        TMR0 = 60;
-    }
 
+    LCD_8_comando(0b00111000);
+
+
+
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+
+    LCD_8_comando(0b00001000);
+
+
+
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+
+    LCD_8_comando(0b00000001);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+
+    LCD_8_comando(0b00000100);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    LCD_8_comando(0x06);
+    LCD_8_comando(0x0C);
+    return;
 }
 
+void LCD_8_comando(unsigned char dato){
+    PORTD = dato;
+    PORTCbits.RC5 = 0;
+    PORTCbits.RC6 = 0;
+    _delay((unsigned long)((20)*(8000000/4000000.0)));
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((20)*(8000000/4000000.0)));
+    PORTCbits.RC7 = 0;
 
+    return;
+}
 
-void main(void) {
-    ANSEL = 0b100000000;
-    ANSELH = 0x00;
-
-    TRISA = 0x00;
-    TRISB = 0b00000011;
-    TRISC = 0x00;
-    TRISD = 0x00;
-    TRISE = 0b0100;
-
-    OSCCONbits.IRCF = 0b111;
-    OSCCONbits.SCS = 1;
-
-
-    OPTION_REGbits.nRBPU = 0;
-    WPUBbits.WPUB0 = 1;
-    WPUBbits.WPUB1 = 1;
-
-    IOCBbits.IOCB0 = 1;
-    IOCBbits.IOCB1 = 1;
-    RBIF = 0;
-
-
-    OPTION_REGbits.T0CS = 0;
-    OPTION_REGbits.PSA = 0;
-    OPTION_REGbits.PS = 0b111;
-    TMR0 = 60;
-
-
-    ADCON1bits.ADFM = 0;
-    ADCON1bits.VCFG0 = 0;
-    ADCON1bits.VCFG1 = 0;
-    ADCON0bits.ADCS0 = 0;
-    ADCON0bits.ADCS1 = 1;
-    ADCON0bits.CHS = 7;
-    _delay((unsigned long)((100)*(8000000/4000000.0)));
-    ADCON0bits.ADON = 1;
-
-
-    INTCONbits.GIE = 1;
-    INTCONbits.RBIE = 1;
-    INTCONbits.RBIF = 0;
-    INTCONbits.T0IE = 1;
-    INTCONbits.T0IF = 0;
-
-    ADCON0bits.GO = 1;
-
-    ref = 0;
-    dato_mayor = 0;
-    dato_menor = 0;
-
-    PORTA = 0x00;
-    PORTB = 0x00;
-    PORTC = 0x00;
-    PORTD = 0x00;
-    PORTE = 0x00;
-
-
-
-    while (1){
-        PORTA = ref;
-
-        if(ADCON0bits.GO == 0){
-          valor_adc = ADRESH;
-
-        _delay((unsigned long)((50)*(8000000/4000000.0)));
-
-        ADCON0bits.GO = 1;
-        }
-        dato_mayor = hex_mayor(valor_adc);
-        dato_menor = hex_menor(valor_adc);
-
-
-
-
-
-        RB6 = (valor_adc > ref) ? 1:0;
-
-
+void LCD_XY(unsigned char x,unsigned char y){
+    if(x>0){
+        LCD_8_comando(0xC0 + y);
     }
+    else{
+        LCD_8_comando(0x80 + y);
+    }
+}
+
+void LCD_Cadena(const char *dato){
+    while(*dato){
+        _delay((unsigned long)((100)*(8000000/4000000.0)));
+        LCD_Data(*dato);
+        dato++;
+    }
+}
+
+void LCD_Data(char data){
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+
+    PORTD = data;
+
+    PORTCbits.RC6 = 0;
+    PORTCbits.RC5 = 1;
+    _delay((unsigned long)((20)*(8000000/4000000.0)));
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((20)*(8000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+
     return;
 }

@@ -1,4 +1,4 @@
-# 1 "Lab_1/valor_ADC.c"
+# 1 "Lab_2/Lab_2.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,28 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Lab_1/valor_ADC.c" 2
+# 1 "Lab_2/Lab_2.c" 2
+# 17 "Lab_2/Lab_2.c"
+#pragma config FOSC = INTRC_NOCLKOUT
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = OFF
+#pragma config LVP = OFF
+
+
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
+
+
+
+
+
+
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2487,7 +2508,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 1 "Lab_1/valor_ADC.c" 2
+# 36 "Lab_2/Lab_2.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2622,12 +2643,12 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 2 "Lab_1/valor_ADC.c" 2
+# 37 "Lab_2/Lab_2.c" 2
 
-# 1 "Lab_1/valor_ADC.h" 1
-# 14 "Lab_1/valor_ADC.h"
+# 1 "Lab_2/valor_ADC.h" 1
+# 14 "Lab_2/valor_ADC.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 14 "Lab_1/valor_ADC.h" 2
+# 14 "Lab_2/valor_ADC.h" 2
 
 
 
@@ -2637,15 +2658,112 @@ unsigned char data_menor;
 
 char hex_mayor (char in);
 char hex_menor (char in);
-# 3 "Lab_1/valor_ADC.c" 2
+# 38 "Lab_2/Lab_2.c" 2
+
+# 1 "Lab_2/LCD_16_2.h" 1
+# 15 "Lab_2/LCD_16_2.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
+# 15 "Lab_2/LCD_16_2.h" 2
 
 
-char hex_mayor (char in){
-    data_mayor = in % 16;
-    return data_mayor;
+
+
+
+
+void LCD_Init8(void);
+void LCD_8_comando(unsigned char dato);
+void LCD_XY(unsigned char x,unsigned char y);
+void LCD_Cadena(const char *dato);
+void LCD_Data(char data);
+# 39 "Lab_2/Lab_2.c" 2
+
+
+
+
+
+
+
+const char num_display[] = {0xFC, 0x60, 0xDA, 0xF2, 0x66,
+                            0xB6, 0xBE, 0xE0, 0xFE, 0xF6,
+
+
+                            0xEE, 0x3E, 0x9C, 0x7A, 0x9E, 0x8E};
+char valor_adc;
+char dato_mayor_1, dato_menor_1, dato_mayor_2, dato_menor_2;
+
+
+
+
+void __attribute__((picinterrupt((""))))isr(void){
+
+
 }
 
-char hex_menor (char in){
-    data_menor = (in/16) % 16;
-    return data_menor;
+
+
+void main(void) {
+    LCD_Init8();
+    ANSEL = 0b01100000;
+    ANSELH = 0x00;
+
+    TRISE = 0b0011;
+
+    OSCCONbits.IRCF = 0b111;
+    OSCCONbits.SCS = 1;
+
+
+
+    ADCON1bits.ADFM = 0;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+    ADCON0bits.ADCS0 = 0;
+    ADCON0bits.ADCS1 = 1;
+    ADCON0bits.CHS = 7;
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    ADCON0bits.ADON = 1;
+
+    ADCON0bits.GO = 1;
+
+
+    dato_mayor_1 = 0;
+    dato_menor_1 = 0;
+    dato_mayor_2 = 0;
+    dato_menor_2 = 0;
+
+
+    PORTC = 0x00;
+    PORTD = 0x00;
+    PORTE = 0x00;
+
+
+
+    while (1){
+
+        if(ADCON0bits.GO == 0){
+
+            if(ADCON0bits.CHS == 6){
+                valor_adc = ADRESH;
+                ADCON0bits.CHS = 5;
+                dato_mayor_1 = hex_mayor(valor_adc);
+                dato_menor_1 = hex_menor(valor_adc);
+            }
+            else if(ADCON0bits.CHS == 5){
+                valor_adc = ADRESH;
+                ADCON0bits.CHS = 6;
+                dato_mayor_2 = hex_mayor(valor_adc);
+                dato_menor_2 = hex_menor(valor_adc);
+            }
+            _delay((unsigned long)((50)*(8000000/4000000.0)));
+
+            ADCON0bits.GO = 1;
+        }
+
+        LCD_XY(0,0);
+        LCD_Cadena("veamos :)");
+        _delay((unsigned long)((100)*(8000000/4000.0)));
+        LCD_XY(1,9);
+        LCD_Cadena("wowowow");
+        _delay((unsigned long)((100)*(8000000/4000.0)));
+    }
+    return;
 }

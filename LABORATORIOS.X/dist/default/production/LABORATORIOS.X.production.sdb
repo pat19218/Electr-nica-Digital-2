@@ -13,52 +13,51 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"59 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/LAB_1.c
-[v _isr isr `II(v  1 e 1 0 ]
-"92
-[v _main main `(v  1 e 1 0 ]
 "5 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/valor_ADC.c
 [v _hex_mayor hex_mayor `(uc  1 e 1 0 ]
-"9
+"10
 [v _hex_menor hex_menor `(uc  1 e 1 0 ]
-"59 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
-"166
-[v _PORTA PORTA `VEuc  1 e 1 @5 ]
-"228
-[v _PORTB PORTB `VEuc  1 e 1 @6 ]
-"290
+"57 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/Lab_2.c
+[v _isr isr `II(v  1 e 1 0 ]
+"64
+[v _main main `(v  1 e 1 0 ]
+"6 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+[v _LCD_Init8 LCD_Init8 `(v  1 e 1 0 ]
+"77
+[v _LCD_8_comando LCD_8_comando `(v  1 e 1 0 ]
+"89
+[v _LCD_XY LCD_XY `(v  1 e 1 0 ]
+"98
+[v _LCD_Cadena LCD_Cadena `(v  1 e 1 0 ]
+"106
+[v _LCD_Data LCD_Data `(v  1 e 1 0 ]
+"290 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
+[s S212 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"307
+[u S221 . 1 `S212 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES221  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
-[s S209 . 1 `uc 1 RBIF 1 0 :1:0 
-`uc 1 INTF 1 0 :1:1 
-`uc 1 T0IF 1 0 :1:2 
-`uc 1 RBIE 1 0 :1:3 
-`uc 1 INTE 1 0 :1:4 
-`uc 1 T0IE 1 0 :1:5 
-`uc 1 PEIE 1 0 :1:6 
-`uc 1 GIE 1 0 :1:7 
-]
-"482
-[s S218 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 TMR0IF 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 TMR0IE 1 0 :1:5 
-]
-[u S223 . 1 `S209 1 . 1 0 `S218 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES223  1 e 1 @11 ]
 "1238
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
-[s S157 . 1 `uc 1 ADON 1 0 :1:0 
+[s S76 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 `uc 1 ADCS 1 0 :2:6 
 ]
 "1276
-[s S162 . 1 `uc 1 . 1 0 :1:0 
+[s S81 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -67,146 +66,92 @@
 `uc 1 ADCS0 1 0 :1:6 
 `uc 1 ADCS1 1 0 :1:7 
 ]
-[s S171 . 1 `uc 1 . 1 0 :1:0 
+[s S90 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S174 . 1 `uc 1 . 1 0 :1:0 
+[s S93 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[u S177 . 1 `S157 1 . 1 0 `S162 1 . 1 0 `S171 1 . 1 0 `S174 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES177  1 e 1 @31 ]
-[s S64 . 1 `uc 1 PS 1 0 :3:0 
-`uc 1 PSA 1 0 :1:3 
-`uc 1 T0SE 1 0 :1:4 
-`uc 1 T0CS 1 0 :1:5 
-`uc 1 INTEDG 1 0 :1:6 
-`uc 1 nRBPU 1 0 :1:7 
+[u S96 . 1 `S76 1 . 1 0 `S81 1 . 1 0 `S90 1 . 1 0 `S93 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES96  1 e 1 @31 ]
+[s S191 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
 ]
-"1366
-[s S71 . 1 `uc 1 PS0 1 0 :1:0 
-`uc 1 PS1 1 0 :1:1 
-`uc 1 PS2 1 0 :1:2 
-]
-[u S75 . 1 `S64 1 . 1 0 `S71 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES75  1 e 1 @129 ]
-"1416
-[v _TRISA TRISA `VEuc  1 e 1 @133 ]
-"1478
-[v _TRISB TRISB `VEuc  1 e 1 @134 ]
-"1540
-[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1557
+[u S200 . 1 `S191 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES200  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S38 . 1 `uc 1 SCS 1 0 :1:0 
+[s S35 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S44 . 1 `uc 1 . 1 0 :4:0 
+[s S41 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S49 . 1 `S38 1 . 1 0 `S44 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES49  1 e 1 @143 ]
-[s S90 . 1 `uc 1 WPUB 1 0 :8:0 
-]
-"2366
-[s S92 . 1 `uc 1 WPUB0 1 0 :1:0 
-`uc 1 WPUB1 1 0 :1:1 
-`uc 1 WPUB2 1 0 :1:2 
-`uc 1 WPUB3 1 0 :1:3 
-`uc 1 WPUB4 1 0 :1:4 
-`uc 1 WPUB5 1 0 :1:5 
-`uc 1 WPUB6 1 0 :1:6 
-`uc 1 WPUB7 1 0 :1:7 
-]
-[u S101 . 1 `S90 1 . 1 0 `S92 1 . 1 0 ]
-[v _WPUBbits WPUBbits `VES101  1 e 1 @149 ]
-[s S116 . 1 `uc 1 IOCB 1 0 :8:0 
-]
-"2436
-[s S118 . 1 `uc 1 IOCB0 1 0 :1:0 
-`uc 1 IOCB1 1 0 :1:1 
-`uc 1 IOCB2 1 0 :1:2 
-`uc 1 IOCB3 1 0 :1:3 
-`uc 1 IOCB4 1 0 :1:4 
-`uc 1 IOCB5 1 0 :1:5 
-`uc 1 IOCB6 1 0 :1:6 
-`uc 1 IOCB7 1 0 :1:7 
-]
-[u S127 . 1 `S116 1 . 1 0 `S118 1 . 1 0 ]
-[v _IOCBbits IOCBbits `VES127  1 e 1 @150 ]
-[s S142 . 1 `uc 1 . 1 0 :4:0 
+[u S46 . 1 `S35 1 . 1 0 `S41 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES46  1 e 1 @143 ]
+[s S61 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2991
-[u S148 . 1 `S142 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES148  1 e 1 @159 ]
+[u S67 . 1 `S61 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES67  1 e 1 @159 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
-"4103
-[v _RB0 RB0 `VEb  1 e 0 @48 ]
-"4106
-[v _RB1 RB1 `VEb  1 e 0 @49 ]
-"4121
-[v _RB6 RB6 `VEb  1 e 0 @54 ]
-"4130
-[v _RBIF RBIF `VEb  1 e 0 @88 ]
-"4181
-[v _RD0 RD0 `VEb  1 e 0 @64 ]
-"4184
-[v _RD1 RD1 `VEb  1 e 0 @65 ]
-"4322
-[v _T0IF T0IF `VEb  1 e 0 @90 ]
-"46 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/LAB_1.c
-[v _num_display num_display `DC[16]uc  1 e 16 0 ]
-"51
-[v _ref ref `uc  1 e 1 0 ]
-"52
-[v _turno turno `uc  1 e 1 0 ]
-"53
+"51 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/Lab_2.c
 [v _valor_adc valor_adc `uc  1 e 1 0 ]
-"54
-[v _dato_mayor dato_mayor `uc  1 e 1 0 ]
-[v _dato_menor dato_menor `uc  1 e 1 0 ]
-"17 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/valor_ADC.h
+"52
+[v _dato_mayor_1 dato_mayor_1 `uc  1 e 1 0 ]
+[v _dato_menor_1 dato_menor_1 `uc  1 e 1 0 ]
+[v _dato_mayor_2 dato_mayor_2 `uc  1 e 1 0 ]
+[v _dato_menor_2 dato_menor_2 `uc  1 e 1 0 ]
+"17 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/valor_ADC.h
 [v _data_mayor data_mayor `uc  1 e 1 0 ]
 "18
 [v _data_menor data_menor `uc  1 e 1 0 ]
-"92 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/LAB_1.c
+"64 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/Lab_2.c
 [v _main main `(v  1 e 1 0 ]
 {
-"173
+"129
 } 0
-"9 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/valor_ADC.c
+"10 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/valor_ADC.c
 [v _hex_menor hex_menor `(uc  1 e 1 0 ]
 {
 [v hex_menor@in in `uc  1 a 1 wreg ]
 [v hex_menor@in in `uc  1 a 1 wreg ]
-[v hex_menor@in in `uc  1 a 1 12 ]
-"11
+[v hex_menor@in in `uc  1 a 1 4 ]
+"13
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
-[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+[v ___awdiv@quotient quotient `i  1 a 2 2 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 6 ]
-[v ___awdiv@counter counter `uc  1 a 1 5 ]
+[v ___awdiv@sign sign `uc  1 a 1 1 ]
+[v ___awdiv@counter counter `uc  1 a 1 0 ]
 "5
-[v ___awdiv@divisor divisor `i  1 p 2 0 ]
-[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+[v ___awdiv@dividend dividend `i  1 p 2 4 ]
 "41
 } 0
 "5 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/valor_ADC.c
@@ -214,11 +159,49 @@
 {
 [v hex_mayor@in in `uc  1 a 1 wreg ]
 [v hex_mayor@in in `uc  1 a 1 wreg ]
-[v hex_mayor@in in `uc  1 a 1 1 ]
-"7
+[v hex_mayor@in in `uc  1 a 1 3 ]
+"8
 } 0
-"59 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_1/LAB_1.c
+"89 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/LCD_16_2.c
+[v _LCD_XY LCD_XY `(v  1 e 1 0 ]
+{
+[v LCD_XY@x x `uc  1 a 1 wreg ]
+[v LCD_XY@x x `uc  1 a 1 wreg ]
+[v LCD_XY@y y `uc  1 p 1 4 ]
+[v LCD_XY@x x `uc  1 a 1 5 ]
+"96
+} 0
+"6
+[v _LCD_Init8 LCD_Init8 `(v  1 e 1 0 ]
+{
+"75
+} 0
+"77
+[v _LCD_8_comando LCD_8_comando `(v  1 e 1 0 ]
+{
+[v LCD_8_comando@dato dato `uc  1 a 1 wreg ]
+[v LCD_8_comando@dato dato `uc  1 a 1 wreg ]
+[v LCD_8_comando@dato dato `uc  1 a 1 3 ]
+"87
+} 0
+"98
+[v _LCD_Cadena LCD_Cadena `(v  1 e 1 0 ]
+{
+[v LCD_Cadena@dato dato `*.24DCuc  1 a 1 wreg ]
+[v LCD_Cadena@dato dato `*.24DCuc  1 a 1 wreg ]
+[v LCD_Cadena@dato dato `*.24DCuc  1 a 1 5 ]
+"104
+} 0
+"106
+[v _LCD_Data LCD_Data `(v  1 e 1 0 ]
+{
+[v LCD_Data@data data `uc  1 a 1 wreg ]
+[v LCD_Data@data data `uc  1 a 1 wreg ]
+[v LCD_Data@data data `uc  1 a 1 3 ]
+"119
+} 0
+"57 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/Lab_2.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"88
+"60
 } 0
