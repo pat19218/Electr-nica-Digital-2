@@ -35,27 +35,28 @@
 //-------------------------Librerias--------------------------------------------
 #include <xc.h>
 #include <stdint.h>
+#include <stdio.h>
 #include "valor_ADC.h"
 #include "LCD_16_2.h"
+#include "USART.h"
 
 //--------------------------directivas del compilador---------------------------
 #define _XTAL_FREQ 8000000 //__delay_ms(x)
 
 //---------------------------variables------------------------------------------
-                          // 0     1    2     3     4
-const char num_display[] = {0xFC, 0x60, 0xDA, 0xF2, 0x66,
-                            0xB6, 0xBE, 0xE0, 0xFE, 0xF6,
-                          //  5     6     7    8     9
-                          //  A     B     C    D     E    F
-                            0xEE, 0x3E, 0x9C, 0x7A, 0x9E, 0x8E};
-char valor_adc;
-char dato_mayor_1, dato_menor_1, dato_mayor_2, dato_menor_2;
+
+char dato1, dato2;
+double voltaje1, voltaje2, voltaje3;
+char valor1[6];
+char valor2[6];
+char valor3[6];
+char comp1, comp2;
+char ingreso;
 //--------------------------funciones-------------------------------------------
 
 //---------------------------interrupciones-------------------------------------
 
 void __interrupt()isr(void){
-    
     
 }
 
@@ -63,10 +64,14 @@ void __interrupt()isr(void){
 
 void main(void) {
     LCD_Init8();
+    USART_Init();
     ANSEL = 0b01100000; //pin 5 y 6 analogicos
     ANSELH = 0x00;      // solo pines digitales
-       
-    TRISE = 0b0011;     //pin 0 y 1 entradas
+    
+    TRISA = 0x00;
+    TRISC = 0b10000000;
+    TRISD = 0x00;
+    TRISE = 0b111;     //pin 0 y 1 entradas
     
     OSCCONbits.IRCF = 0b111; //Config. de oscilacion 8MHz
     OSCCONbits.SCS = 1;      //reloj interno
@@ -78,19 +83,20 @@ void main(void) {
     ADCON1bits.VCFG1 = 0;
     ADCON0bits.ADCS0 = 0;   //Fosc/32
     ADCON0bits.ADCS1 = 1;
-    ADCON0bits.CHS = 7;     //canal 5
+    ADCON0bits.CHS = 5;     //canal 5
     __delay_us(100);
     ADCON0bits.ADON = 1;    //activo el modulo
     
     ADCON0bits.GO = 1;  
     
                            //Estado inicial
-    dato_mayor_1 = 0;
-    dato_menor_1 = 0;
-    dato_mayor_2 = 0;
-    dato_menor_2 = 0;
+    dato1 = 0;
+    dato2 = 0;
+    voltaje1 = 0;
+    voltaje2 = 0;
     
                            //Estado inicial
+    PORTA = 0x00;
     PORTC = 0x00;
     PORTD = 0x00;
     PORTE = 0x00;
@@ -98,32 +104,62 @@ void main(void) {
     
     //------------------------------loop principal----------------------------------
     while (1){
+        comp1 = dato1;
+        comp2 = dato2;
         
         if(ADCON0bits.GO == 0){
             
             if(ADCON0bits.CHS == 6){
-                valor_adc = ADRESH;
+                dato2 = ADRESH;
                 ADCON0bits.CHS = 5;
-                dato_mayor_1 = hex_mayor(valor_adc);
-                dato_menor_1 = hex_menor(valor_adc);
             }
             else if(ADCON0bits.CHS == 5){
-                valor_adc = ADRESH;
+                dato1 = ADRESH;
                 ADCON0bits.CHS = 6;
-                dato_mayor_2 = hex_mayor(valor_adc);
-                dato_menor_2 = hex_menor(valor_adc);
             }
             __delay_us(50);     //con 6 micros segundos será suficiente se dejo
                                 //en 50 por fallos de software en proteus
             ADCON0bits.GO = 1;
         }
+        voltaje1 = (dato1 * 0.0196);    //porque solo uso el adresh
+        voltaje2 = (dato2 * 0.0196);    //porque solo uso el adresh
+        voltaje3 = (PORTA * 0.0196);    //porque solo uso el adresh
         
-        LCD_XY(0,0);        //dond aparecera
-        LCD_Cadena("veamos :)");
-        __delay_ms(100);
-        LCD_XY(1,9);    
-        LCD_Cadena("wowowow");
-        __delay_ms(100);
+        sprintf(valor1, "%3.2fv", voltaje1);
+        sprintf(valor2, "%3.2fv", voltaje2);
+        sprintf(valor3, "%3.2fv", voltaje3);
+        
+        
+        LCD_8XY(0,0);                //donde aparecera
+        LCD_8Cadena("S1:   S2:   S3:");
+               
+        LCD_8XY(1,0);
+        LCD_8Cadena(valor1);
+        LCD_8XY(1,6);
+        LCD_8Cadena(valor2);
+        LCD_8XY(1,12);
+        LCD_8Cadena(valor3);
+        
+        if(comp1 != dato1 || comp2 != dato2){
+            USART_Cadena("\n\r\n\r+ para aumentar contador\n\r");
+            USART_Cadena("- para disminuir contador\n\r\n\r");
+            USART_Cadena("Voltaje pot1: ");
+            USART_Cadena(valor1);
+       
+            USART_Cadena("\n\rVoltaje pot2: ");
+            USART_Cadena(valor2);
+        }
+        
+        if (PIR1bits.RCIF == 1){ //compruebo si se introdujo un dato
+            ingreso = USART_Rx();
+       }
+       
+        if(ingreso == '+'){
+            PORTA++;
+        }else if(ingreso == '-'){
+            PORTA--;
+        }
+        ingreso = 0;
     }
     return;
 }

@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>Lab_1/valor_ADC.h</itemPath>
       <itemPath>Lab_2/LCD_16_2.h</itemPath>
+      <itemPath>Lab_2/USART.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -19,6 +20,7 @@
       <itemPath>Lab_1/valor_ADC.c</itemPath>
       <itemPath>Lab_2/Lab_2.c</itemPath>
       <itemPath>Lab_2/LCD_16_2.c</itemPath>
+      <itemPath>Lab_2/USART.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

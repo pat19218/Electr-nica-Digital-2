@@ -14,28 +14,34 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
 
+
 //variables
 
 
 //Funciones
-void LCD_Init8(void);
-void LCD_8_comando(unsigned char dato);
-void LCD_XY(unsigned char x,unsigned char y);
-void LCD_Cadena(const char *dato);
-void LCD_Data(char data);
+void LCD_Init8(void);       //llamar para la config
+void LCD_Init4(void);
+void LCD_8_comando(unsigned char dato); //dentro de la config
+void LCD_4Comando(unsigned char cmd);   //dentro de la config
+void LCD_8XY(unsigned char x,unsigned char y);  //dar ubicacion 8 con pines
+void LCD_4XY(unsigned char x,unsigned char y);  //dar ubicacion con 4 pines
+void LCD_8Cadena(const char *dato); //mandar mensaje con 8 pines
+void LCD_4Cadena(const char *dato); //mandar mensaje con 4 pines
+void LCD_8Data(char data);  //mandar dato con 8 pines
+void LCD_4Data(char data);  //mandar dato con 4 pines
 
 //Macros
 #define LCD_PORT PORTD
 #define LCD_TRIS TRISD
 
-#define RS_PIN PORTCbits.RC5
-#define RS_TRIS TRISCbits.TRISC5
+#define RS_PIN PORTCbits.RC0
+#define RS_TRIS TRISCbits.TRISC0
 
-#define RW_PIN PORTCbits.RC6
-#define RW_TRIS TRISCbits.TRISC6
+#define RW_PIN PORTCbits.RC1
+#define RW_TRIS TRISCbits.TRISC1
 
-#define E_PIN  PORTCbits.RC7
-#define E_TRIS TRISCbits.TRISC7
+#define E_PIN  PORTCbits.RC2
+#define E_TRIS TRISCbits.TRISC2
 
 #define _XTAL_FREQ 8000000 //__delay_ms(x)
 

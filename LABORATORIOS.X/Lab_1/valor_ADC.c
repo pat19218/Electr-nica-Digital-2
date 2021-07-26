@@ -11,3 +11,4 @@ char hex_menor (char in){
     data_menor = (in/16) % 16;
     return data_menor;
 }
+
