@@ -175,6 +175,8 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
+      <item path="Lab_1/valor_ADC.c" ex="true" overriding="false">
+      </item>
       <item path="Lab_2/LCD_16_2.c" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>

@@ -2696,15 +2696,16 @@ void __attribute__((picinterrupt((""))))isr(void){
 
 
 void main(void) {
+    USART_Init();
     ANSEL = 0x00;
     ANSELH = 0x00;
 
     TRISA = 0x00;
     TRISB = 0x03;
-    TRISC = 0x00;
+    TRISC = 0b10000000;
     TRISD = 0x00;
 
-    USART_Init();
+
     OSCCONbits.IRCF = 0b111;
     OSCCONbits.SCS = 1;
 
@@ -2761,7 +2762,24 @@ void main(void) {
             USART_Cadena("\n\r\n\r");
             old = 0x00;
         }
-# 154 "Lab_5/LAB5.c"
+
+         if (PIR1bits.RCIF == 1){
+            ingreso = USART_Rx();
+            if(ingreso > 47 && ingreso < 58){
+                entrante[pos] = ingreso;
+                pos++;
+
+                if (pos > 2){
+                    pos = 0;
+                    total = (entrante[0] - 48) * 100;
+                    total +=(entrante[1] - 48) *10;
+                    total +=(entrante[2] - 48);
+                    PORTA = total;
+
+                }
+            }
+       }
+
         if(ingreso == '+'){
             PORTD++;
         }else if(ingreso == '-'){

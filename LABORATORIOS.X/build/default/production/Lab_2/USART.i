@@ -2654,7 +2654,6 @@ void USART_Init(void){
     RCSTAbits.RX9 = 0;
     RCSTAbits.CREN = 1;
     TXSTAbits.TXEN = 1;
-    TRISCbits.TRISC7 = 1;
 }
 
 

@@ -58,17 +58,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1068
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1068: extern volatile RCSTAbits_t RCSTAbits __attribute__((address(0x018)));
 [v _RCSTAbits `VS36 ~T0 @X0 0 e@24 ]
-"1546
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1546:     struct {
-[s S57 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S57 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"1545
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1545: typedef union {
-[u S56 `S57 1 ]
-[n S56 . . ]
-"1557
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1557: extern volatile TRISCbits_t TRISCbits __attribute__((address(0x087)));
-[v _TRISCbits `VS56 ~T0 @X0 0 e@135 ]
 "1133
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1133: extern volatile unsigned char TXREG __attribute__((address(0x019)));
 [v _TXREG `Vuc ~T0 @X0 0 e@25 ]
@@ -343,79 +332,76 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Lab_2/USART.c: 16:     TXSTAbits.TXEN = 1;
 [e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
 "17
-[; ;Lab_2/USART.c: 17:     TRISCbits.TRISC7 = 1;
-[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
-"18
-[; ;Lab_2/USART.c: 18: }
+[; ;Lab_2/USART.c: 17: }
 [e :UE 138 ]
 }
-"21
-[; ;Lab_2/USART.c: 21: void USART_Tx(char data){
+"20
+[; ;Lab_2/USART.c: 20: void USART_Tx(char data){
 [v _USART_Tx `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _USART_Tx ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [f ]
-"22
-[; ;Lab_2/USART.c: 22:     while(TXSTAbits.TRMT == 0);
+"21
+[; ;Lab_2/USART.c: 21:     while(TXSTAbits.TRMT == 0);
 [e $U 140  ]
 [e :U 141 ]
 [e :U 140 ]
 [e $ == -> . . _TXSTAbits 0 1 `i -> 0 `i 141  ]
 [e :U 142 ]
-"23
-[; ;Lab_2/USART.c: 23:     TXREG = data;
+"22
+[; ;Lab_2/USART.c: 22:     TXREG = data;
 [e = _TXREG -> _data `uc ]
-"24
-[; ;Lab_2/USART.c: 24: }
+"23
+[; ;Lab_2/USART.c: 23: }
 [e :UE 139 ]
 }
-"26
-[; ;Lab_2/USART.c: 26: char USART_Rx(){
+"25
+[; ;Lab_2/USART.c: 25: char USART_Rx(){
 [v _USART_Rx `(uc ~T0 @X0 1 ef ]
 {
 [e :U _USART_Rx ]
 [f ]
-"27
-[; ;Lab_2/USART.c: 27:     return RCREG;
+"26
+[; ;Lab_2/USART.c: 26:     return RCREG;
 [e ) -> _RCREG `uc ]
 [e $UE 143  ]
-"28
-[; ;Lab_2/USART.c: 28:    }
+"27
+[; ;Lab_2/USART.c: 27:    }
 [e :UE 143 ]
 }
-"30
-[; ;Lab_2/USART.c: 30: void USART_Cadena(char *str){
+"29
+[; ;Lab_2/USART.c: 29: void USART_Cadena(char *str){
 [v _USART_Cadena `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _USART_Cadena ]
 [v _str `*uc ~T0 @X0 1 r1 ]
 [f ]
-"31
-[; ;Lab_2/USART.c: 31:     while(*str != '\0'){
+"30
+[; ;Lab_2/USART.c: 30:     while(*str != '\0'){
 [e $U 145  ]
 [e :U 146 ]
 {
-"32
-[; ;Lab_2/USART.c: 32:         USART_Tx(*str);
+"31
+[; ;Lab_2/USART.c: 31:         USART_Tx(*str);
 [e ( _USART_Tx (1 *U _str ]
-"33
-[; ;Lab_2/USART.c: 33:         str++;
+"32
+[; ;Lab_2/USART.c: 32:         str++;
 [e ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
-"34
-[; ;Lab_2/USART.c: 34:     }
+"33
+[; ;Lab_2/USART.c: 33:     }
 }
 [e :U 145 ]
-"31
-[; ;Lab_2/USART.c: 31:     while(*str != '\0'){
+"30
+[; ;Lab_2/USART.c: 30:     while(*str != '\0'){
 [e $ != -> *U _str `ui -> 0 `ui 146  ]
 [e :U 147 ]
-"35
-[; ;Lab_2/USART.c: 35: }
+"34
+[; ;Lab_2/USART.c: 34: }
 [e :UE 144 ]
 }
-"37
-[; ;Lab_2/USART.c: 37: void USART_volt(char cen, char dec, char uni){
+"36
+[; ;Lab_2/USART.c: 36: void USART_volt(char cen, char dec, char uni){
 [v _USART_volt `(v ~T0 @X0 1 ef3`uc`uc`uc ]
 {
 [e :U _USART_volt ]
@@ -423,34 +409,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _dec `uc ~T0 @X0 1 r2 ]
 [v _uni `uc ~T0 @X0 1 r3 ]
 [f ]
-"38
-[; ;Lab_2/USART.c: 38:     cen += 48;
+"37
+[; ;Lab_2/USART.c: 37:     cen += 48;
 [e =+ _cen -> -> 48 `i `uc ]
-"39
-[; ;Lab_2/USART.c: 39:     dec += 48;
+"38
+[; ;Lab_2/USART.c: 38:     dec += 48;
 [e =+ _dec -> -> 48 `i `uc ]
-"40
-[; ;Lab_2/USART.c: 40:     uni += 48;
+"39
+[; ;Lab_2/USART.c: 39:     uni += 48;
 [e =+ _uni -> -> 48 `i `uc ]
-"42
-[; ;Lab_2/USART.c: 42:     USART_Tx(cen);
+"41
+[; ;Lab_2/USART.c: 41:     USART_Tx(cen);
 [e ( _USART_Tx (1 _cen ]
-"43
-[; ;Lab_2/USART.c: 43:     USART_Tx('.');
+"42
+[; ;Lab_2/USART.c: 42:     USART_Tx('.');
 [e ( _USART_Tx (1 -> -> 46 `ui `uc ]
-"44
-[; ;Lab_2/USART.c: 44:     USART_Tx(dec);
+"43
+[; ;Lab_2/USART.c: 43:     USART_Tx(dec);
 [e ( _USART_Tx (1 _dec ]
-"45
-[; ;Lab_2/USART.c: 45:     USART_Tx(uni);
+"44
+[; ;Lab_2/USART.c: 44:     USART_Tx(uni);
 [e ( _USART_Tx (1 _uni ]
-"46
-[; ;Lab_2/USART.c: 46:     USART_Tx('V');
+"45
+[; ;Lab_2/USART.c: 45:     USART_Tx('V');
 [e ( _USART_Tx (1 -> -> 86 `ui `uc ]
-"47
-[; ;Lab_2/USART.c: 47:     return;
+"46
+[; ;Lab_2/USART.c: 46:     return;
 [e $UE 148  ]
-"48
-[; ;Lab_2/USART.c: 48: }
+"47
+[; ;Lab_2/USART.c: 47: }
 [e :UE 148 ]
 }

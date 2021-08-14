@@ -68,15 +68,16 @@ void __interrupt()isr(void){
 //----------------------configuracion microprocesador---------------------------
 
 void main(void) {
+    USART_Init();
     ANSEL = 0x00;
     ANSELH = 0x00;      // solo pines digitales
     
     TRISA = 0x00;
     TRISB = 0x03;
-    TRISC = 0x00;
+    TRISC = 0b10000000;
     TRISD = 0x00;
     
-    USART_Init();
+    
     OSCCONbits.IRCF = 0b111; //Config. de oscilacion 8MHz
     OSCCONbits.SCS = 1;      //reloj interno
     
@@ -134,22 +135,22 @@ void main(void) {
             old = 0x00;
         }
         
-//         if (PIR1bits.RCIF == 1){ //compruebo si se introdujo un dato
-//            ingreso = USART_Rx();
-//            if(ingreso > 47 && ingreso < 58){
-//                entrante[pos] = ingreso;
-//                pos++;
-//                //PORTD++;
-//                if (pos > 2){
-//                    pos = 0;
-//                    total = (entrante[0] - 48) * 100;
-//                    total +=(entrante[1] - 48) *10;
-//                    total +=(entrante[2] - 48);
-//                    PORTA = total;
-//                    //PORTD++;
-//                }
-//            }
-//       }
+         if (PIR1bits.RCIF == 1){ //compruebo si se introdujo un dato
+            ingreso = USART_Rx();
+            if(ingreso > 47 && ingreso < 58){
+                entrante[pos] = ingreso;
+                pos++;
+                //PORTD++;
+                if (pos > 2){
+                    pos = 0;
+                    total = (entrante[0] - 48) * 100;
+                    total +=(entrante[1] - 48) *10;
+                    total +=(entrante[2] - 48);
+                    PORTA = total;
+                    //PORTD++;
+                }
+            }
+       }
        
         if(ingreso == '+'){
             PORTD++;

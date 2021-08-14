@@ -12,26 +12,27 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $dist/default/production\LABORATORIOS.X.production.o
-cinit CODE 0 F F D 2
-text1 CODE 0 225 225 2A 2
-text2 CODE 0 275 275 26 2
-text3 CODE 0 19E 19E 5B 2
-text4 CODE 0 2BE 2BE 17 2
-text5 CODE 0 135 135 69 2
-text6 CODE 0 2D5 2D5 16 2
-text7 CODE 0 29B 29B 23 2
-text8 CODE 0 2EB 2EB C 2
-text9 CODE 0 1F9 1F9 2C 2
-nvBANK0 BANK0 1 35 35 4 1
-maintext CODE 0 1C 1C 119 2
-cstackCOMMON COMMON 1 70 70 6 1
-cstackBANK0 BANK0 1 20 20 15 1
+cinit CODE 0 F F B 2
+text1 CODE 0 277 277 2A 2
+text2 CODE 0 2C7 2C7 26 2
+text3 CODE 0 1F0 1F0 5B 2
+text4 CODE 0 30C 30C 17 2
+text5 CODE 0 187 187 69 2
+text6 CODE 0 323 323 15 2
+text7 CODE 0 359 359 4 2
+text8 CODE 0 338 338 15 2
+text9 CODE 0 2ED 2ED 1F 2
+text10 CODE 0 34D 34D C 2
+text11 CODE 0 24B 24B 2C 2
+nvBANK0 BANK0 1 36 36 4 1
+maintext CODE 0 1A 1A 16D 2
+cstackCOMMON COMMON 1 70 70 A 1
+cstackBANK0 BANK0 1 20 20 11 1
 intentry CODE 0 4 4 8 2
-bssBANK0 BANK0 1 39 39 3 1
-strings STRING 0 24F 24F 26 2
-bssCOMMON COMMON 1 76 76 4 1
+bssBANK0 BANK0 1 31 31 5 1
+strings STRING 0 2A1 2A1 26 2
 config CONFIG 4 2007 2007 2 2
-$C:\Users\isaac\AppData\Local\Temp\sdns.o
+$C:\Users\isaac\AppData\Local\Temp\saks.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -41,22 +42,22 @@ config CONFIG 4 2007 2007 2 2
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 3C-6F 1
+RAM 3A-6F 1
 RAM A0-EF 1
 RAM 110-16F 1
 RAM 190-1EF 1
-BANK0 3C-6F 1
+BANK0 3A-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST 2F7-1FFF 2
+CONST 35D-1FFF 2
 ENTRY 3-3 2
-ENTRY 2F7-1FFF 2
+ENTRY 35D-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
 CODE 3-3 2
-CODE 2F7-1FFF 2
+CODE 35D-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
@@ -64,9 +65,9 @@ SFR3 180-18F 1
 COMMON 7A-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE 2F7-1FFF 2
+STRCODE 35D-1FFF 2
 STRING 3-3 2
-STRING 2F7-1FFF 2
+STRING 35D-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -81,164 +82,184 @@ STRING 2F7-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\LABORATORIOS.X.production.o
-F cinit CODE >883:C:\Users\isaac\AppData\Local\Temp\sdns.s
-F cinit CODE >886:C:\Users\isaac\AppData\Local\Temp\sdns.s
-F cinit CODE >915:C:\Users\isaac\AppData\Local\Temp\sdns.s
-10 cinit CODE >916:C:\Users\isaac\AppData\Local\Temp\sdns.s
-11 cinit CODE >917:C:\Users\isaac\AppData\Local\Temp\sdns.s
-12 cinit CODE >918:C:\Users\isaac\AppData\Local\Temp\sdns.s
-13 cinit CODE >921:C:\Users\isaac\AppData\Local\Temp\sdns.s
-14 cinit CODE >922:C:\Users\isaac\AppData\Local\Temp\sdns.s
-15 cinit CODE >923:C:\Users\isaac\AppData\Local\Temp\sdns.s
-16 cinit CODE >924:C:\Users\isaac\AppData\Local\Temp\sdns.s
-17 cinit CODE >925:C:\Users\isaac\AppData\Local\Temp\sdns.s
-18 cinit CODE >931:C:\Users\isaac\AppData\Local\Temp\sdns.s
-18 cinit CODE >933:C:\Users\isaac\AppData\Local\Temp\sdns.s
-19 cinit CODE >934:C:\Users\isaac\AppData\Local\Temp\sdns.s
+F cinit CODE >730:C:\Users\isaac\AppData\Local\Temp\saks.s
+F cinit CODE >733:C:\Users\isaac\AppData\Local\Temp\saks.s
+F cinit CODE >753:C:\Users\isaac\AppData\Local\Temp\saks.s
+10 cinit CODE >754:C:\Users\isaac\AppData\Local\Temp\saks.s
+11 cinit CODE >755:C:\Users\isaac\AppData\Local\Temp\saks.s
+12 cinit CODE >756:C:\Users\isaac\AppData\Local\Temp\saks.s
+13 cinit CODE >757:C:\Users\isaac\AppData\Local\Temp\saks.s
+14 cinit CODE >758:C:\Users\isaac\AppData\Local\Temp\saks.s
+15 cinit CODE >759:C:\Users\isaac\AppData\Local\Temp\saks.s
+16 cinit CODE >765:C:\Users\isaac\AppData\Local\Temp\saks.s
+16 cinit CODE >767:C:\Users\isaac\AppData\Local\Temp\saks.s
+17 cinit CODE >768:C:\Users\isaac\AppData\Local\Temp\saks.s
 4 intentry CODE >56:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-1F9 text9 CODE >56:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-1F9 text9 CODE >57:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-1FD text9 CODE >58:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-203 text9 CODE >59:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-207 text9 CODE >60:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-20C text9 CODE >61:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-20E text9 CODE >63:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-21D text9 CODE >64:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-21E text9 CODE >66:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-2EB text8 CODE >21:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2EC text8 CODE >22:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2F2 text8 CODE >23:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2F6 text8 CODE >24:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-29B text7 CODE >30:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-29E text7 CODE >31:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-29F text7 CODE >32:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2AB text7 CODE >33:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2B1 text7 CODE >31:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2BD text7 CODE >35:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2D5 text6 CODE >4:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2D5 text6 CODE >6:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2D8 text6 CODE >7:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2D9 text6 CODE >8:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2DC text6 CODE >10:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2E0 text6 CODE >11:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2E1 text6 CODE >13:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2E4 text6 CODE >14:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2E5 text6 CODE >15:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2E6 text6 CODE >16:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2E9 text6 CODE >17:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-2EA text6 CODE >18:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
-135 text5 CODE >5:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-135 text5 CODE >13:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-138 text5 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-13C text5 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-141 text5 CODE >16:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-143 text5 CODE >18:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-147 text5 CODE >19:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-14C text5 CODE >20:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-150 text5 CODE >22:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-152 text5 CODE >23:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-158 text5 CODE >24:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-15A text5 CODE >25:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-15B text5 CODE >26:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-162 text5 CODE >27:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-166 text5 CODE >25:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-16A text5 CODE >30:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-171 text5 CODE >31:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-17B text5 CODE >32:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-181 text5 CODE >33:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-182 text5 CODE >35:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-189 text5 CODE >36:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-18F text5 CODE >38:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-194 text5 CODE >39:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-199 text5 CODE >40:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-19D text5 CODE >41:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
-2BE text4 CODE >165:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-2BE text4 CODE >166:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-2D3 text4 CODE >167:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-2D4 text4 CODE >168:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-19E text3 CODE >5:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-19E text3 CODE >12:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1A1 text3 CODE >13:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1A5 text3 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1AA text3 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1AC text3 CODE >17:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1B0 text3 CODE >18:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1B5 text3 CODE >19:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1BB text3 CODE >20:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1BD text3 CODE >21:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1BE text3 CODE >22:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1C5 text3 CODE >23:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1C9 text3 CODE >21:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1CD text3 CODE >26:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1D7 text3 CODE >27:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1DD text3 CODE >28:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1E4 text3 CODE >29:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1EA text3 CODE >31:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1EF text3 CODE >32:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1F4 text3 CODE >33:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-1F8 text3 CODE >34:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
-275 text2 CODE >170:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-275 text2 CODE >172:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-299 text2 CODE >173:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-29A text2 CODE >174:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-225 text1 CODE >176:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-225 text1 CODE >178:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-24D text1 CODE >179:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-24E text1 CODE >180:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-1C maintext CODE >70:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-1C maintext CODE >71:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+24B text11 CODE >56:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+24B text11 CODE >57:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+24F text11 CODE >58:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+255 text11 CODE >59:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+259 text11 CODE >60:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+25E text11 CODE >61:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+260 text11 CODE >63:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+26F text11 CODE >64:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+270 text11 CODE >66:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+34D text10 CODE >20:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+34E text10 CODE >21:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+354 text10 CODE >22:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+358 text10 CODE >23:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+2ED text9 CODE >29:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+2EE text9 CODE >30:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+2EF text9 CODE >31:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+2FB text9 CODE >32:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+2FF text9 CODE >30:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+30B text9 CODE >34:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+338 text8 CODE >4:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+338 text8 CODE >6:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+33B text8 CODE >7:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+33C text8 CODE >8:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+33F text8 CODE >10:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+343 text8 CODE >11:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+344 text8 CODE >13:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+347 text8 CODE >14:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+348 text8 CODE >15:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+349 text8 CODE >16:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+34C text8 CODE >17:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+359 text7 CODE >25:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+359 text7 CODE >26:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+35C text7 CODE >27:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+323 text6 CODE >4:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+324 text6 CODE >6:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+325 text6 CODE >43:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+329 text6 CODE >44:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+32D text6 CODE >45:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+32F text6 CODE >46:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+331 text6 CODE >47:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+336 text6 CODE >50:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+337 text6 CODE >51:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+187 text5 CODE >5:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+187 text5 CODE >13:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+18A text5 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+18E text5 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+193 text5 CODE >16:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+195 text5 CODE >18:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+199 text5 CODE >19:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+19E text5 CODE >20:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1A2 text5 CODE >22:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1A4 text5 CODE >23:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1AA text5 CODE >24:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1AC text5 CODE >25:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1AD text5 CODE >26:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1B4 text5 CODE >27:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1B8 text5 CODE >25:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1BC text5 CODE >30:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1C3 text5 CODE >31:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1CD text5 CODE >32:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1D3 text5 CODE >33:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1D4 text5 CODE >35:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1DB text5 CODE >36:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1E1 text5 CODE >38:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1E6 text5 CODE >39:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1EB text5 CODE >40:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+1EF text5 CODE >41:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+30C text4 CODE >166:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+30C text4 CODE >167:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+321 text4 CODE >168:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+322 text4 CODE >169:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+1F0 text3 CODE >5:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+1F0 text3 CODE >12:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+1F3 text3 CODE >13:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+1F7 text3 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+1FC text3 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+1FE text3 CODE >17:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+202 text3 CODE >18:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+207 text3 CODE >19:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+20D text3 CODE >20:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+20F text3 CODE >21:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+210 text3 CODE >22:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+217 text3 CODE >23:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+21B text3 CODE >21:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+21F text3 CODE >26:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+229 text3 CODE >27:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+22F text3 CODE >28:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+236 text3 CODE >29:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+23C text3 CODE >31:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+241 text3 CODE >32:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+246 text3 CODE >33:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+24A text3 CODE >34:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
+2C7 text2 CODE >171:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+2C7 text2 CODE >173:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+2EB text2 CODE >174:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+2EC text2 CODE >175:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+277 text1 CODE >177:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+277 text1 CODE >179:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+29F text1 CODE >180:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+2A0 text1 CODE >181:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+1A maintext CODE >70:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+1A maintext CODE >71:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
 1F maintext CODE >72:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-20 maintext CODE >74:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+22 maintext CODE >73:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
 23 maintext CODE >75:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-25 maintext CODE >76:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-26 maintext CODE >77:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-27 maintext CODE >79:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-2C maintext CODE >80:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-30 maintext CODE >81:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-31 maintext CODE >85:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-32 maintext CODE >86:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-33 maintext CODE >87:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-34 maintext CODE >90:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-35 maintext CODE >91:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-36 maintext CODE >92:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-37 maintext CODE >94:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-38 maintext CODE >95:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-39 maintext CODE >96:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-3A maintext CODE >99:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-3E maintext CODE >100:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-3F maintext CODE >101:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-40 maintext CODE >102:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-41 maintext CODE >103:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-42 maintext CODE >109:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-53 maintext CODE >110:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-64 maintext CODE >111:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-75 maintext CODE >112:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-79 maintext CODE >113:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-7D maintext CODE >114:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-81 maintext CODE >116:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-8B maintext CODE >117:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-91 maintext CODE >118:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-97 maintext CODE >119:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-9F maintext CODE >120:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-A7 maintext CODE >121:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-AF maintext CODE >122:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-B5 maintext CODE >123:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-C8 maintext CODE >124:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-D9 maintext CODE >125:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-EA maintext CODE >126:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-EE maintext CODE >127:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-F2 maintext CODE >128:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-F6 maintext CODE >129:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-FC maintext CODE >130:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-104 maintext CODE >131:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-10C maintext CODE >132:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-114 maintext CODE >133:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-11A maintext CODE >134:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-11D maintext CODE >154:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-123 maintext CODE >155:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-127 maintext CODE >156:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-12E maintext CODE >157:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-130 maintext CODE >160:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+26 maintext CODE >76:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+28 maintext CODE >77:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+2A maintext CODE >78:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+2B maintext CODE >81:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+2D maintext CODE >82:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+2E maintext CODE >86:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+2F maintext CODE >87:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+30 maintext CODE >88:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+31 maintext CODE >91:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+32 maintext CODE >92:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+33 maintext CODE >93:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+34 maintext CODE >95:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+35 maintext CODE >96:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+36 maintext CODE >97:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+37 maintext CODE >100:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+3B maintext CODE >101:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+3C maintext CODE >102:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+3D maintext CODE >103:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+3E maintext CODE >104:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+3F maintext CODE >110:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+50 maintext CODE >111:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+61 maintext CODE >112:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+72 maintext CODE >113:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+76 maintext CODE >114:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+7A maintext CODE >115:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+7E maintext CODE >117:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+89 maintext CODE >118:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+8F maintext CODE >119:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+95 maintext CODE >120:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+9D maintext CODE >121:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+A5 maintext CODE >122:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+AD maintext CODE >123:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+B3 maintext CODE >124:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+C6 maintext CODE >125:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+D7 maintext CODE >126:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+E8 maintext CODE >127:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+EC maintext CODE >128:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+F0 maintext CODE >129:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+F4 maintext CODE >130:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+FA maintext CODE >131:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+102 maintext CODE >132:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+10A maintext CODE >133:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+112 maintext CODE >134:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+118 maintext CODE >135:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+11B maintext CODE >138:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+11F maintext CODE >139:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+129 maintext CODE >140:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+135 maintext CODE >141:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+13D maintext CODE >142:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+141 maintext CODE >144:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+147 maintext CODE >145:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+148 maintext CODE >146:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+158 maintext CODE >147:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+168 maintext CODE >148:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+16D maintext CODE >149:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+16F maintext CODE >155:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+175 maintext CODE >156:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+179 maintext CODE >157:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+180 maintext CODE >158:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+182 maintext CODE >161:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -252,8 +273,8 @@ FC maintext CODE >130:C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABO
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 ___latbits 2 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-___awdiv@counter 2A 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-__Hspace_0 2F7 0 ABS 0 - -
+___awdiv@counter 26 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+__Hspace_0 35D 0 ABS 0 - -
 __Hspace_1 7A 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
@@ -261,70 +282,71 @@ __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 _RBIF 58 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\isaac\AppData\Local\Temp\sdns.o
-_main 38 0 CODE 0 maintext dist/default/production\LABORATORIOS.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\isaac\AppData\Local\Temp\saks.o
+_main 34 0 CODE 0 maintext dist/default/production\LABORATORIOS.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-start 18 0 CODE 0 init C:\Users\isaac\AppData\Local\Temp\sdns.o
+start 18 0 CODE 0 init C:\Users\isaac\AppData\Local\Temp\saks.o
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __size_of___awmod 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
+__size_of_USART_Rx 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __size_of_USART_Tx 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 USART_Tx@data 74 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
-__HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-__end_of_USART_Init 5D6 0 CODE 0 text6 dist/default/production\LABORATORIOS.X.production.o
+__end_of_USART_Init 69A 0 CODE 0 text8 dist/default/production\LABORATORIOS.X.production.o
 __size_of_unidades 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-___awmod@sign 25 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sdns.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sdns.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sdns.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sdns.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sdns.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\sdns.o
-__LbssCOMMON 0 0 ABS 0 bssCOMMON -
+___awmod@sign 21 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\saks.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\saks.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\saks.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\saks.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\saks.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\isaac\AppData\Local\Temp\saks.o
+___bmul@multiplicand 74 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
-___awdiv@sign 2B 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+___awdiv@sign 27 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
 __Hclrtext 0 0 ABS 0 clrtext -
-_decenas 4EA 0 CODE 0 text2 dist/default/production\LABORATORIOS.X.production.o
-_USART_Tx 5D6 0 CODE 0 text8 dist/default/production\LABORATORIOS.X.production.o
+_decenas 58E 0 CODE 0 text2 dist/default/production\LABORATORIOS.X.production.o
+_USART_Rx 6B2 0 CODE 0 text7 dist/default/production\LABORATORIOS.X.production.o
+_USART_Tx 69A 0 CODE 0 text10 dist/default/production\LABORATORIOS.X.production.o
 _ANSELH 189 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-___awdiv@dividend 28 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-_unidades 44A 0 CODE 0 text1 dist/default/production\LABORATORIOS.X.production.o
-__end_of_USART_Tx 5EE 0 CODE 0 text8 dist/default/production\LABORATORIOS.X.production.o
-__end_of_unidades 49E 0 CODE 0 text1 dist/default/production\LABORATORIOS.X.production.o
+___awdiv@dividend 24 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+_unidades 4EE 0 CODE 0 text1 dist/default/production\LABORATORIOS.X.production.o
+__end_of_USART_Rx 6BA 0 CODE 0 text7 dist/default/production\LABORATORIOS.X.production.o
+__end_of_USART_Tx 6B2 0 CODE 0 text10 dist/default/production\LABORATORIOS.X.production.o
+__end_of___bmul 670 0 CODE 0 text6 dist/default/production\LABORATORIOS.X.production.o
+__end_of_unidades 542 0 CODE 0 text1 dist/default/production\LABORATORIOS.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-_data_mayor 79 0 COMMON 1 bssCOMMON dist/default/production\LABORATORIOS.X.production.o
-_data_menor 3B 0 BANK0 1 bssBANK0 dist/default/production\LABORATORIOS.X.production.o
 __LnvBANK0 0 0 ABS 0 nvBANK0 -
-___awdiv@divisor 26 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-__end_of___awdiv 33C 0 CODE 0 text5 dist/default/production\LABORATORIOS.X.production.o
-__end_of___awmod 3F2 0 CODE 0 text3 dist/default/production\LABORATORIOS.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\isaac\AppData\Local\Temp\sdns.o
-___stacklo 0 0 ABS 0 - C:\Users\isaac\AppData\Local\Temp\sdns.o
-centenas@dato 2E 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+___bmul@multiplier 77 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
+___awdiv@divisor 22 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+__end_of___awdiv 3E0 0 CODE 0 text5 dist/default/production\LABORATORIOS.X.production.o
+__end_of___awmod 496 0 CODE 0 text3 dist/default/production\LABORATORIOS.X.production.o
+___stackhi 0 0 ABS 0 - C:\Users\isaac\AppData\Local\Temp\saks.o
+___stacklo 0 0 ABS 0 - C:\Users\isaac\AppData\Local\Temp\saks.o
+centenas@dato 2A 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
 _BAUDCTLbits 187 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 _WPUBbits 95 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\LABORATORIOS.X.production.o
-_TRISCbits 87 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-decenas@dato 2E 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+decenas@dato 2A 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
 _SPBRGH 9A 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
 __size_of_USART_Init 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\isaac\AppData\Local\Temp\sdns.o
+___int_sp 0 0 STACK 2 stack C:\Users\isaac\AppData\Local\Temp\saks.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
 __Hbank3 0 0 ABS 0 bank3 -
-__Hcinit 38 0 CODE 0 cinit -
+__Hcinit 34 0 CODE 0 cinit -
 __Hstack 0 0 STACK 2 stack -
-__stringbase 4A8 0 STRING 0 strings dist/default/production\LABORATORIOS.X.production.o
+__stringbase 54C 0 STRING 0 strings dist/default/production\LABORATORIOS.X.production.o
 __Hmaintext 0 0 ABS 0 maintext -
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 4012 0 CONFIG 4 config -
-_USART_Cadena 536 0 CODE 0 text7 dist/default/production\LABORATORIOS.X.production.o
+_USART_Cadena 5DA 0 CODE 0 text9 dist/default/production\LABORATORIOS.X.production.o
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
@@ -348,86 +370,92 @@ __Lsfr1 0 0 ABS 0 sfr1 -
 __Lsfr2 0 0 ABS 0 sfr2 -
 __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
-__pnvBANK0 35 0 BANK0 1 nvBANK0 dist/default/production\LABORATORIOS.X.production.o
+__pnvBANK0 36 0 BANK0 1 nvBANK0 dist/default/production\LABORATORIOS.X.production.o
+___bmul 646 0 CODE 0 text6 dist/default/production\LABORATORIOS.X.production.o
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
-_unidades$1034 28 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+_unidades$1020 24 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 _RB0 30 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 _RB1 31 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-__S0 2F7 0 ABS 0 - -
+__S0 35D 0 ABS 0 - -
 __S1 7A 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_isr 3F2 0 CODE 0 text9 dist/default/production\LABORATORIOS.X.production.o
-_old 35 0 BANK0 1 nvBANK0 dist/default/production\LABORATORIOS.X.production.o
+_isr 496 0 CODE 0 text11 dist/default/production\LABORATORIOS.X.production.o
+_old 36 0 BANK0 1 nvBANK0 dist/default/production\LABORATORIOS.X.production.o
+_pos 32 0 BANK0 1 bssBANK0 dist/default/production\LABORATORIOS.X.production.o
 saved_w 7E 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-_decena 37 0 BANK0 1 nvBANK0 dist/default/production\LABORATORIOS.X.production.o
+_decena 38 0 BANK0 1 nvBANK0 dist/default/production\LABORATORIOS.X.production.o
 __size_of_USART_Cadena 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-__end_of_isr 44A 0 CODE 0 text9 dist/default/production\LABORATORIOS.X.production.o
+__end_of_isr 4EE 0 CODE 0 text11 dist/default/production\LABORATORIOS.X.production.o
+_entrante 34 0 BANK0 1 bssBANK0 dist/default/production\LABORATORIOS.X.production.o
 __HnvBANK0 0 0 ABS 0 nvBANK0 -
 __Lintentry 8 0 CODE 0 intentry -
-__stringtab 49E 0 STRING 0 strings dist/default/production\LABORATORIOS.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\isaac\AppData\Local\Temp\sdns.o
+__stringtab 542 0 STRING 0 strings dist/default/production\LABORATORIOS.X.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\isaac\AppData\Local\Temp\saks.o
+__size_of___bmul 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
-___awmod@counter 24 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-__end_of_USART_Cadena 57C 0 CODE 0 text7 dist/default/production\LABORATORIOS.X.production.o
+___awmod@counter 20 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+__end_of_USART_Cadena 618 0 CODE 0 text9 dist/default/production\LABORATORIOS.X.production.o
 _RCSTAbits 18 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-centenas@out 31 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-___awdiv 26A 0 CODE 0 text5 dist/default/production\LABORATORIOS.X.production.o
-___awmod 33C 0 CODE 0 text3 dist/default/production\LABORATORIOS.X.production.o
-__pmaintext 38 0 CODE 0 maintext dist/default/production\LABORATORIOS.X.production.o
+__ptext10 69A 0 CODE 0 text10 dist/default/production\LABORATORIOS.X.production.o
+__ptext11 496 0 CODE 0 text11 dist/default/production\LABORATORIOS.X.production.o
+centenas@out 2D 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+___awdiv 30E 0 CODE 0 text5 dist/default/production\LABORATORIOS.X.production.o
+___awmod 3E0 0 CODE 0 text3 dist/default/production\LABORATORIOS.X.production.o
+__pmaintext 34 0 CODE 0 maintext dist/default/production\LABORATORIOS.X.production.o
 __size_of_decenas 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 4 config -
-USART_Cadena@str 20 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-_unidad 36 0 BANK0 1 nvBANK0 dist/default/production\LABORATORIOS.X.production.o
-__end_of__stringtab 4AA 0 STRING 0 strings dist/default/production\LABORATORIOS.X.production.o
+USART_Cadena@str 76 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
+_unidad 37 0 BANK0 1 nvBANK0 dist/default/production\LABORATORIOS.X.production.o
+__end_of__stringtab 54E 0 STRING 0 strings dist/default/production\LABORATORIOS.X.production.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __Lspace_4 0 0 ABS 0 - -
-__pbssCOMMON 76 0 COMMON 1 bssCOMMON dist/default/production\LABORATORIOS.X.production.o
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+_PIR1bits C 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __Lend_init 18 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-unidades@out 2A 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-end_of_initialization 30 0 CODE 0 cinit dist/default/production\LABORATORIOS.X.production.o
+unidades@out 26 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+end_of_initialization 2C 0 CODE 0 cinit dist/default/production\LABORATORIOS.X.production.o
 __Hintentry 18 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
-___awdiv@quotient 2C 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-?___awdiv 26 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-?___awmod 20 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+___awdiv@quotient 28 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+?___awdiv 22 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+?___awmod 74 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
 __Hreset_vec 6 0 CODE 0 reset_vec -
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
-_ingreso 3A 0 BANK0 1 bssBANK0 dist/default/production\LABORATORIOS.X.production.o
-___awmod@dividend 22 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-__ptext1 44A 0 CODE 0 text1 dist/default/production\LABORATORIOS.X.production.o
-__ptext2 4EA 0 CODE 0 text2 dist/default/production\LABORATORIOS.X.production.o
-__ptext3 33C 0 CODE 0 text3 dist/default/production\LABORATORIOS.X.production.o
-__ptext4 57C 0 CODE 0 text4 dist/default/production\LABORATORIOS.X.production.o
-__ptext5 26A 0 CODE 0 text5 dist/default/production\LABORATORIOS.X.production.o
-__ptext6 5AA 0 CODE 0 text6 dist/default/production\LABORATORIOS.X.production.o
-__ptext7 536 0 CODE 0 text7 dist/default/production\LABORATORIOS.X.production.o
-__ptext8 5D6 0 CODE 0 text8 dist/default/production\LABORATORIOS.X.production.o
-__ptext9 3F2 0 CODE 0 text9 dist/default/production\LABORATORIOS.X.production.o
+_ingreso 33 0 BANK0 1 bssBANK0 dist/default/production\LABORATORIOS.X.production.o
+___awmod@dividend 76 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
+__ptext1 4EE 0 CODE 0 text1 dist/default/production\LABORATORIOS.X.production.o
+__ptext2 58E 0 CODE 0 text2 dist/default/production\LABORATORIOS.X.production.o
+__ptext3 3E0 0 CODE 0 text3 dist/default/production\LABORATORIOS.X.production.o
+__ptext4 618 0 CODE 0 text4 dist/default/production\LABORATORIOS.X.production.o
+__ptext5 30E 0 CODE 0 text5 dist/default/production\LABORATORIOS.X.production.o
+__ptext6 646 0 CODE 0 text6 dist/default/production\LABORATORIOS.X.production.o
+__ptext7 6B2 0 CODE 0 text7 dist/default/production\LABORATORIOS.X.production.o
+__ptext8 670 0 CODE 0 text8 dist/default/production\LABORATORIOS.X.production.o
+__ptext9 5DA 0 CODE 0 text9 dist/default/production\LABORATORIOS.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-_isr$378 73 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
-__end_of_decenas 536 0 CODE 0 text2 dist/default/production\LABORATORIOS.X.production.o
+_isr$363 73 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
+__end_of_decenas 5DA 0 CODE 0 text2 dist/default/production\LABORATORIOS.X.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec -
 __size_of_centenas 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-__end_of__initialization 30 0 CODE 0 cinit dist/default/production\LABORATORIOS.X.production.o
-___awmod@divisor 20 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+__end_of__initialization 2C 0 CODE 0 cinit dist/default/production\LABORATORIOS.X.production.o
+___awmod@divisor 74 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
 __Lfunctab 0 0 ENTRY 0 functab -
-decenas@out 31 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+decenas@out 2D 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
 __Lclrtext 0 0 ABS 0 clrtext -
-unidades@dato 26 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
-_centena 38 0 BANK0 1 nvBANK0 dist/default/production\LABORATORIOS.X.production.o
+unidades@dato 22 0 BANK0 1 cstackBANK0 dist/default/production\LABORATORIOS.X.production.o
+_centena 39 0 BANK0 1 nvBANK0 dist/default/production\LABORATORIOS.X.production.o
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
 _TXSTAbits 98 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 __Hend_init 1E 0 CODE 0 end_init -
-__end_of_main 26A 0 CODE 0 maintext dist/default/production\LABORATORIOS.X.production.o
+__end_of_main 30E 0 CODE 0 maintext dist/default/production\LABORATORIOS.X.production.o
 _ANSEL 188 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 _PORTA 5 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
 _PORTB 6 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
@@ -444,14 +472,16 @@ __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 interrupt_function 8 0 CODE 0 intentry dist/default/production\LABORATORIOS.X.production.o
 _IOCBbits 96 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
+_total 31 0 BANK0 1 bssBANK0 dist/default/production\LABORATORIOS.X.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\LABORATORIOS.X.production.o
 __size_of_isr 0 0 ABS 0 - dist/default/production\LABORATORIOS.X.production.o
-_centenas 57C 0 CODE 0 text4 dist/default/production\LABORATORIOS.X.production.o
-_USART_Init 5AA 0 CODE 0 text6 dist/default/production\LABORATORIOS.X.production.o
+_centenas 618 0 CODE 0 text4 dist/default/production\LABORATORIOS.X.production.o
+_USART_Init 670 0 CODE 0 text8 dist/default/production\LABORATORIOS.X.production.o
 __initialization 1E 0 CODE 0 cinit dist/default/production\LABORATORIOS.X.production.o
-__pbssBANK0 39 0 BANK0 1 bssBANK0 dist/default/production\LABORATORIOS.X.production.o
-__pstrings 49E 0 STRING 0 strings dist/default/production\LABORATORIOS.X.production.o
-__end_of_centenas 5AA 0 CODE 0 text4 dist/default/production\LABORATORIOS.X.production.o
+___bmul@product 76 0 COMMON 1 cstackCOMMON dist/default/production\LABORATORIOS.X.production.o
+__pbssBANK0 31 0 BANK0 1 bssBANK0 dist/default/production\LABORATORIOS.X.production.o
+__pstrings 542 0 STRING 0 strings dist/default/production\LABORATORIOS.X.production.o
+__end_of_centenas 646 0 CODE 0 text4 dist/default/production\LABORATORIOS.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -477,12 +507,12 @@ __end_of_centenas 5AA 0 CODE 0 text4 dist/default/production\LABORATORIOS.X.prod
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-text2 0 275 4EA 82 2
+text2 0 2C7 58E 96 2
 cstackCOMMON 1 70 70 A 1
-cstackBANK0 1 20 20 1C 1
-intentry 0 4 8 24B 2
+cstackBANK0 1 20 20 1A 1
+intentry 0 4 8 29D 2
 reset_vec 0 0 0 3 2
-strings 0 24F 49E 26 2
+strings 0 2A1 542 26 2
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal
