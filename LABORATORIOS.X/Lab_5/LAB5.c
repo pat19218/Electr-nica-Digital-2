@@ -8,7 +8,7 @@
  * Hardware: Pic 16f887, leds, comunicación serial
  * 
  * Created on 13 de agosto 2021, 14:43
- * Last modification 
+ * Last modification 13 de agosto 2021, 24:00
  */
 
 // PIC16F887 Configuration Bit Settings
@@ -35,15 +35,21 @@
 //-------------------------Librerias--------------------------------------------
 #include <xc.h>
 #include <stdint.h>
-#include <stdio.h>
 #include "USART.h"
 
 //--------------------------directivas del compilador---------------------------
 #define _XTAL_FREQ 8000000 //__delay_ms(x)
 
 //---------------------------variables------------------------------------------
+char centena, decena, unidad;
+char old;
+char ingreso, pos, total;
+char entrante [2];
 
-//-----------funciones-------------------------------------------
+//--------------------------funciones-------------------------------------------
+char centenas (int dato);
+char decenas (int dato);
+char unidades (int dato);
 
 //---------------------------interrupciones-------------------------------------
 
@@ -54,6 +60,7 @@ void __interrupt()isr(void){
         }else if(RB1 == 0){
             PORTD--;
         }
+        old = (RB0 != 0 && RB1 != 0) ? 1:0; 
         RBIF = 0;
     }
 }
@@ -61,7 +68,6 @@ void __interrupt()isr(void){
 //----------------------configuracion microprocesador---------------------------
 
 void main(void) {
-    USART_Init();
     ANSEL = 0x00;
     ANSELH = 0x00;      // solo pines digitales
     
@@ -70,7 +76,7 @@ void main(void) {
     TRISC = 0x00;
     TRISD = 0x00;
     
-    
+    USART_Init();
     OSCCONbits.IRCF = 0b111; //Config. de oscilacion 8MHz
     OSCCONbits.SCS = 1;      //reloj interno
     
@@ -90,6 +96,7 @@ void main(void) {
     INTCONbits.RBIF = 0;    //bajo la bandera
     
                            //Estado inicial
+    old = 1;
     PORTA = 0x00;
     PORTB = 0x00;
     PORTC = 0x00;
@@ -99,7 +106,75 @@ void main(void) {
     //------------------------------loop principal----------------------------------
     while (1){
         
+        centena = centenas(PORTD);
+        decena = decenas(PORTD);
+        unidad = unidades(PORTD);
+        centena += 48;
+        decena += 48;
+        unidad += 48;
+        
+        if(old || total != PORTA){
+            USART_Cadena("\n\r\n\r");
+            USART_Cadena("El valor del puerto D es: ");
+            USART_Tx(centena);
+            USART_Tx(decena);
+            USART_Tx(unidad);
+            USART_Cadena("\n\r");
+            centena = centenas(PORTA);
+            decena = decenas(PORTA);
+            unidad = unidades(PORTA);
+            centena += 48;
+            decena += 48;
+            unidad += 48;
+            USART_Cadena("El valor del puerto D es: ");
+            USART_Tx(centena);
+            USART_Tx(decena);
+            USART_Tx(unidad);
+            USART_Cadena("\n\r\n\r");
+            old = 0x00;
+        }
+        
+//         if (PIR1bits.RCIF == 1){ //compruebo si se introdujo un dato
+//            ingreso = USART_Rx();
+//            if(ingreso > 47 && ingreso < 58){
+//                entrante[pos] = ingreso;
+//                pos++;
+//                //PORTD++;
+//                if (pos > 2){
+//                    pos = 0;
+//                    total = (entrante[0] - 48) * 100;
+//                    total +=(entrante[1] - 48) *10;
+//                    total +=(entrante[2] - 48);
+//                    PORTA = total;
+//                    //PORTD++;
+//                }
+//            }
+//       }
+       
+        if(ingreso == '+'){
+            PORTD++;
+        }else if(ingreso == '-'){
+            PORTD--;
+        }
+        
+        ingreso = 0;
+        
     }
     return;
 }
+char centenas (int dato){
+    char out = dato / 100;
+    return out;
+}
 
+char decenas (int dato){
+    char out;
+    out = (dato % 100) / 10;
+    return out;
+}
+
+char unidades (int dato){
+    char out;
+    out = (dato % 100) % 10;
+    return out;
+}

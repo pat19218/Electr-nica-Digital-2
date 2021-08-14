@@ -14,6 +14,7 @@ void USART_Init(void){
     RCSTAbits.RX9 = 0;      //No trabajo a 9 bits
     RCSTAbits.CREN = 1;     //activo recepción
     TXSTAbits.TXEN = 1;     //activo transmision 
+    TRISCbits.TRISC7 = 1;
 }
 
 
