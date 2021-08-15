@@ -41,9 +41,9 @@
 #define _XTAL_FREQ 8000000 //__delay_ms(x)
 
 //---------------------------variables------------------------------------------
-char centena, decena, unidad;
 char old;
 char ingreso, pos, total;
+char centena, decena, unidad;
 char entrante [2];
 
 //--------------------------funciones-------------------------------------------
@@ -106,37 +106,21 @@ void main(void) {
     
     //------------------------------loop principal----------------------------------
     while (1){
-        
         centena = centenas(PORTD);
         decena = decenas(PORTD);
         unidad = unidades(PORTD);
         centena += 48;
         decena += 48;
         unidad += 48;
-        
-        if(old || total != PORTA){
-            USART_Cadena("\n\r\n\r");
-            USART_Cadena("El valor del puerto D es: ");
-            USART_Tx(centena);
-            USART_Tx(decena);
-            USART_Tx(unidad);
-            USART_Cadena("\n\r");
-            centena = centenas(PORTA);
-            decena = decenas(PORTA);
-            unidad = unidades(PORTA);
-            centena += 48;
-            decena += 48;
-            unidad += 48;
-            USART_Cadena("El valor del puerto D es: ");
-            USART_Tx(centena);
-            USART_Tx(decena);
-            USART_Tx(unidad);
-            USART_Cadena("\n\r\n\r");
-            old = 0x00;
-        }
-        
-         if (PIR1bits.RCIF == 1){ //compruebo si se introdujo un dato
+        if (PIR1bits.RCIF == 1){ //compruebo si se introdujo un dato
             ingreso = USART_Rx();
+            
+            if(ingreso == 's'){
+                USART_Tx(centena);
+                USART_Tx(decena);
+                USART_Tx(unidad);
+            }
+            
             if(ingreso > 47 && ingreso < 58){
                 entrante[pos] = ingreso;
                 pos++;
@@ -151,18 +135,11 @@ void main(void) {
                 }
             }
        }
-       
-        if(ingreso == '+'){
-            PORTD++;
-        }else if(ingreso == '-'){
-            PORTD--;
-        }
-        
         ingreso = 0;
-        
     }
     return;
 }
+
 char centenas (int dato){
     char out = dato / 100;
     return out;

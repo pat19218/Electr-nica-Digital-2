@@ -23,17 +23,15 @@
 [v _USART_Tx USART_Tx `(v  1 e 1 0 ]
 "25
 [v _USART_Rx USART_Rx `(uc  1 e 1 0 ]
-"29
-[v _USART_Cadena USART_Cadena `(v  1 e 1 0 ]
 "56 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
 [v _isr isr `II(v  1 e 1 0 ]
 "70
 [v _main main `(v  1 e 1 0 ]
-"166
+"143
 [v _centenas centenas `(uc  1 e 1 0 ]
-"171
+"148
 [v _decenas decenas `(uc  1 e 1 0 ]
-"177
+"154
 [v _unidades unidades `(uc  1 e 1 0 ]
 "166 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -60,7 +58,7 @@
 ]
 [u S292 . 1 `S278 1 . 1 0 `S287 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES292  1 e 1 @11 ]
-[s S330 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S328 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -69,8 +67,8 @@
 `uc 1 ADIF 1 0 :1:6 
 ]
 "553
-[u S338 . 1 `S330 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES338  1 e 1 @12 ]
+[u S336 . 1 `S328 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES336  1 e 1 @12 ]
 [s S82 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
@@ -207,39 +205,39 @@
 "4130
 [v _RBIF RBIF `VEb  1 e 0 @88 ]
 "44 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
-[v _centena centena `uc  1 e 1 0 ]
-[v _decena decena `uc  1 e 1 0 ]
-[v _unidad unidad `uc  1 e 1 0 ]
-"45
 [v _old old `uc  1 e 1 0 ]
-"46
+"45
 [v _ingreso ingreso `uc  1 e 1 0 ]
 [v _pos pos `uc  1 e 1 0 ]
 [v _total total `uc  1 e 1 0 ]
+"46
+[v _centena centena `uc  1 e 1 0 ]
+[v _decena decena `uc  1 e 1 0 ]
+[v _unidad unidad `uc  1 e 1 0 ]
 "47
 [v _entrante entrante `[2]uc  1 e 2 0 ]
 "70
 [v _main main `(v  1 e 1 0 ]
 {
-"165
+"141
 } 0
-"177
+"154
 [v _unidades unidades `(uc  1 e 1 0 ]
 {
-"178
-[v unidades@out out `uc  1 a 1 6 ]
-"177
+"155
+[v unidades@out out `uc  1 a 1 7 ]
+"154
 [v unidades@dato dato `i  1 p 2 2 ]
-"181
+"158
 } 0
-"171
+"148
 [v _decenas decenas `(uc  1 e 1 0 ]
 {
-"172
-[v decenas@out out `uc  1 a 1 13 ]
-"171
-[v decenas@dato dato `i  1 p 2 10 ]
-"175
+"149
+[v decenas@out out `uc  1 a 1 14 ]
+"148
+[v decenas@dato dato `i  1 p 2 11 ]
+"152
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -252,23 +250,23 @@
 [v ___awmod@dividend dividend `i  1 p 2 6 ]
 "34
 } 0
-"166 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
+"143 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
 [v _centenas centenas `(uc  1 e 1 0 ]
 {
-"167
-[v centenas@out out `uc  1 a 1 13 ]
-"166
-[v centenas@dato dato `i  1 p 2 10 ]
-"169
+"144
+[v centenas@out out `uc  1 a 1 14 ]
+"143
+[v centenas@dato dato `i  1 p 2 11 ]
+"146
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
-[v ___awdiv@quotient quotient `i  1 a 2 8 ]
+[v ___awdiv@quotient quotient `i  1 a 2 9 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 7 ]
-[v ___awdiv@counter counter `uc  1 a 1 6 ]
+[v ___awdiv@sign sign `uc  1 a 1 8 ]
+[v ___awdiv@counter counter `uc  1 a 1 7 ]
 "5
 [v ___awdiv@divisor divisor `i  1 p 2 2 ]
 [v ___awdiv@dividend dividend `i  1 p 2 4 ]
@@ -287,7 +285,15 @@
 [v ___bmul@multiplier multiplier `uc  1 a 1 7 ]
 "51
 } 0
-"25 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+"20 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_2/USART.c
+[v _USART_Tx USART_Tx `(v  1 e 1 0 ]
+{
+[v USART_Tx@data data `uc  1 a 1 wreg ]
+[v USART_Tx@data data `uc  1 a 1 wreg ]
+[v USART_Tx@data data `uc  1 a 1 4 ]
+"23
+} 0
+"25
 [v _USART_Rx USART_Rx `(uc  1 e 1 0 ]
 {
 "27
@@ -296,22 +302,6 @@
 [v _USART_Init USART_Init `(v  1 e 1 0 ]
 {
 "17
-} 0
-"29
-[v _USART_Cadena USART_Cadena `(v  1 e 1 0 ]
-{
-[v USART_Cadena@str str `*.24uc  1 a 1 wreg ]
-[v USART_Cadena@str str `*.24uc  1 a 1 wreg ]
-[v USART_Cadena@str str `*.24uc  1 a 1 6 ]
-"34
-} 0
-"20
-[v _USART_Tx USART_Tx `(v  1 e 1 0 ]
-{
-[v USART_Tx@data data `uc  1 a 1 wreg ]
-[v USART_Tx@data data `uc  1 a 1 wreg ]
-[v USART_Tx@data data `uc  1 a 1 4 ]
-"23
 } 0
 "56 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\Lab_5/LAB5.c
 [v _isr isr `II(v  1 e 1 0 ]

@@ -128,12 +128,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "52
 [; ;Lab_5/LAB5.c: 52: char unidades (int dato);
 [v _unidades `(uc ~T0 @X0 0 ef1`i ]
-"25 Lab_5/USART.h
-[; ;Lab_5/USART.h: 25: void USART_Cadena(char *str);
-[v _USART_Cadena `(v ~T0 @X0 0 ef1`*uc ]
-"23
-[; ;Lab_5/USART.h: 23: void USART_Tx(char data);
-[v _USART_Tx `(v ~T0 @X0 0 ef1`uc ]
 "543 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 543:     struct {
 [s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -148,6 +142,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "24 Lab_5/USART.h
 [; ;Lab_5/USART.h: 24: char USART_Rx(void);
 [v _USART_Rx `(uc ~T0 @X0 0 ef ]
+"23
+[; ;Lab_5/USART.h: 23: void USART_Tx(char data);
+[v _USART_Tx `(v ~T0 @X0 0 ef1`uc ]
 "17 Lab_5/LAB5.c
 [p x FOSC  =  INTRC_NOCLKOUT ]
 "18
@@ -407,18 +404,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "44 Lab_5/LAB5.c
-[; ;Lab_5/LAB5.c: 44: char centena, decena, unidad;
-[v _centena `uc ~T0 @X0 1 e ]
-[v _decena `uc ~T0 @X0 1 e ]
-[v _unidad `uc ~T0 @X0 1 e ]
-"45
-[; ;Lab_5/LAB5.c: 45: char old;
+[; ;Lab_5/LAB5.c: 44: char old;
 [v _old `uc ~T0 @X0 1 e ]
-"46
-[; ;Lab_5/LAB5.c: 46: char ingreso, pos, total;
+"45
+[; ;Lab_5/LAB5.c: 45: char ingreso, pos, total;
 [v _ingreso `uc ~T0 @X0 1 e ]
 [v _pos `uc ~T0 @X0 1 e ]
 [v _total `uc ~T0 @X0 1 e ]
+"46
+[; ;Lab_5/LAB5.c: 46: char centena, decena, unidad;
+[v _centena `uc ~T0 @X0 1 e ]
+[v _decena `uc ~T0 @X0 1 e ]
+[v _unidad `uc ~T0 @X0 1 e ]
 "47
 [; ;Lab_5/LAB5.c: 47: char entrante [2];
 [v _entrante `uc ~T0 @X0 -> 2 `i e ]
@@ -549,235 +546,163 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Lab_5/LAB5.c: 108:     while (1){
 [e :U 145 ]
 {
-"110
-[; ;Lab_5/LAB5.c: 110:         centena = centenas(PORTD);
+"109
+[; ;Lab_5/LAB5.c: 109:         centena = centenas(PORTD);
 [e = _centena ( _centenas (1 -> _PORTD `i ]
-"111
-[; ;Lab_5/LAB5.c: 111:         decena = decenas(PORTD);
+"110
+[; ;Lab_5/LAB5.c: 110:         decena = decenas(PORTD);
 [e = _decena ( _decenas (1 -> _PORTD `i ]
-"112
-[; ;Lab_5/LAB5.c: 112:         unidad = unidades(PORTD);
+"111
+[; ;Lab_5/LAB5.c: 111:         unidad = unidades(PORTD);
 [e = _unidad ( _unidades (1 -> _PORTD `i ]
+"112
+[; ;Lab_5/LAB5.c: 112:         centena += 48;
+[e =+ _centena -> -> 48 `i `uc ]
 "113
-[; ;Lab_5/LAB5.c: 113:         centena += 48;
-[e =+ _centena -> -> 48 `i `uc ]
+[; ;Lab_5/LAB5.c: 113:         decena += 48;
+[e =+ _decena -> -> 48 `i `uc ]
 "114
-[; ;Lab_5/LAB5.c: 114:         decena += 48;
-[e =+ _decena -> -> 48 `i `uc ]
+[; ;Lab_5/LAB5.c: 114:         unidad += 48;
+[e =+ _unidad -> -> 48 `i `uc ]
 "115
-[; ;Lab_5/LAB5.c: 115:         unidad += 48;
-[e =+ _unidad -> -> 48 `i `uc ]
-"117
-[; ;Lab_5/LAB5.c: 117:         if(old || total != PORTA){
-[e $ ! || != -> _old `i -> 0 `i != -> _total `i -> _PORTA `i 147  ]
+[; ;Lab_5/LAB5.c: 115:         if (PIR1bits.RCIF == 1){
+[e $ ! == -> . . _PIR1bits 0 5 `i -> 1 `i 147  ]
 {
+"116
+[; ;Lab_5/LAB5.c: 116:             ingreso = USART_Rx();
+[e = _ingreso ( _USART_Rx ..  ]
 "118
-[; ;Lab_5/LAB5.c: 118:             USART_Cadena("\n\r\n\r");
-[e ( _USART_Cadena (1 :s 1C ]
+[; ;Lab_5/LAB5.c: 118:             if(ingreso == 's'){
+[e $ ! == -> _ingreso `ui -> 115 `ui 148  ]
+{
 "119
-[; ;Lab_5/LAB5.c: 119:             USART_Cadena("El valor del puerto D es: ");
-[e ( _USART_Cadena (1 :s 2C ]
+[; ;Lab_5/LAB5.c: 119:                 USART_Tx(centena);
+[e ( _USART_Tx (1 _centena ]
 "120
-[; ;Lab_5/LAB5.c: 120:             USART_Tx(centena);
-[e ( _USART_Tx (1 _centena ]
+[; ;Lab_5/LAB5.c: 120:                 USART_Tx(decena);
+[e ( _USART_Tx (1 _decena ]
 "121
-[; ;Lab_5/LAB5.c: 121:             USART_Tx(decena);
-[e ( _USART_Tx (1 _decena ]
+[; ;Lab_5/LAB5.c: 121:                 USART_Tx(unidad);
+[e ( _USART_Tx (1 _unidad ]
 "122
-[; ;Lab_5/LAB5.c: 122:             USART_Tx(unidad);
-[e ( _USART_Tx (1 _unidad ]
-"123
-[; ;Lab_5/LAB5.c: 123:             USART_Cadena("\n\r");
-[e ( _USART_Cadena (1 :s 3C ]
+[; ;Lab_5/LAB5.c: 122:             }
+}
+[e :U 148 ]
 "124
-[; ;Lab_5/LAB5.c: 124:             centena = centenas(PORTA);
-[e = _centena ( _centenas (1 -> _PORTA `i ]
+[; ;Lab_5/LAB5.c: 124:             if(ingreso > 47 && ingreso < 58){
+[e $ ! && > -> _ingreso `i -> 47 `i < -> _ingreso `i -> 58 `i 149  ]
+{
 "125
-[; ;Lab_5/LAB5.c: 125:             decena = decenas(PORTA);
-[e = _decena ( _decenas (1 -> _PORTA `i ]
+[; ;Lab_5/LAB5.c: 125:                 entrante[pos] = ingreso;
+[e = *U + &U _entrante * -> _pos `ux -> -> # *U &U _entrante `ui `ux _ingreso ]
 "126
-[; ;Lab_5/LAB5.c: 126:             unidad = unidades(PORTA);
-[e = _unidad ( _unidades (1 -> _PORTA `i ]
-"127
-[; ;Lab_5/LAB5.c: 127:             centena += 48;
-[e =+ _centena -> -> 48 `i `uc ]
+[; ;Lab_5/LAB5.c: 126:                 pos++;
+[e ++ _pos -> -> 1 `i `uc ]
 "128
-[; ;Lab_5/LAB5.c: 128:             decena += 48;
-[e =+ _decena -> -> 48 `i `uc ]
+[; ;Lab_5/LAB5.c: 128:                 if (pos > 2){
+[e $ ! > -> _pos `i -> 2 `i 150  ]
+{
 "129
-[; ;Lab_5/LAB5.c: 129:             unidad += 48;
-[e =+ _unidad -> -> 48 `i `uc ]
+[; ;Lab_5/LAB5.c: 129:                     pos = 0;
+[e = _pos -> -> 0 `i `uc ]
 "130
-[; ;Lab_5/LAB5.c: 130:             USART_Cadena("El valor del puerto D es: ");
-[e ( _USART_Cadena (1 :s 4C ]
+[; ;Lab_5/LAB5.c: 130:                     total = (entrante[0] - 48) * 100;
+[e = _total -> * - -> *U + &U _entrante * -> -> -> 0 `i `ui `ux -> -> # *U &U _entrante `ui `ux `i -> 48 `i -> 100 `i `uc ]
 "131
-[; ;Lab_5/LAB5.c: 131:             USART_Tx(centena);
-[e ( _USART_Tx (1 _centena ]
+[; ;Lab_5/LAB5.c: 131:                     total +=(entrante[1] - 48) *10;
+[e =+ _total -> * - -> *U + &U _entrante * -> -> -> 1 `i `ui `ux -> -> # *U &U _entrante `ui `ux `i -> 48 `i -> 10 `i `uc ]
 "132
-[; ;Lab_5/LAB5.c: 132:             USART_Tx(decena);
-[e ( _USART_Tx (1 _decena ]
+[; ;Lab_5/LAB5.c: 132:                     total +=(entrante[2] - 48);
+[e =+ _total -> - -> *U + &U _entrante * -> -> -> 2 `i `ui `ux -> -> # *U &U _entrante `ui `ux `i -> 48 `i `uc ]
 "133
-[; ;Lab_5/LAB5.c: 133:             USART_Tx(unidad);
-[e ( _USART_Tx (1 _unidad ]
-"134
-[; ;Lab_5/LAB5.c: 134:             USART_Cadena("\n\r\n\r");
-[e ( _USART_Cadena (1 :s 5C ]
+[; ;Lab_5/LAB5.c: 133:                     PORTA = total;
+[e = _PORTA -> _total `uc ]
 "135
-[; ;Lab_5/LAB5.c: 135:             old = 0x00;
-[e = _old -> -> 0 `i `uc ]
+[; ;Lab_5/LAB5.c: 135:                 }
+}
+[e :U 150 ]
 "136
-[; ;Lab_5/LAB5.c: 136:         }
+[; ;Lab_5/LAB5.c: 136:             }
+}
+[e :U 149 ]
+"137
+[; ;Lab_5/LAB5.c: 137:        }
 }
 [e :U 147 ]
 "138
-[; ;Lab_5/LAB5.c: 138:          if (PIR1bits.RCIF == 1){
-[e $ ! == -> . . _PIR1bits 0 5 `i -> 1 `i 148  ]
-{
-"139
-[; ;Lab_5/LAB5.c: 139:             ingreso = USART_Rx();
-[e = _ingreso ( _USART_Rx ..  ]
-"140
-[; ;Lab_5/LAB5.c: 140:             if(ingreso > 47 && ingreso < 58){
-[e $ ! && > -> _ingreso `i -> 47 `i < -> _ingreso `i -> 58 `i 149  ]
-{
-"141
-[; ;Lab_5/LAB5.c: 141:                 entrante[pos] = ingreso;
-[e = *U + &U _entrante * -> _pos `ux -> -> # *U &U _entrante `ui `ux _ingreso ]
-"142
-[; ;Lab_5/LAB5.c: 142:                 pos++;
-[e ++ _pos -> -> 1 `i `uc ]
-"144
-[; ;Lab_5/LAB5.c: 144:                 if (pos > 2){
-[e $ ! > -> _pos `i -> 2 `i 150  ]
-{
-"145
-[; ;Lab_5/LAB5.c: 145:                     pos = 0;
-[e = _pos -> -> 0 `i `uc ]
-"146
-[; ;Lab_5/LAB5.c: 146:                     total = (entrante[0] - 48) * 100;
-[e = _total -> * - -> *U + &U _entrante * -> -> -> 0 `i `ui `ux -> -> # *U &U _entrante `ui `ux `i -> 48 `i -> 100 `i `uc ]
-"147
-[; ;Lab_5/LAB5.c: 147:                     total +=(entrante[1] - 48) *10;
-[e =+ _total -> * - -> *U + &U _entrante * -> -> -> 1 `i `ui `ux -> -> # *U &U _entrante `ui `ux `i -> 48 `i -> 10 `i `uc ]
-"148
-[; ;Lab_5/LAB5.c: 148:                     total +=(entrante[2] - 48);
-[e =+ _total -> - -> *U + &U _entrante * -> -> -> 2 `i `ui `ux -> -> # *U &U _entrante `ui `ux `i -> 48 `i `uc ]
-"149
-[; ;Lab_5/LAB5.c: 149:                     PORTA = total;
-[e = _PORTA -> _total `uc ]
-"151
-[; ;Lab_5/LAB5.c: 151:                 }
-}
-[e :U 150 ]
-"152
-[; ;Lab_5/LAB5.c: 152:             }
-}
-[e :U 149 ]
-"153
-[; ;Lab_5/LAB5.c: 153:        }
-}
-[e :U 148 ]
-"155
-[; ;Lab_5/LAB5.c: 155:         if(ingreso == '+'){
-[e $ ! == -> _ingreso `ui -> 43 `ui 151  ]
-{
-"156
-[; ;Lab_5/LAB5.c: 156:             PORTD++;
-[e ++ _PORTD -> -> 1 `i `Vuc ]
-"157
-[; ;Lab_5/LAB5.c: 157:         }else if(ingreso == '-'){
-}
-[e $U 152  ]
-[e :U 151 ]
-[e $ ! == -> _ingreso `ui -> 45 `ui 153  ]
-{
-"158
-[; ;Lab_5/LAB5.c: 158:             PORTD--;
-[e -- _PORTD -> -> 1 `i `Vuc ]
-"159
-[; ;Lab_5/LAB5.c: 159:         }
-}
-[e :U 153 ]
-[e :U 152 ]
-"161
-[; ;Lab_5/LAB5.c: 161:         ingreso = 0;
+[; ;Lab_5/LAB5.c: 138:         ingreso = 0;
 [e = _ingreso -> -> 0 `i `uc ]
-"163
-[; ;Lab_5/LAB5.c: 163:     }
+"139
+[; ;Lab_5/LAB5.c: 139:     }
 }
 [e :U 144 ]
 [e $U 145  ]
 [e :U 146 ]
-"164
-[; ;Lab_5/LAB5.c: 164:     return;
+"140
+[; ;Lab_5/LAB5.c: 140:     return;
 [e $UE 143  ]
-"165
-[; ;Lab_5/LAB5.c: 165: }
+"141
+[; ;Lab_5/LAB5.c: 141: }
 [e :UE 143 ]
 }
-"166
-[; ;Lab_5/LAB5.c: 166: char centenas (int dato){
+"143
+[; ;Lab_5/LAB5.c: 143: char centenas (int dato){
 [v _centenas `(uc ~T0 @X0 1 ef1`i ]
 {
 [e :U _centenas ]
 [v _dato `i ~T0 @X0 1 r1 ]
 [f ]
-"167
-[; ;Lab_5/LAB5.c: 167:     char out = dato / 100;
+"144
+[; ;Lab_5/LAB5.c: 144:     char out = dato / 100;
 [v _out `uc ~T0 @X0 1 a ]
 [e = _out -> / _dato -> 100 `i `uc ]
-"168
-[; ;Lab_5/LAB5.c: 168:     return out;
+"145
+[; ;Lab_5/LAB5.c: 145:     return out;
 [e ) _out ]
-[e $UE 154  ]
-"169
-[; ;Lab_5/LAB5.c: 169: }
-[e :UE 154 ]
+[e $UE 151  ]
+"146
+[; ;Lab_5/LAB5.c: 146: }
+[e :UE 151 ]
 }
-"171
-[; ;Lab_5/LAB5.c: 171: char decenas (int dato){
+"148
+[; ;Lab_5/LAB5.c: 148: char decenas (int dato){
 [v _decenas `(uc ~T0 @X0 1 ef1`i ]
 {
 [e :U _decenas ]
 [v _dato `i ~T0 @X0 1 r1 ]
 [f ]
-"172
-[; ;Lab_5/LAB5.c: 172:     char out;
+"149
+[; ;Lab_5/LAB5.c: 149:     char out;
 [v _out `uc ~T0 @X0 1 a ]
-"173
-[; ;Lab_5/LAB5.c: 173:     out = (dato % 100) / 10;
+"150
+[; ;Lab_5/LAB5.c: 150:     out = (dato % 100) / 10;
 [e = _out -> / % _dato -> 100 `i -> 10 `i `uc ]
-"174
-[; ;Lab_5/LAB5.c: 174:     return out;
+"151
+[; ;Lab_5/LAB5.c: 151:     return out;
 [e ) _out ]
-[e $UE 155  ]
-"175
-[; ;Lab_5/LAB5.c: 175: }
-[e :UE 155 ]
+[e $UE 152  ]
+"152
+[; ;Lab_5/LAB5.c: 152: }
+[e :UE 152 ]
 }
-"177
-[; ;Lab_5/LAB5.c: 177: char unidades (int dato){
+"154
+[; ;Lab_5/LAB5.c: 154: char unidades (int dato){
 [v _unidades `(uc ~T0 @X0 1 ef1`i ]
 {
 [e :U _unidades ]
 [v _dato `i ~T0 @X0 1 r1 ]
 [f ]
-"178
-[; ;Lab_5/LAB5.c: 178:     char out;
+"155
+[; ;Lab_5/LAB5.c: 155:     char out;
 [v _out `uc ~T0 @X0 1 a ]
-"179
-[; ;Lab_5/LAB5.c: 179:     out = (dato % 100) % 10;
+"156
+[; ;Lab_5/LAB5.c: 156:     out = (dato % 100) % 10;
 [e = _out -> % % _dato -> 100 `i -> 10 `i `uc ]
-"180
-[; ;Lab_5/LAB5.c: 180:     return out;
+"157
+[; ;Lab_5/LAB5.c: 157:     return out;
 [e ) _out ]
-[e $UE 156  ]
-"181
-[; ;Lab_5/LAB5.c: 181: }
-[e :UE 156 ]
+[e $UE 153  ]
+"158
+[; ;Lab_5/LAB5.c: 158: }
+[e :UE 153 ]
 }
-[a 2C 69 108 32 118 97 108 111 114 32 100 101 108 32 112 117 101 114 116 111 32 68 32 101 115 58 32 0 ]
-[a 4C 69 108 32 118 97 108 111 114 32 100 101 108 32 112 117 101 114 116 111 32 68 32 101 115 58 32 0 ]
-[a 1C 10 13 10 13 0 ]
-[a 5C 10 13 10 13 0 ]
-[a 3C 10 13 0 ]
