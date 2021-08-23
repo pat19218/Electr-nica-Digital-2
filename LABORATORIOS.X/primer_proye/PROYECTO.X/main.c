@@ -7,8 +7,8 @@
  * Programa: Pic y IO
  * Hardware: Pic 16f887, leds, comunicación serial
  * 
- * Created on 13 de agosto 2021, 14:43
- * Last modification 13 de agosto 2021, 17:21
+ * Created on 23 de agosto 2021, 14:43
+ * Last modification 23 de agosto 2021, 17:21
  */
 
 // PIC16F887 Configuration Bit Settings
@@ -36,15 +36,13 @@
 #include <xc.h>
 #include <stdint.h>
 #include "USART.h"
+#include "I2C.h"
 
 //--------------------------directivas del compilador---------------------------
 #define _XTAL_FREQ 8000000 //__delay_ms(x)
 
 //---------------------------variables------------------------------------------
-char old;
-char ingreso, pos, total;
-char centena, decena, unidad;
-char entrante [2];
+
 
 //--------------------------funciones-------------------------------------------
 char centenas (int dato);
@@ -54,15 +52,7 @@ char unidades (int dato);
 //---------------------------interrupciones-------------------------------------
 
 void __interrupt()isr(void){
-    if(RBIF == 1){
-        if (RB0 == 0){
-            PORTD++;
-        }else if(RB1 == 0){
-            PORTD--;
-        }
-        old = (RB0 != 0 && RB1 != 0) ? 1:0; 
-        RBIF = 0;
-    }
+    
 }
 
 //----------------------configuracion microprocesador---------------------------
@@ -81,23 +71,9 @@ void main(void) {
     OSCCONbits.IRCF = 0b111; //Config. de oscilacion 8MHz
     OSCCONbits.SCS = 1;      //reloj interno
     
-                     
-                            //Config. PULL-UP
-    OPTION_REGbits.nRBPU = 0;
-    WPUBbits.WPUB0 = 1;
-    WPUBbits.WPUB1 = 1;
-    
-                        //Config. interrupcion RB
-    IOCBbits.IOCB0 = 1; // pines en lo que habra interrupcion por cambio 
-    IOCBbits.IOCB1 = 1; //de estado
-    RBIF = 0;
-    
-    INTCONbits.GIE = 1;     //habilito interrupciones
-    INTCONbits.RBIE = 1;    //activo interrupciones por cambio de estado
-    INTCONbits.RBIF = 0;    //bajo la bandera
-    
                            //Estado inicial
-    old = 1;
+    I2C_Master_Init(100000); // Inicializar Comuncación I2C
+    
     PORTA = 0x00;
     PORTB = 0x00;
     PORTC = 0x00;
@@ -106,36 +82,22 @@ void main(void) {
     
     //------------------------------loop principal----------------------------------
     while (1){
-        centena = centenas(PORTD);
-        decena = decenas(PORTD);
-        unidad = unidades(PORTD);
-        centena += 48;
-        decena += 48;
-        unidad += 48;
-        if (PIR1bits.RCIF == 1){ //compruebo si se introdujo un dato
-            ingreso = USART_Rx();
-            
-            if(ingreso == 's'){
-                USART_Tx(centena);
-                USART_Tx(decena);
-                USART_Tx(unidad);
-            }
-            
-            if(ingreso > 47 && ingreso < 58){
-                entrante[pos] = ingreso;
-                pos++;
-                //PORTD++;
-                if (pos > 2){
-                    pos = 0;
-                    total = (entrante[0] - 48) * 100;
-                    total +=(entrante[1] - 48) *10;
-                    total +=(entrante[2] - 48);
-                    PORTA = total;
-                    //PORTD++;
-                }
-            }
-       }
-        ingreso = 0;
+        /*I2C_Master_Start();
+        I2C_Master_Write(0x80);
+        I2C_Master_Write(0xF3);
+        I2C_Master_Stop();
+        __delay_ms(200);
+        I2C_Master_Start();
+        I2C_Master_Write(0x81);
+        temp = ((I2C_Master_Read(0))<<8);
+        temp += I2C_Master_Read(0);
+        I2C_Master_Stop();
+        __delay_ms(200);
+        
+        temp &= ~0x003;
+        termo = ((175.72*temp)/65536) - 46.85;
+         */
+        
     }
     return;
 }
