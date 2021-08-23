@@ -52,6 +52,8 @@ char valor2[6];
 char valor3[6];
 char comp1, comp2;
 char ingreso;
+float noentero;
+char prr;
 //--------------------------funciones-------------------------------------------
 
 //---------------------------interrupciones-------------------------------------
@@ -100,6 +102,7 @@ void main(void) {
     PORTC = 0x00;
     PORTD = 0x00;
     PORTE = 0x00;
+    noentero = 4.2;
     
     
     //------------------------------loop principal----------------------------------
@@ -148,6 +151,10 @@ void main(void) {
        
             USART_Cadena("\n\rVoltaje pot2: ");
             USART_Cadena(valor2);
+            
+            
+            prr = (uint16_t)(noentero);
+          
         }
         
         if (PIR1bits.RCIF == 1){ //compruebo si se introdujo un dato
@@ -160,6 +167,7 @@ void main(void) {
             PORTA--;
         }
         ingreso = 0;
+        
     }
     return;
 }

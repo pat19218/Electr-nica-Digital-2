@@ -175,9 +175,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="Lab_1/valor_ADC.c" ex="true" overriding="false">
-      </item>
-      <item path="Lab_2/LCD_16_2.c" ex="true" overriding="false">
+      <item path="Lab_1/valor_ADC.c" ex="false" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -187,7 +185,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="Lab_2/Lab_2.c" ex="true" overriding="false">
+      <item path="Lab_2/LCD_16_2.c" ex="false" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -196,6 +194,18 @@
         </XC8-CO>
         <XC8-config-global>
         </XC8-config-global>
+      </item>
+      <item path="Lab_2/Lab_2.c" ex="false" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
+      </item>
+      <item path="Lab_5/LAB5.c" ex="true" overriding="false">
       </item>
       <Simulator>
         <property key="codecoverage.enabled" value="Disable"/>

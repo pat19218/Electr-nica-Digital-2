@@ -1,4 +1,4 @@
-# 1 "Lab_5/LAB5.c"
+# 1 "Lab_2/LCD_16_2.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,28 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Lab_5/LAB5.c" 2
-# 17 "Lab_5/LAB5.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-
+# 1 "Lab_2/LCD_16_2.c" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2508,7 +2487,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 36 "Lab_5/LAB5.c" 2
+# 1 "Lab_2/LCD_16_2.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2643,12 +2622,111 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 37 "Lab_5/LAB5.c" 2
+# 2 "Lab_2/LCD_16_2.c" 2
 
-# 1 "Lab_5/USART.h" 1
-# 14 "Lab_5/USART.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 1 3
+
+
+
+# 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__size_t.h" 1 3
+
+
+
+typedef unsigned size_t;
+# 4 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+# 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__null.h" 1 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdarg.h" 1 3
+
+
+
+
+
+
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+# 11 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+# 43 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+struct __prbuf
+{
+ char * ptr;
+ void (* func)(char);
+};
+# 85 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\conio.h" 1 3
+
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\errno.h" 1 3
+# 29 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\errno.h" 3
+extern int errno;
+# 8 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\conio.h" 2 3
+
+
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+
+
+extern char * cgets(char *);
+extern void cputs(const char *);
+# 85 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+# 180 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+# 3 "Lab_2/LCD_16_2.c" 2
+
+# 1 "Lab_2/LCD_16_2.h" 1
+# 15 "Lab_2/LCD_16_2.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 14 "Lab_5/USART.h" 2
+# 15 "Lab_2/LCD_16_2.h" 2
 
 
 
@@ -2656,131 +2734,222 @@ typedef uint16_t uintptr_t;
 
 
 
-
-void USART_Init(void);
-void USART_Tx(char data);
-char USART_Rx(void);
-void USART_Cadena(char *str);
-void USART_volt(char cen, char dec, char uni);
-# 38 "Lab_5/LAB5.c" 2
-
-
-
-
-
-
-char old;
-char ingreso, pos, total;
-char centena, decena, unidad;
-char entrante [2];
-
-
-char centenas (int dato);
-char decenas (int dato);
-char unidades (int dato);
+void LCD_Init8(void);
+void LCD_Init4(void);
+void LCD_8_comando(unsigned char dato);
+void LCD_4Comando(unsigned char cmd);
+void LCD_8XY(unsigned char x,unsigned char y);
+void LCD_4XY(unsigned char x,unsigned char y);
+void LCD_8Cadena(const char *dato);
+void LCD_4Cadena(const char *dato);
+void LCD_8Data(char data);
+void LCD_4Data(char data);
+# 4 "Lab_2/LCD_16_2.c" 2
 
 
 
-void __attribute__((picinterrupt((""))))isr(void){
-    if(RBIF == 1){
-        if (RB0 == 0){
-            PORTD++;
-        }else if(RB1 == 0){
-            PORTD--;
-        }
-        old = (RB0 != 0 && RB1 != 0) ? 1:0;
-        RBIF = 0;
-    }
-}
-
-
-
-void main(void) {
-    USART_Init();
-    ANSEL = 0x00;
-    ANSELH = 0x00;
-
-    TRISA = 0x00;
-    TRISB = 0x03;
-    TRISC = 0b10000000;
+void LCD_Init8(void){
+    PORTD = PORTD & 0x00;
     TRISD = 0x00;
+    TRISCbits.TRISC0 = 0;
+    TRISCbits.TRISC1 = 0;
+    TRISCbits.TRISC2 = 0;
+    PORTCbits.RC0 = 0;
+    PORTCbits.RC1 = 0;
+    PORTCbits.RC2 = 0;
 
+    _delay((unsigned long)((16)*(8000000/4000.0)));
 
-    OSCCONbits.IRCF = 0b111;
-    OSCCONbits.SCS = 1;
+    LCD_8_comando(0b00110000);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
 
+    LCD_8_comando(0b00110000);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
 
-
-    OPTION_REGbits.nRBPU = 0;
-    WPUBbits.WPUB0 = 1;
-    WPUBbits.WPUB1 = 1;
-
-
-    IOCBbits.IOCB0 = 1;
-    IOCBbits.IOCB1 = 1;
-    RBIF = 0;
-
-    INTCONbits.GIE = 1;
-    INTCONbits.RBIE = 1;
-    INTCONbits.RBIF = 0;
-
-
-    old = 1;
-    PORTA = 0x00;
-    PORTB = 0x00;
-    PORTC = 0x00;
-    PORTD = 0x00;
+    LCD_8_comando(0b00110000);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
 
 
 
-    while (1){
-        centena = centenas(PORTD);
-        decena = decenas(PORTD);
-        unidad = unidades(PORTD);
-        centena += 48;
-        decena += 48;
-        unidad += 48;
-        if (PIR1bits.RCIF == 1){
-            ingreso = USART_Rx();
+    LCD_8_comando(0b00111000);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
 
-            if(ingreso == 's'){
-                USART_Tx(centena);
-                USART_Tx(decena);
-                USART_Tx(unidad);
-            }
+    LCD_8_comando(0b00001000);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
 
-            if(ingreso > 47 && ingreso < 58){
-                entrante[pos] = ingreso;
-                pos++;
+    LCD_8_comando(0b00000001);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
 
-                if (pos > 2){
-                    pos = 0;
-                    total = (entrante[0] - 48) * 100;
-                    total +=(entrante[1] - 48) *10;
-                    total +=(entrante[2] - 48);
-                    PORTA = total;
+    LCD_8_comando(0b00000100);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
 
-                }
-            }
-       }
-        ingreso = 0;
-    }
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    LCD_8_comando(0x06);
+    LCD_8_comando(0x0C);
     return;
 }
 
-char centenas (int dato){
-    char out = dato / 100;
-    return out;
+void LCD_8_comando(unsigned char dato){
+    PORTD = dato;
+    PORTCbits.RC0 = 0;
+    PORTCbits.RC1 = 0;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 1;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 0;
+
+    return;
 }
 
-char decenas (int dato){
-    char out;
-    out = (dato % 100) / 10;
-    return out;
+void LCD_8XY(unsigned char x,unsigned char y){
+    if(x>0){
+        LCD_8_comando(0xC0 + y);
+    }
+    else{
+        LCD_8_comando(0x80 + y);
+    }
 }
 
-char unidades (int dato){
-    char out;
-    out = (dato % 100) % 10;
-    return out;
+void LCD_8Cadena(const char *dato){
+    while(*dato){
+        _delay((unsigned long)((100)*(8000000/4000000.0)));
+        LCD_8Data(*dato);
+        dato++;
+    }
+}
+
+void LCD_8Data(char data){
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+
+    PORTD = data;
+
+    PORTCbits.RC1 = 0;
+    PORTCbits.RC0 = 1;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 1;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 0;
+
+    return;
+}
+
+
+void LCD_Init4(void){
+
+    PORTD = PORTD & 0xf0;
+    TRISD &= 0xf0;
+
+    TRISCbits.TRISC1 = 0;
+    TRISCbits.TRISC0 = 0;
+    TRISCbits.TRISC2 = 0;
+
+    PORTCbits.RC1 = 0;
+    PORTCbits.RC0 = 0;
+    PORTCbits.RC2 = 0;
+
+    _delay((unsigned long)((15)*(8000000/4000.0)));
+
+    LCD_4Comando(0x30);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    LCD_4Comando(0x30);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    LCD_4Comando(0x32);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+
+
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    LCD_4Comando(0x28);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    LCD_4Comando(0x08);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    LCD_4Comando(0x0f);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    LCD_4Comando(0x01);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    LCD_4Comando(0x04);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    LCD_4Comando(0x06);
+    LCD_4Comando(0x0C);
+    return;
+}
+
+void LCD_4Comando(unsigned char cmd){
+
+    PORTD &= 0xf0;
+    TRISD &= 0xf0;
+
+
+    PORTD = PORTD | ((cmd>>4)&0x0f);
+
+
+
+
+
+
+
+    PORTCbits.RC1 = 0;
+    PORTCbits.RC0 = 0;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 1;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 0;
+
+
+    PORTD &= 0xf0;
+    PORTD |= cmd&0x0f;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 1;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 0;
+
+    TRISD |= 0x0f;
+
+    return;
+}
+
+void LCD_4XY(unsigned char x,unsigned char y){
+    if(x>0){
+        LCD_4Comando(0xC0+y);
+    }
+    else{
+        LCD_4Comando(0x80+y);
+    }
+}
+
+void LCD_4Cadena(const char *dato){
+    while(*dato){
+        _delay((unsigned long)((100)*(8000000/4000000.0)));
+        LCD_4Data(*dato);
+        dato++;
+    }
+}
+
+void LCD_4Data(char data){
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    PORTD &= 0xf0;
+    TRISD &= 0xf0;
+
+    PORTD = PORTD | ((data>>4)&0x0f);
+
+    PORTCbits.RC1 = 0;
+    PORTCbits.RC0 = 1;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 1;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 0;
+
+    PORTD &= 0xf0;
+    PORTD |= data&0x0f;
+
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 1;
+    _delay((unsigned long)((10)*(8000000/4000000.0)));
+    PORTCbits.RC2 = 0;
+
+    TRISD |= 0x0f;
+
+    return;
+
 }

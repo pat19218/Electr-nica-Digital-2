@@ -1,101 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[t ~ __interrupt . k ]
-[t T1 __interrupt ]
-[p mainexit ]
-"22 ./USART.h
-[; ;./USART.h: 22: void USART_Init(void);
-[v _USART_Init `(v ~T0 @X0 0 ef ]
-"3387 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
-[v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
-"3449
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3449: extern volatile unsigned char ANSELH __attribute__((address(0x189)));
-[v _ANSELH `Vuc ~T0 @X0 0 e@393 ]
-"1416
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1416: extern volatile unsigned char TRISA __attribute__((address(0x085)));
-[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
-"1478
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1478: extern volatile unsigned char TRISB __attribute__((address(0x086)));
-[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
-"1540
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1540: extern volatile unsigned char TRISC __attribute__((address(0x087)));
-[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
-"1602
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
-[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"1868
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1868:     struct {
-[s S70 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 ]
-[n S70 . SCS LTS HTS OSTS IRCF ]
-"1875
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1875:     struct {
-[s S71 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S71 . . IRCF0 IRCF1 IRCF2 ]
-"1867
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1867: typedef union {
-[u S69 `S70 1 `S71 1 ]
-[n S69 . . . ]
-"1882
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1882: extern volatile OSCCONbits_t OSCCONbits __attribute__((address(0x08F)));
-[v _OSCCONbits `VS69 ~T0 @X0 0 e@143 ]
-"29 ./I2C.h
-[; ;./I2C.h: 29: void I2C_Master_Init(const unsigned long c);
-[v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
-"60 main.c
-[; ;main.c: 60: void Init_AHT10 (void);
-[v _Init_AHT10 `(v ~T0 @X0 0 ef ]
-"166 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
-[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
-"228
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
-[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
-"290
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
-"352
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
-[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
-"41 ./I2C.h
-[; ;./I2C.h: 41: void I2C_Master_Start(void);
-[v _I2C_Master_Start `(v ~T0 @X0 0 ef ]
-"55
-[; ;./I2C.h: 55: void I2C_Master_Write(unsigned char d);
-[v _I2C_Master_Write `(v ~T0 @X0 0 ef1`uc ]
-"49
-[; ;./I2C.h: 49: void I2C_Master_Stop(void);
-[v _I2C_Master_Stop `(v ~T0 @X0 0 ef ]
-[v F1256 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
-[v __delay `JF1256 ~T0 @X0 0 e ]
-[p i __delay ]
-"60 ./I2C.h
-[; ;./I2C.h: 60: unsigned char I2C_Master_Read(unsigned char a);
-[v _I2C_Master_Read `(uc ~T0 @X0 0 ef1`uc ]
-"17 main.c
-[p x FOSC  =  INTRC_NOCLKOUT ]
-"18
-[p x WDTE  =  OFF        ]
-"19
-[p x PWRTE  =  OFF       ]
-"20
-[p x MCLRE  =  OFF       ]
-"21
-[p x CP  =  OFF          ]
-"22
-[p x CPD  =  OFF         ]
-"23
-[p x BOREN  =  OFF       ]
-"24
-[p x IESO  =  OFF        ]
-"25
-[p x FCMEN  =  OFF       ]
-"26
-[p x LVP  =  OFF          ]
-"29
-[p x BOR4V  =  BOR40V    ]
-"30
-[p x WRT  =  OFF         ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -330,297 +233,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"45 main.c
-[; ;main.c: 45: char DataBuffer[6];
-[v _DataBuffer `uc ~T0 @X0 -> 6 `i e ]
-"47
-[; ;main.c: 47: uint32_t Raw_humedad;
-[v _Raw_humedad `ul ~T0 @X0 1 e ]
-"48
-[; ;main.c: 48: int humedad;
-[v _humedad `i ~T0 @X0 1 e ]
-"50
-[; ;main.c: 50: uint32_t Raw_temperatura;
-[v _Raw_temperatura `ul ~T0 @X0 1 e ]
-"51
-[; ;main.c: 51: float temperatura;
-[v _temperatura `f ~T0 @X0 1 e ]
-"53
-[; ;main.c: 53: char entero, decimal;
-[v _entero `uc ~T0 @X0 1 e ]
-[v _decimal `uc ~T0 @X0 1 e ]
-"54
-[; ;main.c: 54: char cen, dec, uni;
-[v _cen `uc ~T0 @X0 1 e ]
-[v _dec `uc ~T0 @X0 1 e ]
-[v _uni `uc ~T0 @X0 1 e ]
-[v $root$_isr `(v ~T0 @X0 0 e ]
-"63
-[; ;main.c: 63: void __attribute__((picinterrupt((""))))isr(void){
-[v _isr `(v ~T1 @X0 1 ef ]
+"18 Lab_1/valor_ADC.h
+[; ;Lab_1/valor_ADC.h: 18: unsigned char data_mayor;
+[v _data_mayor `uc ~T0 @X0 1 e ]
+"19
+[; ;Lab_1/valor_ADC.h: 19: unsigned char data_menor;
+[v _data_menor `uc ~T0 @X0 1 e ]
+"5 Lab_1/valor_ADC.c
+[; ;Lab_1/valor_ADC.c: 5: char hex_mayor (char in){
+[v _hex_mayor `(uc ~T0 @X0 1 ef1`uc ]
 {
-[e :U _isr ]
+[e :U _hex_mayor ]
+[v _in `uc ~T0 @X0 1 r1 ]
 [f ]
-"65
-[; ;main.c: 65: }
+"6
+[; ;Lab_1/valor_ADC.c: 6:     data_mayor = in % 16;
+[e = _data_mayor -> % -> _in `i -> 16 `i `uc ]
+"7
+[; ;Lab_1/valor_ADC.c: 7:     return data_mayor;
+[e ) -> _data_mayor `uc ]
+[e $UE 138  ]
+"8
+[; ;Lab_1/valor_ADC.c: 8: }
 [e :UE 138 ]
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
-"69
-[; ;main.c: 69: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
+"10
+[; ;Lab_1/valor_ADC.c: 10: char hex_menor (char in){
+[v _hex_menor `(uc ~T0 @X0 1 ef1`uc ]
 {
-[e :U _main ]
+[e :U _hex_menor ]
+[v _in `uc ~T0 @X0 1 r1 ]
 [f ]
-"70
-[; ;main.c: 70:     USART_Init();
-[e ( _USART_Init ..  ]
-"71
-[; ;main.c: 71:     ANSEL = 0x00;
-[e = _ANSEL -> -> 0 `i `uc ]
-"72
-[; ;main.c: 72:     ANSELH = 0x00;
-[e = _ANSELH -> -> 0 `i `uc ]
-"74
-[; ;main.c: 74:     TRISA = 0x00;
-[e = _TRISA -> -> 0 `i `uc ]
-"75
-[; ;main.c: 75:     TRISB = 0x03;
-[e = _TRISB -> -> 3 `i `uc ]
-"76
-[; ;main.c: 76:     TRISC = 0b10000000;
-[e = _TRISC -> -> 128 `i `uc ]
-"77
-[; ;main.c: 77:     TRISD = 0x00;
-[e = _TRISD -> -> 0 `i `uc ]
-"80
-[; ;main.c: 80:     OSCCONbits.IRCF = 0b111;
-[e = . . _OSCCONbits 0 4 -> -> 7 `i `uc ]
-"81
-[; ;main.c: 81:     OSCCONbits.SCS = 1;
-[e = . . _OSCCONbits 0 0 -> -> 1 `i `uc ]
-"84
-[; ;main.c: 84:     I2C_Master_Init(100000);
-[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
-"85
-[; ;main.c: 85:     Init_AHT10();
-[e ( _Init_AHT10 ..  ]
-"86
-[; ;main.c: 86:     PORTA = 0x00;
-[e = _PORTA -> -> 0 `i `uc ]
-"87
-[; ;main.c: 87:     PORTB = 0x00;
-[e = _PORTB -> -> 0 `i `uc ]
-"88
-[; ;main.c: 88:     PORTC = 0x00;
-[e = _PORTC -> -> 0 `i `uc ]
-"89
-[; ;main.c: 89:     PORTD = 0x00;
-[e = _PORTD -> -> 0 `i `uc ]
-"93
-[; ;main.c: 93:     while (1){
-[e :U 141 ]
-{
-"96
-[; ;main.c: 96:         I2C_Master_Start();
-[e ( _I2C_Master_Start ..  ]
-"97
-[; ;main.c: 97:         I2C_Master_Write(0x38);
-[e ( _I2C_Master_Write (1 -> -> 56 `i `uc ]
-"98
-[; ;main.c: 98:         I2C_Master_Write(0xAC);
-[e ( _I2C_Master_Write (1 -> -> 172 `i `uc ]
-"99
-[; ;main.c: 99:         I2C_Master_Write(0x33);
-[e ( _I2C_Master_Write (1 -> -> 51 `i `uc ]
-"100
-[; ;main.c: 100:         I2C_Master_Write(0x00);
-[e ( _I2C_Master_Write (1 -> -> 0 `i `uc ]
-"101
-[; ;main.c: 101:         I2C_Master_Stop();
-[e ( _I2C_Master_Stop ..  ]
-"102
-[; ;main.c: 102:         _delay((unsigned long)((80)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 80 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"105
-[; ;main.c: 105:         I2C_Master_Start();
-[e ( _I2C_Master_Start ..  ]
-"106
-[; ;main.c: 106:         I2C_Master_Write(0x39);
-[e ( _I2C_Master_Write (1 -> -> 57 `i `uc ]
-"107
-[; ;main.c: 107:         DataBuffer[0] = I2C_Master_Read(0);
-[e = *U + &U _DataBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux -> ( _I2C_Master_Read (1 -> -> 0 `i `uc `uc ]
-"108
-[; ;main.c: 108:         DataBuffer[1] = I2C_Master_Read(0);
-[e = *U + &U _DataBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux -> ( _I2C_Master_Read (1 -> -> 0 `i `uc `uc ]
-"109
-[; ;main.c: 109:         DataBuffer[2] = I2C_Master_Read(0);
-[e = *U + &U _DataBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux -> ( _I2C_Master_Read (1 -> -> 0 `i `uc `uc ]
-"110
-[; ;main.c: 110:         DataBuffer[3] = I2C_Master_Read(0);
-[e = *U + &U _DataBuffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux -> ( _I2C_Master_Read (1 -> -> 0 `i `uc `uc ]
-"111
-[; ;main.c: 111:         DataBuffer[4] = I2C_Master_Read(0);
-[e = *U + &U _DataBuffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux -> ( _I2C_Master_Read (1 -> -> 0 `i `uc `uc ]
-"112
-[; ;main.c: 112:         DataBuffer[5] = I2C_Master_Read(0);
-[e = *U + &U _DataBuffer * -> -> -> 5 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux -> ( _I2C_Master_Read (1 -> -> 0 `i `uc `uc ]
-"113
-[; ;main.c: 113:         I2C_Master_Stop();
-[e ( _I2C_Master_Stop ..  ]
-"114
-[; ;main.c: 114:         _delay((unsigned long)((200)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"116
-[; ;main.c: 116:         Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4;
-[e = _Raw_humedad >> | | << -> *U + &U _DataBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux `ul -> 16 `i -> << -> *U + &U _DataBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux `ui -> 8 `i `ul -> *U + &U _DataBuffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux `ul -> 4 `i ]
-"117
-[; ;main.c: 117:         humedad = (char)(Raw_humedad * 0.000095);
-[e = _humedad -> -> * -> _Raw_humedad `d .0.000095 `uc `i ]
-"120
-[; ;main.c: 120:         if(humedad < 0){humedad = 0;}
-[e $ ! < _humedad -> 0 `i 143  ]
-{
-[e = _humedad -> 0 `i ]
-}
-[e :U 143 ]
-"121
-[; ;main.c: 121:         if(humedad > 100){humedad = 100;}
-[e $ ! > _humedad -> 100 `i 144  ]
-{
-[e = _humedad -> 100 `i ]
-}
-[e :U 144 ]
-"123
-[; ;main.c: 123:         Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5]));
-[e = _Raw_temperatura | | << -> & -> *U + &U _DataBuffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux `i -> 15 `i `ul -> 16 `i -> << -> *U + &U _DataBuffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux `ui -> 8 `i `ul -> *U + &U _DataBuffer * -> -> -> 5 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux `ul ]
-"124
-[; ;main.c: 124:         temperatura = Raw_temperatura * 0.000191 -50;
-[e = _temperatura -> - * -> _Raw_temperatura `d .0.000191 -> -> 50 `i `d `f ]
-"127
-[; ;main.c: 127:         entero = (char)temperatura;
-[e = _entero -> _temperatura `uc ]
-"128
-[; ;main.c: 128:         decimal = (char)((temperatura - entero)*10);
-[e = _decimal -> * - _temperatura -> -> _entero `i `f -> -> 10 `i `f `uc ]
-"139
-[; ;main.c: 139:     }
-}
-[e :U 140 ]
-[e $U 141  ]
-[e :U 142 ]
-"140
-[; ;main.c: 140:     return;
+"11
+[; ;Lab_1/valor_ADC.c: 11:     data_menor = (in/16) % 16;
+[e = _data_menor -> % / -> _in `i -> 16 `i -> 16 `i `uc ]
+"12
+[; ;Lab_1/valor_ADC.c: 12:     return data_menor;
+[e ) -> _data_menor `uc ]
 [e $UE 139  ]
-"141
-[; ;main.c: 141: }
+"13
+[; ;Lab_1/valor_ADC.c: 13: }
 [e :UE 139 ]
-}
-"143
-[; ;main.c: 143: char centenas (int dato){
-[v _centenas `(uc ~T0 @X0 1 ef1`i ]
-{
-[e :U _centenas ]
-[v _dato `i ~T0 @X0 1 r1 ]
-[f ]
-"144
-[; ;main.c: 144:     char out = dato / 100;
-[v _out `uc ~T0 @X0 1 a ]
-[e = _out -> / _dato -> 100 `i `uc ]
-"145
-[; ;main.c: 145:     return out;
-[e ) _out ]
-[e $UE 145  ]
-"146
-[; ;main.c: 146: }
-[e :UE 145 ]
-}
-"148
-[; ;main.c: 148: char decenas (int dato){
-[v _decenas `(uc ~T0 @X0 1 ef1`i ]
-{
-[e :U _decenas ]
-[v _dato `i ~T0 @X0 1 r1 ]
-[f ]
-"149
-[; ;main.c: 149:     char out;
-[v _out `uc ~T0 @X0 1 a ]
-"150
-[; ;main.c: 150:     out = (dato % 100) / 10;
-[e = _out -> / % _dato -> 100 `i -> 10 `i `uc ]
-"151
-[; ;main.c: 151:     return out;
-[e ) _out ]
-[e $UE 146  ]
-"152
-[; ;main.c: 152: }
-[e :UE 146 ]
-}
-"154
-[; ;main.c: 154: char unidades (int dato){
-[v _unidades `(uc ~T0 @X0 1 ef1`i ]
-{
-[e :U _unidades ]
-[v _dato `i ~T0 @X0 1 r1 ]
-[f ]
-"155
-[; ;main.c: 155:     char out;
-[v _out `uc ~T0 @X0 1 a ]
-"156
-[; ;main.c: 156:     out = (dato % 100) % 10;
-[e = _out -> % % _dato -> 100 `i -> 10 `i `uc ]
-"157
-[; ;main.c: 157:     return out;
-[e ) _out ]
-[e $UE 147  ]
-"158
-[; ;main.c: 158: }
-[e :UE 147 ]
-}
-"160
-[; ;main.c: 160: void Init_AHT10 (void){
-[v _Init_AHT10 `(v ~T0 @X0 1 ef ]
-{
-[e :U _Init_AHT10 ]
-[f ]
-"162
-[; ;main.c: 162:     _delay((unsigned long)((40)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"164
-[; ;main.c: 164:     I2C_Master_Start();
-[e ( _I2C_Master_Start ..  ]
-"165
-[; ;main.c: 165:     I2C_Master_Write(0x38);
-[e ( _I2C_Master_Write (1 -> -> 56 `i `uc ]
-"166
-[; ;main.c: 166:     I2C_Master_Write(0xBA);
-[e ( _I2C_Master_Write (1 -> -> 186 `i `uc ]
-"167
-[; ;main.c: 167:     I2C_Master_Stop();
-[e ( _I2C_Master_Stop ..  ]
-"168
-[; ;main.c: 168:     _delay((unsigned long)((20)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"171
-[; ;main.c: 171:     I2C_Master_Start();
-[e ( _I2C_Master_Start ..  ]
-"172
-[; ;main.c: 172:     I2C_Master_Write(0x38);
-[e ( _I2C_Master_Write (1 -> -> 56 `i `uc ]
-"173
-[; ;main.c: 173:     I2C_Master_Write(0xE1);
-[e ( _I2C_Master_Write (1 -> -> 225 `i `uc ]
-"174
-[; ;main.c: 174:     I2C_Master_Write(0xAC);
-[e ( _I2C_Master_Write (1 -> -> 172 `i `uc ]
-"175
-[; ;main.c: 175:     I2C_Master_Stop();
-[e ( _I2C_Master_Stop ..  ]
-"176
-[; ;main.c: 176:     _delay((unsigned long)((350)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"177
-[; ;main.c: 177: }
-[e :UE 148 ]
 }

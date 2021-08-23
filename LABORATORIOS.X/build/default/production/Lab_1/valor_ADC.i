@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "Lab_1/valor_ADC.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,28 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 17 "main.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-
+# 1 "Lab_1/valor_ADC.c" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2508,7 +2487,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 36 "main.c" 2
+# 1 "Lab_1/valor_ADC.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2643,196 +2622,31 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 37 "main.c" 2
+# 2 "Lab_1/valor_ADC.c" 2
 
-# 1 "./USART.h" 1
-# 14 "./USART.h"
+# 1 "Lab_1/valor_ADC.h" 1
+# 14 "Lab_1/valor_ADC.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 14 "./USART.h" 2
+# 14 "Lab_1/valor_ADC.h" 2
 
 
 
 
+unsigned char data_mayor;
+unsigned char data_menor;
 
 
+char hex_mayor (char in);
+char hex_menor (char in);
+# 3 "Lab_1/valor_ADC.c" 2
 
 
-void USART_Init(void);
-void USART_Tx(char data);
-char USART_Rx(void);
-void USART_Cadena(char *str);
-void USART_volt(char cen, char dec, char uni);
-# 38 "main.c" 2
-
-# 1 "./I2C.h" 1
-# 20 "./I2C.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 20 "./I2C.h" 2
-# 29 "./I2C.h"
-void I2C_Master_Init(const unsigned long c);
-
-
-
-
-
-
-
-void I2C_Master_Wait(void);
-
-
-
-void I2C_Master_Start(void);
-
-
-
-void I2C_Master_RepeatedStart(void);
-
-
-
-void I2C_Master_Stop(void);
-
-
-
-
-
-void I2C_Master_Write(unsigned char d);
-
-
-
-
-unsigned char I2C_Master_Read(unsigned char a);
-
-
-
-void I2C_Slave_Init(uint8_t address);
-# 39 "main.c" 2
-
-
-
-
-
-
-char DataBuffer[6];
-
-uint32_t Raw_humedad;
-int humedad;
-
-uint32_t Raw_temperatura;
-float temperatura;
-
-char entero, decimal;
-char cen, dec, uni;
-
-
-char centenas (int dato);
-char decenas (int dato);
-char unidades (int dato);
-void Init_AHT10 (void);
-
-
-void __attribute__((picinterrupt((""))))isr(void){
-
+char hex_mayor (char in){
+    data_mayor = in % 16;
+    return data_mayor;
 }
 
-
-
-void main(void) {
-    USART_Init();
-    ANSEL = 0x00;
-    ANSELH = 0x00;
-
-    TRISA = 0x00;
-    TRISB = 0x03;
-    TRISC = 0b10000000;
-    TRISD = 0x00;
-
-
-    OSCCONbits.IRCF = 0b111;
-    OSCCONbits.SCS = 1;
-
-
-    I2C_Master_Init(100000);
-    Init_AHT10();
-    PORTA = 0x00;
-    PORTB = 0x00;
-    PORTC = 0x00;
-    PORTD = 0x00;
-
-
-
-    while (1){
-
-
-        I2C_Master_Start();
-        I2C_Master_Write(0x38);
-        I2C_Master_Write(0xAC);
-        I2C_Master_Write(0x33);
-        I2C_Master_Write(0x00);
-        I2C_Master_Stop();
-        _delay((unsigned long)((80)*(8000000/4000.0)));
-
-
-        I2C_Master_Start();
-        I2C_Master_Write(0x39);
-        DataBuffer[0] = I2C_Master_Read(0);
-        DataBuffer[1] = I2C_Master_Read(0);
-        DataBuffer[2] = I2C_Master_Read(0);
-        DataBuffer[3] = I2C_Master_Read(0);
-        DataBuffer[4] = I2C_Master_Read(0);
-        DataBuffer[5] = I2C_Master_Read(0);
-        I2C_Master_Stop();
-        _delay((unsigned long)((200)*(8000000/4000.0)));
-
-        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4;
-        humedad = (char)(Raw_humedad * 0.000095);
-
-
-        if(humedad < 0){humedad = 0;}
-        if(humedad > 100){humedad = 100;}
-
-        Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5]));
-        temperatura = Raw_temperatura * 0.000191 -50;
-
-
-        entero = (char)temperatura;
-        decimal = (char)((temperatura - entero)*10);
-# 139 "main.c"
-    }
-    return;
-}
-
-char centenas (int dato){
-    char out = dato / 100;
-    return out;
-}
-
-char decenas (int dato){
-    char out;
-    out = (dato % 100) / 10;
-    return out;
-}
-
-char unidades (int dato){
-    char out;
-    out = (dato % 100) % 10;
-    return out;
-}
-
-void Init_AHT10 (void){
-
-    _delay((unsigned long)((40)*(8000000/4000.0)));
-
-    I2C_Master_Start();
-    I2C_Master_Write(0x38);
-    I2C_Master_Write(0xBA);
-    I2C_Master_Stop();
-    _delay((unsigned long)((20)*(8000000/4000.0)));
-
-
-    I2C_Master_Start();
-    I2C_Master_Write(0x38);
-    I2C_Master_Write(0xE1);
-    I2C_Master_Write(0xAC);
-    I2C_Master_Stop();
-    _delay((unsigned long)((350)*(8000000/4000.0)));
+char hex_menor (char in){
+    data_menor = (in/16) % 16;
+    return data_menor;
 }
