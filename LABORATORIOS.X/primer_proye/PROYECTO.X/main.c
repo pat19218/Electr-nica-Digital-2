@@ -42,13 +42,14 @@
 #define _XTAL_FREQ 8000000 //__delay_ms(x)
 
 //---------------------------variables------------------------------------------
-
+char DataBuffer[6];
+uint32_t Raw_humedad;
 
 //--------------------------funciones-------------------------------------------
 char centenas (int dato);
 char decenas (int dato);
 char unidades (int dato);
-
+void Init_AHT10 (void);
 //---------------------------interrupciones-------------------------------------
 
 void __interrupt()isr(void){
@@ -73,7 +74,7 @@ void main(void) {
     
                            //Estado inicial
     I2C_Master_Init(100000); // Inicializar Comuncación I2C
-    
+    Init_AHT10();
     PORTA = 0x00;
     PORTB = 0x00;
     PORTC = 0x00;
@@ -82,21 +83,30 @@ void main(void) {
     
     //------------------------------loop principal----------------------------------
     while (1){
-        /*I2C_Master_Start();
-        I2C_Master_Write(0x80);
-        I2C_Master_Write(0xF3);
-        I2C_Master_Stop();
-        __delay_ms(200);
+        
+        //inicio de medición del sensor
         I2C_Master_Start();
-        I2C_Master_Write(0x81);
-        temp = ((I2C_Master_Read(0))<<8);
-        temp += I2C_Master_Read(0);
+        I2C_Master_Write(0x38); //inicio comunicación
+        I2C_Master_Write(0xAC); //comando de incio de medicion
+        I2C_Master_Write(0x33); //primer dato (humedad)
+        I2C_Master_Write(0x00); //primer dato (temperatura)
+        I2C_Master_Stop();
+        __delay_ms(80);         //de almenos 75mS
+        
+        //lectura en loop principal
+        I2C_Master_Start();
+        I2C_Master_Write(0x39); //ubicacion para lectura
+        DataBuffer[0] = I2C_Master_Read(0); //humedad
+        DataBuffer[1] = I2C_Master_Read(0); //humedad
+        DataBuffer[2] = I2C_Master_Read(0); //humedad y temperatura
+        DataBuffer[3] = I2C_Master_Read(0); //temperatura
+        DataBuffer[4] = I2C_Master_Read(0); //temperatura
+        DataBuffer[5] = I2C_Master_Read(0); //temperatura
         I2C_Master_Stop();
         __delay_ms(200);
         
-        temp &= ~0x003;
-        termo = ((175.72*temp)/65536) - 46.85;
-         */
+        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4; //20 bits de datos
+        
         
     }
     return;
@@ -117,4 +127,23 @@ char unidades (int dato){
     char out;
     out = (dato % 100) % 10;
     return out;
+}
+
+void Init_AHT10 (void){
+    //0x38 ubicacion del sensor  0x39 lectura del sensor
+    __delay_ms(40); //delay para que se inicialice el sensor
+    //soft reset
+    I2C_Master_Start();
+    I2C_Master_Write(0x38); //inicio comunicación
+    I2C_Master_Write(0xBA); //comando de reinicio suave
+    I2C_Master_Stop();
+    __delay_ms(20);
+
+    //Init medidas
+    I2C_Master_Start();
+    I2C_Master_Write(0x38); //inicio comunicación
+    I2C_Master_Write(0xE1); //comando de inicio
+    I2C_Master_Write(0xAC); //comando de inicio de medicion 
+    I2C_Master_Stop();
+    __delay_ms(350);
 }

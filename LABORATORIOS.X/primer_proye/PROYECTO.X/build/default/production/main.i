@@ -2706,11 +2706,20 @@ unsigned char I2C_Master_Read(unsigned char a);
 
 void I2C_Slave_Init(uint8_t address);
 # 39 "main.c" 2
-# 48 "main.c"
+
+
+
+
+
+
+char DataBuffer[6];
+uint32_t Raw_humedad;
+
+
 char centenas (int dato);
 char decenas (int dato);
 char unidades (int dato);
-
+void Init_AHT10 (void);
 
 
 void __attribute__((picinterrupt((""))))isr(void){
@@ -2735,7 +2744,7 @@ void main(void) {
 
 
     I2C_Master_Init(100000);
-
+    Init_AHT10();
     PORTA = 0x00;
     PORTB = 0x00;
     PORTC = 0x00;
@@ -2744,7 +2753,31 @@ void main(void) {
 
 
     while (1){
-# 101 "main.c"
+
+
+        I2C_Master_Start();
+        I2C_Master_Write(0x38);
+        I2C_Master_Write(0xAC);
+        I2C_Master_Write(0x33);
+        I2C_Master_Write(0x00);
+        I2C_Master_Stop();
+        _delay((unsigned long)((80)*(8000000/4000.0)));
+
+
+        I2C_Master_Start();
+        I2C_Master_Write(0x39);
+        DataBuffer[0] = I2C_Master_Read(0);
+        DataBuffer[1] = I2C_Master_Read(0);
+        DataBuffer[2] = I2C_Master_Read(0);
+        DataBuffer[3] = I2C_Master_Read(0);
+        DataBuffer[4] = I2C_Master_Read(0);
+        DataBuffer[5] = I2C_Master_Read(0);
+        I2C_Master_Stop();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+
+        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4;
+
+
     }
     return;
 }
@@ -2764,4 +2797,23 @@ char unidades (int dato){
     char out;
     out = (dato % 100) % 10;
     return out;
+}
+
+void Init_AHT10 (void){
+
+    _delay((unsigned long)((40)*(8000000/4000.0)));
+
+    I2C_Master_Start();
+    I2C_Master_Write(0x38);
+    I2C_Master_Write(0xBA);
+    I2C_Master_Stop();
+    _delay((unsigned long)((20)*(8000000/4000.0)));
+
+
+    I2C_Master_Start();
+    I2C_Master_Write(0x38);
+    I2C_Master_Write(0xE1);
+    I2C_Master_Write(0xAC);
+    I2C_Master_Stop();
+    _delay((unsigned long)((350)*(8000000/4000.0)));
 }
