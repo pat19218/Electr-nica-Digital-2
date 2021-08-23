@@ -2713,7 +2713,14 @@ void I2C_Slave_Init(uint8_t address);
 
 
 char DataBuffer[6];
+
 uint32_t Raw_humedad;
+int humedad;
+
+uint32_t Raw_temperatura;
+float temperatura;
+
+char entero, decimal;
 
 
 char centenas (int dato);
@@ -2776,7 +2783,17 @@ void main(void) {
         _delay((unsigned long)((200)*(8000000/4000.0)));
 
         Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4;
+        humedad = Raw_humedad * 0.000095;
 
+
+        if(humedad < 0){humedad = 0;}
+        if(humedad > 100){humedad = 100;}
+
+        Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5]));
+        temperatura = Raw_temperatura * 0.000191 -50;
+
+        entero = (int)temperatura;
+        decimal = (int)((temperatura - entero)*10);
 
     }
     return;

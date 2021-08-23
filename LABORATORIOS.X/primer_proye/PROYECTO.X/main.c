@@ -43,7 +43,14 @@
 
 //---------------------------variables------------------------------------------
 char DataBuffer[6];
+
 uint32_t Raw_humedad;
+int humedad;
+
+uint32_t Raw_temperatura;
+float temperatura;
+
+char entero, decimal;
 
 //--------------------------funciones-------------------------------------------
 char centenas (int dato);
@@ -106,7 +113,17 @@ void main(void) {
         __delay_ms(200);
         
         Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4; //20 bits de datos
+        humedad = Raw_humedad * 0.000095;   //parte entera
         
+        //aseguro rango de humedad y esta con una presicion del 2%
+        if(humedad < 0){humedad = 0;}
+        if(humedad > 100){humedad = 100;}
+        
+        Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5])); //20 bits de datos
+        temperatura = Raw_temperatura * 0.000191 -50; //temperatura en celcius
+        
+        entero = (int)temperatura;
+        decimal = (int)((temperatura - entero)*10);        
         
     }
     return;
