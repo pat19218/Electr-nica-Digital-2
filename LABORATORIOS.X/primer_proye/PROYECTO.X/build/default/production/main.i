@@ -2707,23 +2707,36 @@ unsigned char I2C_Master_Read(unsigned char a);
 void I2C_Slave_Init(uint8_t address);
 # 39 "main.c" 2
 
+# 1 "./I2C_LCD.h" 1
+# 14 "./I2C_LCD.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
+# 14 "./I2C_LCD.h" 2
+
+
+
+
+
+
+
+void I2C_Init(uint32_t i2c_clk_freq);
+void I2C_Start();
+void I2C_Stop();
+void I2C_Write(uint8_t i2c_data);
+void LCD_Write_Nibble(uint8_t n);
+void LCD_Cmd(uint8_t Command);
+void LCD_Goto(uint8_t col, uint8_t row);
+void LCD_PutC(char LCD_Char);
+void LCD_Print(char* LCD_Str);
+void LCD_Begin(uint8_t _i2c_addr);
+# 40 "main.c" 2
+
 
 
 
 
 
 char DataBuffer[6];
-
-uint32_t Raw_humedad;
-int humedad;
-
-uint32_t Raw_temperatura;
-float temperatura;
-
-char entero, decimal;
-char cen, dec, uni;
-
-
+# 59 "main.c"
 char centenas (int dato);
 char decenas (int dato);
 char unidades (int dato);
@@ -2737,7 +2750,7 @@ void __attribute__((picinterrupt((""))))isr(void){
 
 
 void main(void) {
-    USART_Init();
+
     ANSEL = 0x00;
     ANSELH = 0x00;
 
@@ -2752,51 +2765,28 @@ void main(void) {
 
 
     I2C_Master_Init(100000);
-    Init_AHT10();
+
+
     PORTA = 0x00;
     PORTB = 0x00;
     PORTC = 0x00;
     PORTD = 0x00;
 
+    I2C_Init(100000);
+    LCD_Begin(&0x4E);
+    LCD_Goto(2, 1);
+    LCD_Print("Hello, world!");
+
+
 
 
     while (1){
+# 146 "main.c"
+        LCD_Goto(7, 2);
+        LCD_Print("1");
 
+        _delay((unsigned long)((100)*(8000000/4000.0)));
 
-        I2C_Master_Start();
-        I2C_Master_Write(0x38);
-        I2C_Master_Write(0xAC);
-        I2C_Master_Write(0x33);
-        I2C_Master_Write(0x00);
-        I2C_Master_Stop();
-        _delay((unsigned long)((80)*(8000000/4000.0)));
-
-
-        I2C_Master_Start();
-        I2C_Master_Write(0x39);
-        DataBuffer[0] = I2C_Master_Read(0);
-        DataBuffer[1] = I2C_Master_Read(0);
-        DataBuffer[2] = I2C_Master_Read(0);
-        DataBuffer[3] = I2C_Master_Read(0);
-        DataBuffer[4] = I2C_Master_Read(0);
-        DataBuffer[5] = I2C_Master_Read(0);
-        I2C_Master_Stop();
-        _delay((unsigned long)((200)*(8000000/4000.0)));
-
-        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4;
-        humedad = (char)(Raw_humedad * 0.000095);
-
-
-        if(humedad < 0){humedad = 0;}
-        if(humedad > 100){humedad = 100;}
-
-        Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5]));
-        temperatura = Raw_temperatura * 0.000191 -50;
-
-
-        entero = (char)temperatura;
-        decimal = (char)((temperatura - entero)*10);
-# 139 "main.c"
     }
     return;
 }

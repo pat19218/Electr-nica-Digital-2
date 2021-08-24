@@ -129,7 +129,7 @@ void LCD_Print(char* LCD_Str)
   }
 }
 
-void LCD_Begin(uint8_t _i2c_addr)
+void LCD_Begin(uint8_t *_i2c_addr)
 {
   i2c_addr = _i2c_addr;
   Expander_Write(0);

@@ -37,6 +37,7 @@
 #include <stdint.h>
 #include "USART.h"
 #include "I2C.h"
+#include "I2C_LCD.h"
 
 //--------------------------directivas del compilador---------------------------
 #define _XTAL_FREQ 8000000 //__delay_ms(x)
@@ -44,6 +45,7 @@
 //---------------------------variables------------------------------------------
 char DataBuffer[6];
 
+/*
 uint32_t Raw_humedad;
 int humedad;
 
@@ -52,7 +54,7 @@ float temperatura;
 
 char entero, decimal;
 char cen, dec, uni;
-
+*/
 //--------------------------funciones-------------------------------------------
 char centenas (int dato);
 char decenas (int dato);
@@ -67,7 +69,7 @@ void __interrupt()isr(void){
 //----------------------configuracion microprocesador---------------------------
 
 void main(void) {
-    USART_Init();
+    //USART_Init();
     ANSEL = 0x00;
     ANSELH = 0x00;      // solo pines digitales
     
@@ -82,16 +84,23 @@ void main(void) {
     
                            //Estado inicial
     I2C_Master_Init(100000); // Inicializar Comuncación I2C
-    Init_AHT10();
+    //Init_AHT10();
+    
     PORTA = 0x00;
     PORTB = 0x00;
     PORTC = 0x00;
     PORTD = 0x00;
     
+    I2C_Init(100000);   // initialize I2C bus with clock frequency of 100kHz
+    LCD_Begin(&0x4E);    // Initialize LCD module with I2C address = 0x4E
+    LCD_Goto(2, 1);     // Go to column 2 row 1
+    LCD_Print("Hello, world!");
+    
+    
     
     //------------------------------loop principal----------------------------------
     while (1){
-        
+        /*
         //inicio de medición del sensor
         I2C_Master_Start();
         I2C_Master_Write(0x38); //inicio comunicación
@@ -127,14 +136,17 @@ void main(void) {
         entero = (char)temperatura;
         decimal = (char)((temperatura - entero)*10);        
         
-        /*
-         cen = centenas(temperatura) + 48;     //caracter de temperatura
-         dec = decenas(temperatura) + 48;         
-         uni = unidades(temperatura) + 48;         
-         */
+        */
+        // cen = centenas(temperatura) + 48;     //caracter de temperatura
+        // dec = decenas(temperatura) + 48;         
+        // uni = unidades(temperatura) + 48;         
+         
         
         //----------------------LCD--------------------------------------------
+        LCD_Goto(7, 2);      // go to column 7, row 2
+        LCD_Print("1");     // print 'text'
         
+        __delay_ms(100);
         
     }
     return;
