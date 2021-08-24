@@ -4,7 +4,7 @@
  *
  * Compilador:	pic-as (v2.30), MPLABX V5.45
  * 
- * Programa: Pic y IO maestro
+ * Programa: Pic y IO esclavo
  * Hardware: Pic 16f887, leds, comunicación serial
  * 
  * Created on 23 de agosto 2021, 14:43
@@ -35,7 +35,6 @@
 //-------------------------Librerias--------------------------------------------
 #include <xc.h>
 #include <stdint.h>
-#include "USART.h"
 #include "I2C.h"
 
 //--------------------------directivas del compilador---------------------------
@@ -44,8 +43,8 @@
 //---------------------------variables------------------------------------------
 char DataBuffer[6];
 
-uint32_t Raw_temperatura;
-float temperatura;
+uint32_t Raw_humedad;
+int humedad;
 
 char entero, decimal;
 char cen, dec, uni;
@@ -64,7 +63,6 @@ void __interrupt()isr(void){
 //----------------------configuracion microprocesador---------------------------
 
 void main(void) {
-    USART_Init();
     ANSEL = 0x00;
     ANSELH = 0x00;      // solo pines digitales
     
@@ -114,6 +112,13 @@ void main(void) {
         I2C_Master_Stop();
         __delay_ms(200);
         
+        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4; //20 bits de datos
+        humedad = (char)(Raw_humedad * 0.000095);   //parte entera
+        
+        //aseguro rango de humedad y esta con una presicion del 2%
+        if(humedad < 0){humedad = 0;}
+        if(humedad > 100){humedad = 100;}
+        
         Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5])); //20 bits de datos
         temperatura = Raw_temperatura * 0.000191 -50; //temperatura en celcius
         
@@ -159,7 +164,7 @@ void Init_AHT10 (void){
     __delay_ms(40); //delay para que se inicialice el sensor
     //soft reset
     I2C_Master_Start();
-    I2C_Master_Write(0x38); //inicio comunicación   addres can be 0x70
+    I2C_Master_Write(0x38); //inicio comunicación  addres can be 0x70
     I2C_Master_Write(0xBA); //comando de reinicio suave
     I2C_Master_Stop();
     __delay_ms(20);
