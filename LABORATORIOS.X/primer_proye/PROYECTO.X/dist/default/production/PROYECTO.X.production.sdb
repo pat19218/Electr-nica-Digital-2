@@ -37,6 +37,18 @@
 [v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
 "74
 [v _I2C_Master_Read I2C_Master_Read `(uc  1 e 1 0 ]
+"27 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\primer_proye\PROYECTO.X\I2C_LCD.c
+[v _I2C_Start I2C_Start `(v  1 e 1 0 ]
+"33
+[v _I2C_Stop I2C_Stop `(v  1 e 1 0 ]
+"39
+[v _I2C_Write I2C_Write `(v  1 e 1 0 ]
+"67
+[v _Expander_Write Expander_Write `(v  1 e 1 0 ]
+"75
+[v _LCD_Write_Nibble LCD_Write_Nibble `(v  1 e 1 0 ]
+"86
+[v _LCD_Cmd LCD_Cmd `(v  1 e 1 0 ]
 "63 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\primer_proye\PROYECTO.X\main.c
 [v _isr isr `II(v  1 e 1 0 ]
 "69
@@ -176,10 +188,22 @@
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
+"3563
+[v _ACKDT ACKDT `VEb  1 e 0 @1165 ]
+"3566
+[v _ACKEN ACKEN `VEb  1 e 0 @1164 ]
 "3896
 [v _GIE GIE `VEb  1 e 0 @95 ]
 "4040
 [v _PEIE PEIE `VEb  1 e 0 @94 ]
+"4043
+[v _PEN PEN `VEb  1 e 0 @1162 ]
+"4166
+[v _RCEN RCEN `VEb  1 e 0 @1163 ]
+"4226
+[v _RSEN RSEN `VEb  1 e 0 @1161 ]
+"4250
+[v _SEN SEN `VEb  1 e 0 @1160 ]
 "4274
 [v _SSPIE SSPIE `VEb  1 e 0 @1123 ]
 "4277
@@ -188,6 +212,11 @@
 [v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
 "4460
 [v _TRISC4 TRISC4 `VEb  1 e 0 @1084 ]
+"15 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\primer_proye\PROYECTO.X\I2C_LCD.c
+[v _RS RS `b  1 e 0 0 ]
+"16
+[v _i2c_addr i2c_addr `uc  1 e 1 0 ]
+[v _backlight_val backlight_val `uc  1 e 1 0 ]
 "45 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\primer_proye\PROYECTO.X\main.c
 [v _DataBuffer DataBuffer `[6]uc  1 e 6 0 ]
 "47
@@ -257,17 +286,17 @@
 "8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S648 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S698 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S653 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S656 . 4 `l 1 i 4 0 `d 1 f 4 0 `S648 1 fAsBytes 4 0 `S653 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S656  1 a 4 30 ]
+[s S703 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S706 . 4 `l 1 i 4 0 `d 1 f 4 0 `S698 1 fAsBytes 4 0 `S703 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S706  1 a 4 30 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 25 ]
-[s S725 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S775 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S728 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S725 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S728  1 a 2 34 ]
+[u S778 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S775 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S778  1 a 2 34 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 29 ]
 "11
