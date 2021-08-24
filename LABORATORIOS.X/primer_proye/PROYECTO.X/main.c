@@ -95,51 +95,50 @@ void main(void) {
     
     //------------------------------loop principal----------------------------------
     while (1){
-//        
-//        //inicio de medición del sensor
-//        I2C_Master_Start();
-//        I2C_Master_Write(0x38); //inicio comunicación
-//        I2C_Master_Write(0xAC); //comando de incio de medicion
-//        I2C_Master_Write(0x33); //primer dato (humedad)
-//        I2C_Master_Write(0x00); //primer dato (temperatura)
-//        I2C_Master_Stop();
-//        __delay_ms(80);         //de almenos 75mS
-//        
-//        //lectura en loop principal
-//        I2C_Master_Start();
-//        I2C_Master_Write(0x39); //ubicacion para lectura
-//        DataBuffer[0] = I2C_Master_Read(0); //humedad
-//        DataBuffer[1] = I2C_Master_Read(0); //humedad
-//        DataBuffer[2] = I2C_Master_Read(0); //humedad y temperatura
-//        DataBuffer[3] = I2C_Master_Read(0); //temperatura
-//        DataBuffer[4] = I2C_Master_Read(0); //temperatura
-//        DataBuffer[5] = I2C_Master_Read(0); //temperatura
-//        I2C_Master_Stop();
-//        __delay_ms(200);
-//        
-//        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4; //20 bits de datos
-//        humedad = (char)(Raw_humedad * 0.000095);   //parte entera
-//        
-//        //aseguro rango de humedad y esta con una presicion del 2%
-//        if(humedad < 0){humedad = 0;}
-//        if(humedad > 100){humedad = 100;}
-//        
-//        Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5])); //20 bits de datos
-//        temperatura = Raw_temperatura * 0.000191 -50; //temperatura en celcius
-//        
-//        
+        
+        //inicio de medición del sensor
+        I2C_Master_Start();
+        I2C_Master_Write(0x38); //inicio comunicación
+        I2C_Master_Write(0xAC); //comando de incio de medicion
+        I2C_Master_Write(0x33); //primer dato (humedad)
+        I2C_Master_Write(0x00); //primer dato (temperatura)
+        I2C_Master_Stop();
+        __delay_ms(80);         //de almenos 75mS
+        
+        //lectura en loop principal
+        I2C_Master_Start();
+        I2C_Master_Write(0x39); //ubicacion para lectura
+        DataBuffer[0] = I2C_Master_Read(0); //humedad
+        DataBuffer[1] = I2C_Master_Read(0); //humedad
+        DataBuffer[2] = I2C_Master_Read(0); //humedad y temperatura
+        DataBuffer[3] = I2C_Master_Read(0); //temperatura
+        DataBuffer[4] = I2C_Master_Read(0); //temperatura
+        DataBuffer[5] = I2C_Master_Read(0); //temperatura
+        I2C_Master_Stop();
+        __delay_ms(200);
+        
+        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4; //20 bits de datos
+        humedad = (char)(Raw_humedad * 0.000095);   //parte entera
+        
+        //aseguro rango de humedad y esta con una presicion del 2%
+        if(humedad < 0){humedad = 0;}
+        if(humedad > 100){humedad = 100;}
+        
+        Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5])); //20 bits de datos
+        temperatura = Raw_temperatura * 0.000191 -50; //temperatura en celcius
+        
+        
 //        entero = (char)temperatura;
 //        decimal = (char)((temperatura - entero)*10);        
 //        
 //        
-        // cen = centenas(temperatura) + 48;     //caracter de temperatura
-        // dec = decenas(temperatura) + 48;         
-        // uni = unidades(temperatura) + 48;         
+//         cen = centenas(temperatura) + 48;     //caracter de temperatura
+//         dec = decenas(temperatura) + 48;         
+//         uni = unidades(temperatura) + 48;         
          
-        
         //----------------------LCD--------------------------------------------
-        LCD_Goto(7, 2);      // go to column 7, row 2
-        LCD_Print("1");     // print 'text'
+//        LCD_Goto(7, 2);      // go to column 7, row 2
+//        LCD_Print("1");     // print 'text'
         
         __delay_ms(200);
         

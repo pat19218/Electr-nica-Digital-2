@@ -9,10 +9,16 @@
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
+"43 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 "6 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
@@ -27,6 +33,8 @@
 [v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
 "69
 [v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
+"78
+[v _I2C_Master_Read I2C_Master_Read `(uc  1 e 1 0 ]
 "113
 [v _Expander_Write Expander_Write `(v  1 e 1 0 ]
 "121
@@ -57,7 +65,7 @@
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
-[s S306 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S310 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -67,18 +75,18 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "1068
-[s S315 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S319 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S319 . 1 `uc 1 . 1 0 :6:0 
+[s S323 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nRC8 1 0 :1:6 
 ]
-[s S322 . 1 `uc 1 . 1 0 :6:0 
+[s S326 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[u S325 . 1 `S306 1 . 1 0 `S315 1 . 1 0 `S319 1 . 1 0 `S322 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES325  1 e 1 @24 ]
+[u S329 . 1 `S310 1 . 1 0 `S319 1 . 1 0 `S323 1 . 1 0 `S326 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES329  1 e 1 @24 ]
 "1133
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1140
@@ -87,7 +95,7 @@
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1540
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
-[s S141 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S145 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -97,8 +105,8 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1557
-[u S150 . 1 `S141 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES150  1 e 1 @135 ]
+[u S154 . 1 `S145 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES154  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 [s S31 . 1 `uc 1 SCS 1 0 :1:0 
@@ -117,7 +125,7 @@
 [v _OSCCONbits OSCCONbits `VES42  1 e 1 @143 ]
 "1979
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @145 ]
-[s S162 . 1 `uc 1 SEN 1 0 :1:0 
+[s S166 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -127,13 +135,13 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "1996
-[u S171 . 1 `S162 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES171  1 e 1 @145 ]
+[u S175 . 1 `S166 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES175  1 e 1 @145 ]
 "2048
 [v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S246 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S250 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -143,20 +151,20 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "2582
-[s S255 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S259 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S259 . 1 `uc 1 . 1 0 :6:0 
+[s S263 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[u S262 . 1 `S246 1 . 1 0 `S255 1 . 1 0 `S259 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES262  1 e 1 @152 ]
+[u S266 . 1 `S250 1 . 1 0 `S259 1 . 1 0 `S263 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES266  1 e 1 @152 ]
 "2642
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
 "2704
 [v _SPBRGH SPBRGH `VEuc  1 e 1 @154 ]
-[s S283 . 1 `uc 1 ABDEN 1 0 :1:0 
+[s S287 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -166,8 +174,8 @@
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "3352
-[u S292 . 1 `S283 1 . 1 0 ]
-[v _BAUDCTLbits BAUDCTLbits `VES292  1 e 1 @391 ]
+[u S296 . 1 `S287 1 . 1 0 ]
+[v _BAUDCTLbits BAUDCTLbits `VES296  1 e 1 @391 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
@@ -189,10 +197,100 @@
 "15
 [v _i2c_addr i2c_addr `uc  1 e 1 0 ]
 [v _backlight_val backlight_val `uc  1 e 1 0 ]
-"69 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\primer_proye\PROYECTO.X\main.c
+"45 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\primer_proye\PROYECTO.X\main.c
+[v _DataBuffer DataBuffer `[6]uc  1 e 6 0 ]
+"47
+[v _Raw_humedad Raw_humedad `ul  1 e 4 0 ]
+"48
+[v _humedad humedad `i  1 e 2 0 ]
+"50
+[v _Raw_temperatura Raw_temperatura `ul  1 e 4 0 ]
+"51
+[v _temperatura temperatura `f  1 e 4 0 ]
+"69
 [v _main main `(v  1 e 1 0 ]
 {
-"149
+"148
+} 0
+"10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+{
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 2 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 1 ]
+"10
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 2 ]
+"15
+[v ___xxtofl@sign sign `uc  1 a 1 0 ]
+"44
+} 0
+"43 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 42 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 41 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 32 ]
+"70
+} 0
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+{
+[s S685 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+"13
+[s S690 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S693 . 4 `l 1 i 4 0 `d 1 f 4 0 `S685 1 fAsBytes 4 0 `S690 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S693  1 a 4 26 ]
+"12
+[v ___flmul@grs grs `ul  1 a 4 21 ]
+[s S762 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+"14
+[u S765 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S762 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S765  1 a 2 30 ]
+"10
+[v ___flmul@bexp bexp `uc  1 a 1 25 ]
+"11
+[v ___flmul@aexp aexp `uc  1 a 1 20 ]
+"9
+[v ___flmul@sign sign `uc  1 a 1 19 ]
+"8
+[v ___flmul@b b `d  1 p 4 6 ]
+[v ___flmul@a a `d  1 p 4 10 ]
+"205
+} 0
+"4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+{
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 2 ]
+"5
+[v __Umul8_16@product product `ui  1 a 2 0 ]
+"4
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 2 ]
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 4 ]
+"60
+} 0
+"10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+{
+"17
+[v ___fladd@grs grs `uc  1 a 1 51 ]
+"15
+[v ___fladd@bexp bexp `uc  1 a 1 50 ]
+"16
+[v ___fladd@aexp aexp `uc  1 a 1 49 ]
+"13
+[v ___fladd@signs signs `uc  1 a 1 48 ]
+"10
+[v ___fladd@b b `d  1 p 4 32 ]
+[v ___fladd@a a `d  1 p 4 36 ]
+"237
 } 0
 "4 C:\Users\isaac\Documents\GitHub\Electrónica Digital 2\LABORATORIOS.X\primer_proye\PROYECTO.X\USART.c
 [v _USART_Init USART_Init `(v  1 e 1 0 ]
@@ -204,11 +302,11 @@
 {
 [v LCD_Print@LCD_Str LCD_Str `*.24uc  1 a 1 wreg ]
 "169
-[v LCD_Print@i i `uc  1 a 1 7 ]
+[v LCD_Print@i i `uc  1 a 1 8 ]
 "167
 [v LCD_Print@LCD_Str LCD_Str `*.24uc  1 a 1 wreg ]
 "169
-[v LCD_Print@LCD_Str LCD_Str `*.24uc  1 a 1 8 ]
+[v LCD_Print@LCD_Str LCD_Str `*.24uc  1 a 1 7 ]
 "176
 } 0
 "141
@@ -274,6 +372,18 @@
 [v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
 {
 "47
+} 0
+"78
+[v _I2C_Master_Read I2C_Master_Read `(uc  1 e 1 0 ]
+{
+[v I2C_Master_Read@a a `uc  1 a 1 wreg ]
+"80
+[v I2C_Master_Read@temp temp `uc  1 a 1 4 ]
+"78
+[v I2C_Master_Read@a a `uc  1 a 1 wreg ]
+"81
+[v I2C_Master_Read@a a `uc  1 a 1 3 ]
+"93
 } 0
 "36
 [v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]

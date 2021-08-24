@@ -2776,10 +2776,38 @@ void main(void) {
 
 
     while (1){
-# 141 "main.c"
-        LCD_Goto(7, 2);
-        LCD_Print("1");
 
+
+        I2C_Master_Start();
+        I2C_Master_Write(0x38);
+        I2C_Master_Write(0xAC);
+        I2C_Master_Write(0x33);
+        I2C_Master_Write(0x00);
+        I2C_Master_Stop();
+        _delay((unsigned long)((80)*(8000000/4000.0)));
+
+
+        I2C_Master_Start();
+        I2C_Master_Write(0x39);
+        DataBuffer[0] = I2C_Master_Read(0);
+        DataBuffer[1] = I2C_Master_Read(0);
+        DataBuffer[2] = I2C_Master_Read(0);
+        DataBuffer[3] = I2C_Master_Read(0);
+        DataBuffer[4] = I2C_Master_Read(0);
+        DataBuffer[5] = I2C_Master_Read(0);
+        I2C_Master_Stop();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+
+        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4;
+        humedad = (char)(Raw_humedad * 0.000095);
+
+
+        if(humedad < 0){humedad = 0;}
+        if(humedad > 100){humedad = 100;}
+
+        Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5]));
+        temperatura = Raw_temperatura * 0.000191 -50;
+# 143 "main.c"
         _delay((unsigned long)((200)*(8000000/4000.0)));
 
 
