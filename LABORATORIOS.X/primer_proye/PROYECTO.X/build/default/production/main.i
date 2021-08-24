@@ -2668,7 +2668,7 @@ void USART_volt(char cen, char dec, char uni);
 # 20 "./I2C.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 20 "./I2C.h" 2
-# 29 "./I2C.h"
+# 56 "./I2C.h"
 void I2C_Master_Init(const unsigned long c);
 
 
@@ -2705,30 +2705,18 @@ unsigned char I2C_Master_Read(unsigned char a);
 
 
 void I2C_Slave_Init(uint8_t address);
-# 39 "main.c" 2
-
-# 1 "./I2C_LCD.h" 1
-# 14 "./I2C_LCD.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 14 "./I2C_LCD.h" 2
 
 
-
-
-
-
-
-void I2C_Init(uint32_t i2c_clk_freq);
-void I2C_Start();
-void I2C_Stop();
-void I2C_Write(uint8_t i2c_data);
+void Expander_Write(uint8_t value);
 void LCD_Write_Nibble(uint8_t n);
 void LCD_Cmd(uint8_t Command);
 void LCD_Goto(uint8_t col, uint8_t row);
 void LCD_PutC(char LCD_Char);
 void LCD_Print(char* LCD_Str);
 void LCD_Begin(uint8_t _i2c_addr);
-# 40 "main.c" 2
+void Backlight();
+void noBacklight();
+# 39 "main.c" 2
 
 
 
@@ -2736,7 +2724,17 @@ void LCD_Begin(uint8_t _i2c_addr);
 
 
 char DataBuffer[6];
-# 59 "main.c"
+
+uint32_t Raw_humedad;
+int humedad;
+
+uint32_t Raw_temperatura;
+float temperatura;
+
+char entero, decimal;
+char cen, dec, uni;
+
+
 char centenas (int dato);
 char decenas (int dato);
 char unidades (int dato);
@@ -2750,12 +2748,11 @@ void __attribute__((picinterrupt((""))))isr(void){
 
 
 void main(void) {
-
+    USART_Init();
     ANSEL = 0x00;
     ANSELH = 0x00;
 
     TRISA = 0x00;
-    TRISB = 0x03;
     TRISC = 0b10000000;
     TRISD = 0x00;
 
@@ -2768,24 +2765,23 @@ void main(void) {
 
 
     PORTA = 0x00;
-    PORTB = 0x00;
     PORTC = 0x00;
     PORTD = 0x00;
 
-    I2C_Init(100000);
-    LCD_Begin(&0x4E);
-    LCD_Goto(2, 1);
+    LCD_Begin(0x40);
+    LCD_Goto(1, 1);
     LCD_Print("Hello, world!");
 
 
 
 
     while (1){
-# 146 "main.c"
+# 141 "main.c"
         LCD_Goto(7, 2);
         LCD_Print("1");
 
-        _delay((unsigned long)((100)*(8000000/4000.0)));
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+
 
     }
     return;

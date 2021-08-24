@@ -2627,7 +2627,7 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 # 20 "./I2C.h" 2
-# 29 "./I2C.h"
+# 56 "./I2C.h"
 void I2C_Master_Init(const unsigned long c);
 
 
@@ -2664,7 +2664,22 @@ unsigned char I2C_Master_Read(unsigned char a);
 
 
 void I2C_Slave_Init(uint8_t address);
+
+
+void Expander_Write(uint8_t value);
+void LCD_Write_Nibble(uint8_t n);
+void LCD_Cmd(uint8_t Command);
+void LCD_Goto(uint8_t col, uint8_t row);
+void LCD_PutC(char LCD_Char);
+void LCD_Print(char* LCD_Str);
+void LCD_Begin(uint8_t _i2c_addr);
+void Backlight();
+void noBacklight();
 # 12 "I2C.c" 2
+
+
+__bit RS;
+uint8_t i2c_addr, backlight_val = 0x08;
 
 
 
@@ -2758,4 +2773,105 @@ void I2C_Slave_Init(uint8_t address)
     PEIE = 1;
     SSPIF = 0;
     SSPIE = 1;
+}
+
+
+
+void Expander_Write(uint8_t value)
+{
+  I2C_Master_Start();
+  I2C_Master_Write(i2c_addr);
+  I2C_Master_Write(value | backlight_val);
+  I2C_Master_Stop();
+}
+
+void LCD_Write_Nibble(uint8_t n)
+{
+  n |= RS;
+  Expander_Write(n & 0xFB);
+  _delay((unsigned long)((1)*(8000000/4000000.0)));
+  Expander_Write(n | 0x04);
+  _delay((unsigned long)((1)*(8000000/4000000.0)));
+  Expander_Write(n & 0xFB);
+  _delay((unsigned long)((100)*(8000000/4000000.0)));
+}
+
+void LCD_Cmd(uint8_t Command)
+{
+  RS = 0;
+  LCD_Write_Nibble(Command & 0xF0);
+  LCD_Write_Nibble((Command << 4) & 0xF0);
+  if((Command == 0x01) || (Command == 0x02))
+    _delay((unsigned long)((2)*(8000000/4000.0)));
+}
+
+void LCD_Goto(uint8_t col, uint8_t row)
+{
+  switch(row)
+  {
+    case 2:
+      LCD_Cmd(0xC0 + col - 1);
+      break;
+    case 3:
+      LCD_Cmd(0x94 + col - 1);
+      break;
+    case 4:
+      LCD_Cmd(0xD4 + col - 1);
+    break;
+    default:
+      LCD_Cmd(0x80 + col - 1);
+  }
+
+}
+
+void LCD_PutC(char LCD_Char)
+{
+  RS = 1;
+  LCD_Write_Nibble(LCD_Char & 0xF0);
+  LCD_Write_Nibble((LCD_Char << 4) & 0xF0);
+}
+
+void LCD_Print(char* LCD_Str)
+{
+  uint8_t i = 0;
+  RS = 1;
+  while(LCD_Str[i] != '\0')
+  {
+    LCD_Write_Nibble(LCD_Str[i] & 0xF0);
+    LCD_Write_Nibble( (LCD_Str[i++] << 4) & 0xF0 );
+  }
+}
+
+void LCD_Begin(uint8_t _i2c_addr)
+{
+  i2c_addr = _i2c_addr;
+  Expander_Write(0);
+
+  _delay((unsigned long)((40)*(8000000/4000.0)));
+  LCD_Cmd(3);
+  _delay((unsigned long)((5)*(8000000/4000.0)));
+  LCD_Cmd(3);
+  _delay((unsigned long)((5)*(8000000/4000.0)));
+  LCD_Cmd(3);
+  _delay((unsigned long)((5)*(8000000/4000.0)));
+  LCD_Cmd(0x02);
+  _delay((unsigned long)((5)*(8000000/4000.0)));
+  LCD_Cmd(0x20 | (2 << 2));
+  _delay((unsigned long)((50)*(8000000/4000.0)));
+  LCD_Cmd(0x0C);
+  _delay((unsigned long)((50)*(8000000/4000.0)));
+  LCD_Cmd(0x01);
+  _delay((unsigned long)((50)*(8000000/4000.0)));
+  LCD_Cmd(0x04 | 0x02);
+  _delay((unsigned long)((50)*(8000000/4000.0)));
+}
+
+void Backlight() {
+  backlight_val = 0x08;
+  Expander_Write(0);
+}
+
+void noBacklight() {
+  backlight_val = 0x00;
+  Expander_Write(0);
 }
