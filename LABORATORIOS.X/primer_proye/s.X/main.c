@@ -41,19 +41,19 @@
 #define _XTAL_FREQ 8000000 //__delay_ms(x)
 
 //---------------------------variables------------------------------------------
+char z;
+
 char DataBuffer[6];
 
 uint32_t Raw_humedad;
 int humedad;
 
-char entero, decimal;
-char cen, dec, uni;
+//char entero, decimal;
+
 
 //--------------------------funciones-------------------------------------------
-char centenas (int dato);
-char decenas (int dato);
-char unidades (int dato);
 void Init_AHT10 (void);
+
 //---------------------------interrupciones-------------------------------------
 
 void __interrupt()isr(void){
@@ -67,26 +67,16 @@ void main(void) {
     ANSELH = 0x00;      // solo pines digitales
     
     TRISA = 0x00;
-    TRISC = 0b10000000;
-    TRISD = 0x00;
-    
     
     OSCCONbits.IRCF = 0b111; //Config. de oscilacion 8MHz
     OSCCONbits.SCS = 1;      //reloj interno
     
                            //Estado inicial
+    
     I2C_Master_Init(100000); // Inicializar Comuncación I2C
     Init_AHT10();
     
     PORTA = 0x00;
-    PORTC = 0x00;
-    PORTD = 0x00;
-    
-    LCD_Begin(0x40);    // Initialize LCD module with I2C address = 0x4
-    LCD_Goto(1, 1);     // Go to column 2 row 1
-    LCD_Print("Hello, world!");
-    
-    
     
     //------------------------------loop principal----------------------------------
     while (1){
@@ -119,10 +109,6 @@ void main(void) {
         if(humedad < 0){humedad = 0;}
         if(humedad > 100){humedad = 100;}
         
-        Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5])); //20 bits de datos
-        temperatura = Raw_temperatura * 0.000191 -50; //temperatura en celcius
-        
-        
 //        entero = (char)temperatura;
 //        decimal = (char)((temperatura - entero)*10);        
 //        
@@ -131,32 +117,13 @@ void main(void) {
 //         dec = decenas(temperatura) + 48;         
 //         uni = unidades(temperatura) + 48;         
          
-        //----------------------LCD--------------------------------------------
-//        LCD_Goto(7, 2);      // go to column 7, row 2
-//        LCD_Print("1");     // print 'text'
+        PORTA = humedad;
         
         __delay_ms(200);
         
         
     }
     return;
-}
-
-char centenas (int dato){
-    char out = dato / 100;
-    return out;
-}
-
-char decenas (int dato){
-    char out;
-    out = (dato % 100) / 10;
-    return out;
-}
-
-char unidades (int dato){
-    char out;
-    out = (dato % 100) % 10;
-    return out;
 }
 
 void Init_AHT10 (void){

@@ -46,6 +46,7 @@ char DataBuffer[6];
 
 uint32_t Raw_temperatura;
 float temperatura;
+char humedad;
 
 char entero, decimal;
 char cen, dec, uni;
@@ -68,10 +69,8 @@ void main(void) {
     ANSEL = 0x00;
     ANSELH = 0x00;      // solo pines digitales
     
-    TRISA = 0x00;
-    TRISC = 0b10000000;
-    TRISD = 0x00;
-    
+    TRISA = 0xFF;
+    TRISC = 0b10000000;    
     
     OSCCONbits.IRCF = 0b111; //Config. de oscilacion 8MHz
     OSCCONbits.SCS = 1;      //reloj interno
@@ -129,6 +128,8 @@ void main(void) {
         //----------------------LCD--------------------------------------------
 //        LCD_Goto(7, 2);      // go to column 7, row 2
 //        LCD_Print("1");     // print 'text'
+        
+        humedad = PORTA;
         
         __delay_ms(200);
         
