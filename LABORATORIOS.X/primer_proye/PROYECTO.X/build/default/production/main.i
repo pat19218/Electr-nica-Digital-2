@@ -2723,13 +2723,12 @@ void noBacklight();
 
 
 
-char DataBuffer[6];
-
-uint32_t Raw_humedad;
-int humedad;
+uint8_t DataBuffer[6];
 
 uint32_t Raw_temperatura;
 float temperatura;
+uint32_t Raw_humedad;
+int humedad;
 
 char entero, decimal;
 char cen, dec, uni;
@@ -2752,29 +2751,20 @@ void main(void) {
     ANSEL = 0x00;
     ANSELH = 0x00;
 
-    TRISA = 0x00;
+    TRISA = 0xFF;
     TRISC = 0b10000000;
-    TRISD = 0x00;
-
 
     OSCCONbits.IRCF = 0b111;
     OSCCONbits.SCS = 1;
 
 
     I2C_Master_Init(100000);
-
+    Init_AHT10();
 
     PORTA = 0x00;
     PORTC = 0x00;
     PORTD = 0x00;
-
-    LCD_Begin(0x40);
-    LCD_Goto(1, 1);
-    LCD_Print("Hello, world!");
-
-
-
-
+# 94 "main.c"
     while (1){
 
 
@@ -2784,7 +2774,7 @@ void main(void) {
         I2C_Master_Write(0x33);
         I2C_Master_Write(0x00);
         I2C_Master_Stop();
-        _delay((unsigned long)((80)*(8000000/4000.0)));
+        _delay((unsigned long)((75)*(8000000/4000.0)));
 
 
         I2C_Master_Start();
@@ -2797,19 +2787,45 @@ void main(void) {
         DataBuffer[5] = I2C_Master_Read(0);
         I2C_Master_Stop();
         _delay((unsigned long)((200)*(8000000/4000.0)));
+# 124 "main.c"
+        Raw_temperatura = ((uint32_t)(DataBuffer[3] & 0x0F) <<16);
+        Raw_temperatura |=((uint16_t)DataBuffer[4]<<8);
+        Raw_temperatura |=DataBuffer[5];
+        temperatura = Raw_temperatura * 200 / 1048576 - 50;
 
-        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4;
-        humedad = (char)(Raw_humedad * 0.000095);
+        Raw_humedad = ((uint32_t)DataBuffer[1]<<16);
+        Raw_humedad |=((uint16_t)DataBuffer[2]<<8);
+        Raw_humedad |=(DataBuffer[3])>>4;
+        humedad = (Raw_humedad * 100/1048576);
 
 
         if(humedad < 0){humedad = 0;}
         if(humedad > 100){humedad = 100;}
 
-        Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5]));
-        temperatura = Raw_temperatura * 0.000191 -50;
-# 143 "main.c"
-        _delay((unsigned long)((200)*(8000000/4000.0)));
 
+        cen = centenas(temperatura);
+        dec = decenas(temperatura);
+        uni = unidades(temperatura);
+        cen += 48;
+        dec += 48;
+        uni += 48;
+        USART_Cadena("Temperatura: ");
+        USART_Tx(cen);
+        USART_Tx(dec);
+        USART_Tx(uni);
+
+        cen = centenas(humedad);
+        dec = decenas(humedad);
+        uni = unidades(humedad);
+        cen += 48;
+        dec += 48;
+        uni += 48;
+        USART_Cadena("\nHumedad: ");
+        USART_Tx(cen);
+        USART_Tx(dec);
+        USART_Tx(uni);
+        USART_Cadena("\n\n");
+        _delay((unsigned long)((1000)*(8000000/4000.0)));
 
     }
     return;
@@ -2834,19 +2850,18 @@ char unidades (int dato){
 
 void Init_AHT10 (void){
 
-    _delay((unsigned long)((40)*(8000000/4000.0)));
-
-    I2C_Master_Start();
-    I2C_Master_Write(0x38);
-    I2C_Master_Write(0xBA);
-    I2C_Master_Stop();
+    PORTCbits.RC3 = 1;
     _delay((unsigned long)((20)*(8000000/4000.0)));
 
 
     I2C_Master_Start();
     I2C_Master_Write(0x38);
+    I2C_Master_Write(0x38);
     I2C_Master_Write(0xE1);
-    I2C_Master_Write(0xAC);
+
+    I2C_Master_Write(0x08);
+    I2C_Master_Write(0x00);
     I2C_Master_Stop();
     _delay((unsigned long)((350)*(8000000/4000.0)));
+
 }

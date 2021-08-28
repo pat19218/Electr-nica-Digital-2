@@ -42,11 +42,12 @@
 #define _XTAL_FREQ 8000000 //__delay_ms(x)
 
 //---------------------------variables------------------------------------------
-char DataBuffer[6];
+uint8_t DataBuffer[6];
 
 uint32_t Raw_temperatura;
 float temperatura;
-char humedad;
+uint32_t Raw_humedad;
+int humedad;
 
 char entero, decimal;
 char cen, dec, uni;
@@ -83,10 +84,10 @@ void main(void) {
     PORTC = 0x00;
     PORTD = 0x00;
     
-    LCD_Begin(0x40);    // Initialize LCD module with I2C address = 0x4
-    LCD_Goto(1, 1);     // Go to column 2 row 1
-    LCD_Print("Hello, world!");
-    
+//    LCD_Begin(0x40);    // Initialize LCD module with I2C address = 0x4
+//    LCD_Goto(1, 1);     // Go to column 2 row 1
+//    LCD_Print("Hello, world!");
+//    
     
     
     //------------------------------loop principal----------------------------------
@@ -97,9 +98,9 @@ void main(void) {
         I2C_Master_Write(0x38); //inicio comunicación   addres can be 0x70
         I2C_Master_Write(0xAC); //comando de incio de medicion
         I2C_Master_Write(0x33); //primer dato (humedad)
-        I2C_Master_Write(0x00); //primer dato (temperatura)
+        I2C_Master_Write(0x00); //segundo dato (temperatura)
         I2C_Master_Stop();
-        __delay_ms(80);         //de almenos 75mS
+        __delay_ms(75);         //de almenos 75mS
         
         //lectura en loop principal
         I2C_Master_Start();
@@ -113,26 +114,51 @@ void main(void) {
         I2C_Master_Stop();
         __delay_ms(200);
         
-        Raw_temperatura = (((uint32_t)(DataBuffer[3] & 0x0F) <<16) | ((uint16_t)DataBuffer[4]<<8) | (DataBuffer[5])); //20 bits de datos
-        temperatura = Raw_temperatura * 0.000191 -50; //temperatura en celcius
+        //soft reset
+//        I2C_Master_Start();
+//        I2C_Master_Write(0x70); //inicio comunicación   addres can be 0x70
+//        I2C_Master_Write(0xBA); //comando de reinicio suave
+//        I2C_Master_Stop();
+//        __delay_ms(20);
         
+        Raw_temperatura = ((uint32_t)(DataBuffer[3] & 0x0F) <<16); 
+        Raw_temperatura |=((uint16_t)DataBuffer[4]<<8); 
+        Raw_temperatura |=DataBuffer[5]; //20 bits de datos
+        temperatura = Raw_temperatura * 200 / 1048576 - 50; //temperatura en celcius
         
-//        entero = (char)temperatura;
-//        decimal = (char)((temperatura - entero)*10);        
-//        
-//        
-//         cen = centenas(temperatura) + 48;     //caracter de temperatura
-//         dec = decenas(temperatura) + 48;         
-//         uni = unidades(temperatura) + 48;         
-         
-        //----------------------LCD--------------------------------------------
-//        LCD_Goto(7, 2);      // go to column 7, row 2
-//        LCD_Print("1");     // print 'text'
+        Raw_humedad = ((uint32_t)DataBuffer[1]<<16);
+        Raw_humedad |=((uint16_t)DataBuffer[2]<<8);
+        Raw_humedad |=(DataBuffer[3])>>4; //20 bits de datos
+        humedad = (Raw_humedad * 100/1048576);   //parte entera
+
+        //aseguro rango de humedad y esta con una presicion del 2%
+        if(humedad < 0){humedad = 0;}
+        if(humedad > 100){humedad = 100;}
         
-        humedad = PORTA;
+       
+        cen = centenas(temperatura);
+        dec = decenas(temperatura);
+        uni = unidades(temperatura);
+        cen += 48;
+        dec += 48;
+        uni += 48;
+        USART_Cadena("Temperatura: ");
+        USART_Tx(cen);
+        USART_Tx(dec);
+        USART_Tx(uni);
         
-        __delay_ms(200);
-        
+        cen = centenas(humedad);
+        dec = decenas(humedad);
+        uni = unidades(humedad);
+        cen += 48;
+        dec += 48;
+        uni += 48;
+        USART_Cadena("\nHumedad: ");
+        USART_Tx(cen);
+        USART_Tx(dec);
+        USART_Tx(uni);
+        USART_Cadena("\n\n");
+        __delay_ms(1000);
         
     }
     return;
@@ -157,19 +183,18 @@ char unidades (int dato){
 
 void Init_AHT10 (void){
     //0x38 ubicacion del sensor  0x39 lectura del sensor
-    __delay_ms(40); //delay para que se inicialice el sensor
-    //soft reset
-    I2C_Master_Start();
-    I2C_Master_Write(0x38); //inicio comunicación   addres can be 0x70
-    I2C_Master_Write(0xBA); //comando de reinicio suave
-    I2C_Master_Stop();
+    PORTCbits.RC3 = 1;   
     __delay_ms(20);
-
+    
     //Init medidas
     I2C_Master_Start();
     I2C_Master_Write(0x38); //inicio comunicación   addres can be 0x70
+    I2C_Master_Write(0x38); //inicio comunicación   addres can be 0x70
     I2C_Master_Write(0xE1); //comando de inicio
-    I2C_Master_Write(0xAC); //comando de inicio de medicion 
+    //I2C_Master_Write(0xAC); //comando medicion de temperatura y humedad
+    I2C_Master_Write(0x08); 
+    I2C_Master_Write(0x00); 
     I2C_Master_Stop();
     __delay_ms(350);
+    
 }
