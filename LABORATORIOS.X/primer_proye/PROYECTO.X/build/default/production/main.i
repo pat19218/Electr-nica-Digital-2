@@ -2726,12 +2726,15 @@ void noBacklight();
 uint8_t DataBuffer[6];
 
 uint32_t Raw_temperatura;
-float temperatura;
+int temperatura;
 uint32_t Raw_humedad;
-int humedad;
+int humedad_tem;
+char humedad;
 
 char entero, decimal;
 char cen, dec, uni;
+
+char ingreso, actuador;
 
 
 char centenas (int dato);
@@ -2748,23 +2751,45 @@ void __attribute__((picinterrupt((""))))isr(void){
 
 void main(void) {
     USART_Init();
-    ANSEL = 0x00;
+    ANSEL = 0b01100000;
     ANSELH = 0x00;
 
-    TRISA = 0xFF;
     TRISC = 0b10000000;
+    TRISE = 0b111;
 
     OSCCONbits.IRCF = 0b111;
     OSCCONbits.SCS = 1;
 
 
+
+    ADCON1bits.ADFM = 0;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+    ADCON0bits.ADCS0 = 0;
+    ADCON0bits.ADCS1 = 1;
+    ADCON0bits.CHS = 5;
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    ADCON0bits.ADON = 1;
+
+    ADCON0bits.GO = 1;
+
+
     I2C_Master_Init(100000);
     Init_AHT10();
+
+
 
     PORTA = 0x00;
     PORTC = 0x00;
     PORTD = 0x00;
-# 94 "main.c"
+
+    LCD_Begin(0x40);
+    LCD_Goto(1, 1);
+    LCD_Print("Hello, world!");
+
+
+
+
     while (1){
 
 
@@ -2787,45 +2812,77 @@ void main(void) {
         DataBuffer[5] = I2C_Master_Read(0);
         I2C_Master_Stop();
         _delay((unsigned long)((200)*(8000000/4000.0)));
-# 124 "main.c"
+# 142 "main.c"
         Raw_temperatura = ((uint32_t)(DataBuffer[3] & 0x0F) <<16);
         Raw_temperatura |=((uint16_t)DataBuffer[4]<<8);
         Raw_temperatura |=DataBuffer[5];
         temperatura = Raw_temperatura * 200 / 1048576 - 50;
 
-        Raw_humedad = ((uint32_t)DataBuffer[1]<<16);
-        Raw_humedad |=((uint16_t)DataBuffer[2]<<8);
-        Raw_humedad |=(DataBuffer[3])>>4;
-        humedad = (Raw_humedad * 100/1048576);
+
+        I2C_Master_Start();
+        I2C_Master_Write(0x80);
+        I2C_Master_Write(0xF3);
+        I2C_Master_Stop();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+        I2C_Master_Start();
+        I2C_Master_Write(0x81);
+        humedad_tem = ((I2C_Master_Read(0))<<8);
+        humedad_tem += I2C_Master_Read(0);
+        I2C_Master_Stop();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+        humedad = 175 - ((25/22)*humedad_tem);
 
 
         if(humedad < 0){humedad = 0;}
         if(humedad > 100){humedad = 100;}
 
 
-        cen = centenas(temperatura);
-        dec = decenas(temperatura);
-        uni = unidades(temperatura);
-        cen += 48;
-        dec += 48;
-        uni += 48;
-        USART_Cadena("Temperatura: ");
-        USART_Tx(cen);
-        USART_Tx(dec);
-        USART_Tx(uni);
+        LCD_Goto(1, 2);
+        LCD_Print(&humedad);
+        LCD_Print("%");
 
-        cen = centenas(humedad);
-        dec = decenas(humedad);
-        uni = unidades(humedad);
-        cen += 48;
-        dec += 48;
-        uni += 48;
-        USART_Cadena("\nHumedad: ");
-        USART_Tx(cen);
-        USART_Tx(dec);
-        USART_Tx(uni);
-        USART_Cadena("\n\n");
-        _delay((unsigned long)((1000)*(8000000/4000.0)));
+        LCD_Goto(7, 2);
+        LCD_Print(&temperatura);
+        LCD_Goto(11, 2);
+        LCD_Print("°C");
+
+        if (PIR1bits.RCIF == 1){
+            ingreso = USART_Rx();
+       }
+        if(ingreso == 'h'){
+            USART_Cadena(&humedad);
+        }
+        if(ingreso == 't'){
+            USART_Cadena(&temperatura);
+        }
+        ingreso = 0;
+
+        switch(temperatura){
+            case(28):
+                actuador = 0b00000011;
+                break;
+            case(26):
+                actuador = 0b00000010;
+                break;
+            case(24):
+                actuador = 0b00000001;
+                break;
+            case(22):
+                actuador = 0b00000000;
+                break;
+        }
+
+        if (humedad < 22){
+            actuador = actuador | 0b00000100;
+        }
+
+
+        I2C_Master_Start();
+        I2C_Master_Write(0x50);
+        I2C_Master_Write(actuador);
+        I2C_Master_Stop();
+
+         _delay((unsigned long)((500)*(8000000/4000.0)));
 
     }
     return;

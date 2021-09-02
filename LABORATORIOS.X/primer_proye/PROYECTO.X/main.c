@@ -45,12 +45,15 @@
 uint8_t DataBuffer[6];
 
 uint32_t Raw_temperatura;
-float temperatura;
+int temperatura;
 uint32_t Raw_humedad;
-int humedad;
+int humedad_tem;
+char humedad;
 
 char entero, decimal;
 char cen, dec, uni;
+
+char ingreso, actuador;
 
 //--------------------------funciones-------------------------------------------
 char centenas (int dato);
@@ -99,10 +102,10 @@ void main(void) {
     PORTC = 0x00;
     PORTD = 0x00;
     
-//    LCD_Begin(0x40);    // Initialize LCD module with I2C address = 0x4
-//    LCD_Goto(1, 1);     // Go to column 2 row 1
-//    LCD_Print("Hello, world!");
-//    
+    LCD_Begin(0x40);    // Initialize LCD module with I2C address = 0x4
+    LCD_Goto(1, 1);     // Go to column 2 row 1
+    LCD_Print("Hello, world!");
+    
     
     
     //------------------------------loop principal----------------------------------
@@ -141,40 +144,72 @@ void main(void) {
         Raw_temperatura |=DataBuffer[5]; //20 bits de datos
         temperatura = Raw_temperatura * 200 / 1048576 - 50; //temperatura en celcius
         
-        Raw_humedad = ((uint32_t)DataBuffer[1]<<16);
-        Raw_humedad |=((uint16_t)DataBuffer[2]<<8);
-        Raw_humedad |=(DataBuffer[3])>>4; //20 bits de datos
-        humedad = (Raw_humedad * 100/1048576);   //parte entera
+         //inicio de medición del sensor
+        I2C_Master_Start();
+        I2C_Master_Write(0x80);
+        I2C_Master_Write(0xF3);
+        I2C_Master_Stop();
+        __delay_ms(200);
+        I2C_Master_Start();
+        I2C_Master_Write(0x81);
+        humedad_tem = ((I2C_Master_Read(0))<<8);
+        humedad_tem += I2C_Master_Read(0);
+        I2C_Master_Stop();
+        __delay_ms(200);
+        humedad = 175 - ((25/22)*humedad_tem);  //humedad
 
         //aseguro rango de humedad y esta con una presicion del 2%
         if(humedad < 0){humedad = 0;}
         if(humedad > 100){humedad = 100;}
         
        
-        cen = centenas(temperatura);
-        dec = decenas(temperatura);
-        uni = unidades(temperatura);
-        cen += 48;
-        dec += 48;
-        uni += 48;
-        USART_Cadena("Temperatura: ");
-        USART_Tx(cen);
-        USART_Tx(dec);
-        USART_Tx(uni);
+        LCD_Goto(1, 2);             // Go to column 2 row 1
+        LCD_Print(&humedad);
+        LCD_Print("%");
         
-        cen = centenas(humedad);
-        dec = decenas(humedad);
-        uni = unidades(humedad);
-        cen += 48;
-        dec += 48;
-        uni += 48;
-        USART_Cadena("\nHumedad: ");
-        USART_Tx(cen);
-        USART_Tx(dec);
-        USART_Tx(uni);
-        USART_Cadena("\n\n");
-        __delay_ms(1000);
+        LCD_Goto(7, 2);             // Go to column 2 row 1
+        LCD_Print(&temperatura);
+        LCD_Goto(11, 2);             // Go to column 2 row 1
+        LCD_Print("°C");
         
+        if (PIR1bits.RCIF == 1){ //compruebo si se introdujo un dato
+            ingreso = USART_Rx();
+       }
+        if(ingreso == 'h'){
+            USART_Cadena(&humedad);//humedad
+        }
+        if(ingreso == 't'){
+            USART_Cadena(&temperatura);//temperatura
+        }
+        ingreso = 0;
+        
+        switch(temperatura){     //temperatura
+            case(28):
+                actuador = 0b00000011;
+                break;
+            case(26):
+                actuador = 0b00000010;
+                break;
+            case(24):
+                actuador = 0b00000001;
+                break;
+            case(22):
+                actuador = 0b00000000;
+                break;
+        }
+        
+        if (humedad < 22){       //humedad
+            actuador = actuador | 0b00000100;
+        }
+        
+        
+        I2C_Master_Start();
+        I2C_Master_Write(0x50);
+        I2C_Master_Write(actuador);
+        I2C_Master_Stop();
+        
+         __delay_ms(500);
+    
     }
     return;
 }
