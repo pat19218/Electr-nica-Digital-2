@@ -61,11 +61,7 @@ uint16_t temp;
 void main(void) {
     setup();
     while(1){
-        I2C_Master_Start();
-        I2C_Master_Write(0x50);
-        I2C_Master_Write(PORTB);
-        I2C_Master_Stop();
-        __delay_ms(200);
+        
        
         I2C_Master_Start();
         I2C_Master_Write(0x51);

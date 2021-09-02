@@ -67,18 +67,33 @@ void __interrupt()isr(void){
 
 void main(void) {
     USART_Init();
-    ANSEL = 0x00;
+    ANSEL = 0b01100000; //pin 5 y 6 analogicos
     ANSELH = 0x00;      // solo pines digitales
     
-    TRISA = 0xFF;
-    TRISC = 0b10000000;    
+    TRISC = 0b10000000;  
+    TRISE = 0b111;     //pin 0 y 1 entradas
     
     OSCCONbits.IRCF = 0b111; //Config. de oscilacion 8MHz
     OSCCONbits.SCS = 1;      //reloj interno
     
+                           
+                            //Config. ADC
+    ADCON1bits.ADFM = 0;    //Justificado a la izquierda
+    ADCON1bits.VCFG0 = 0;   //voltaje de 0V-5V
+    ADCON1bits.VCFG1 = 0;
+    ADCON0bits.ADCS0 = 0;   //Fosc/32
+    ADCON0bits.ADCS1 = 1;
+    ADCON0bits.CHS = 5;     //canal 5 pin 8
+    __delay_us(100);
+    ADCON0bits.ADON = 1;    //activo el modulo
+    
+    ADCON0bits.GO = 1;
+    
                            //Estado inicial
     I2C_Master_Init(100000); // Inicializar Comuncación I2C
     Init_AHT10();
+    
+    
     
     PORTA = 0x00;
     PORTC = 0x00;
@@ -95,7 +110,7 @@ void main(void) {
         
         //inicio de medición del sensor
         I2C_Master_Start();
-        I2C_Master_Write(0x38); //inicio comunicación   addres can be 0x70
+        I2C_Master_Write(0x70); //inicio comunicación   addres can be 0x70
         I2C_Master_Write(0xAC); //comando de incio de medicion
         I2C_Master_Write(0x33); //primer dato (humedad)
         I2C_Master_Write(0x00); //segundo dato (temperatura)
@@ -104,7 +119,7 @@ void main(void) {
         
         //lectura en loop principal
         I2C_Master_Start();
-        I2C_Master_Write(0x39); //ubicacion para lectura
+        I2C_Master_Write(0x71); //ubicacion para lectura
         DataBuffer[0] = I2C_Master_Read(0); //humedad
         DataBuffer[1] = I2C_Master_Read(0); //humedad
         DataBuffer[2] = I2C_Master_Read(0); //humedad y temperatura
@@ -188,10 +203,10 @@ void Init_AHT10 (void){
     
     //Init medidas
     I2C_Master_Start();
-    I2C_Master_Write(0x38); //inicio comunicación   addres can be 0x70
-    I2C_Master_Write(0x38); //inicio comunicación   addres can be 0x70
+    I2C_Master_Write(0x70); //inicio comunicación   addres can be 0x70
+    I2C_Master_Write(0x70); //inicio comunicación   addres can be 0x70
     I2C_Master_Write(0xE1); //comando de inicio
-    //I2C_Master_Write(0xAC); //comando medicion de temperatura y humedad
+    I2C_Master_Write(0xAC); //comando medicion de temperatura y humedad
     I2C_Master_Write(0x08); 
     I2C_Master_Write(0x00); 
     I2C_Master_Stop();

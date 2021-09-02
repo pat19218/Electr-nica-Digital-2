@@ -433,8 +433,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 97:         I2C_Master_Start();
 [e ( _I2C_Master_Start ..  ]
 "98
-[; ;main.c: 98:         I2C_Master_Write(0x38);
-[e ( _I2C_Master_Write (1 -> -> 56 `i `uc ]
+[; ;main.c: 98:         I2C_Master_Write(0x70);
+[e ( _I2C_Master_Write (1 -> -> 112 `i `uc ]
 "99
 [; ;main.c: 99:         I2C_Master_Write(0xAC);
 [e ( _I2C_Master_Write (1 -> -> 172 `i `uc ]
@@ -454,8 +454,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 106:         I2C_Master_Start();
 [e ( _I2C_Master_Start ..  ]
 "107
-[; ;main.c: 107:         I2C_Master_Write(0x39);
-[e ( _I2C_Master_Write (1 -> -> 57 `i `uc ]
+[; ;main.c: 107:         I2C_Master_Write(0x71);
+[e ( _I2C_Master_Write (1 -> -> 113 `i `uc ]
 "108
 [; ;main.c: 108:         DataBuffer[0] = I2C_Master_Read(0);
 [e = *U + &U _DataBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _DataBuffer `ui `ux ( _I2C_Master_Read (1 -> -> 0 `i `uc ]
@@ -674,14 +674,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 190:     I2C_Master_Start();
 [e ( _I2C_Master_Start ..  ]
 "191
-[; ;main.c: 191:     I2C_Master_Write(0x38);
-[e ( _I2C_Master_Write (1 -> -> 56 `i `uc ]
+[; ;main.c: 191:     I2C_Master_Write(0x70);
+[e ( _I2C_Master_Write (1 -> -> 112 `i `uc ]
 "192
-[; ;main.c: 192:     I2C_Master_Write(0x38);
-[e ( _I2C_Master_Write (1 -> -> 56 `i `uc ]
+[; ;main.c: 192:     I2C_Master_Write(0x70);
+[e ( _I2C_Master_Write (1 -> -> 112 `i `uc ]
 "193
 [; ;main.c: 193:     I2C_Master_Write(0xE1);
 [e ( _I2C_Master_Write (1 -> -> 225 `i `uc ]
+"194
+[; ;main.c: 194:     I2C_Master_Write(0xAC);
+[e ( _I2C_Master_Write (1 -> -> 172 `i `uc ]
 "195
 [; ;main.c: 195:     I2C_Master_Write(0x08);
 [e ( _I2C_Master_Write (1 -> -> 8 `i `uc ]

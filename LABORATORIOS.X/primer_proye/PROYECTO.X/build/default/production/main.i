@@ -2769,7 +2769,7 @@ void main(void) {
 
 
         I2C_Master_Start();
-        I2C_Master_Write(0x38);
+        I2C_Master_Write(0x70);
         I2C_Master_Write(0xAC);
         I2C_Master_Write(0x33);
         I2C_Master_Write(0x00);
@@ -2778,7 +2778,7 @@ void main(void) {
 
 
         I2C_Master_Start();
-        I2C_Master_Write(0x39);
+        I2C_Master_Write(0x71);
         DataBuffer[0] = I2C_Master_Read(0);
         DataBuffer[1] = I2C_Master_Read(0);
         DataBuffer[2] = I2C_Master_Read(0);
@@ -2855,10 +2855,10 @@ void Init_AHT10 (void){
 
 
     I2C_Master_Start();
-    I2C_Master_Write(0x38);
-    I2C_Master_Write(0x38);
+    I2C_Master_Write(0x70);
+    I2C_Master_Write(0x70);
     I2C_Master_Write(0xE1);
-
+    I2C_Master_Write(0xAC);
     I2C_Master_Write(0x08);
     I2C_Master_Write(0x00);
     I2C_Master_Stop();
