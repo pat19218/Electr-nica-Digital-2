@@ -38,109 +38,148 @@
 #include "I2C.h"
 
 //--------------------------directivas del compilador---------------------------
-#define _XTAL_FREQ 8000000 //__delay_ms(x)
+#define _XTAL_FREQ 8000000
+uint8_t z;
 
 //---------------------------variables------------------------------------------
-char z;
-
-char DataBuffer[6];
-
-uint32_t Raw_humedad;
-int humedad;
-
-//char entero, decimal;
-
-
-//--------------------------funciones-------------------------------------------
-void Init_AHT10 (void);
+char recibido;
+char dc, servo;
+char turno;
 
 //---------------------------interrupciones-------------------------------------
 
 void __interrupt()isr(void){
-    
+    if(PIR1bits.SSPIF == 1){ //interrupcion protocolo I2C
+
+        SSPCONbits.CKP = 0;
+       
+        if ((SSPCONbits.SSPOV) || (SSPCONbits.WCOL)){
+            z = SSPBUF;                 // Read the previous value to clear the buffer
+            SSPCONbits.SSPOV = 0;       // Clear the overflow flag
+            SSPCONbits.WCOL = 0;        // Clear the collision bit
+            SSPCONbits.CKP = 1;         // Enables SCL (Clock)
+        }
+
+        if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW) {
+            //__delay_us(7);
+            z = SSPBUF;                 // Lectura del SSBUF para limpiar el buffer y la bandera BF
+            //__delay_us(2);
+            PIR1bits.SSPIF = 0;         // Limpia bandera de interrupción recepción/transmisión SSP
+            SSPCONbits.CKP = 1;         // Habilita entrada de pulsos de reloj SCL
+            while(!SSPSTATbits.BF);     // Esperar a que la recepción se complete
+            recibido = SSPBUF;          // Guardar el buffer de recepción
+            __delay_us(250);
+            
+        }else if(!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+            z = SSPBUF;         // Lectura del SSBUF para limpiar el buffer y la bandera BF
+            BF = 0;
+            SSPBUF = 0x22;     //envio el dato al maestro
+            SSPCONbits.CKP = 1; // Habilita entrada de pulsos de reloj SCL
+            __delay_us(250);
+            while(SSPSTATbits.BF); // Esperar a que la recepción se complete
+        }
+       
+        PIR1bits.SSPIF = 0;    
+    }//fin interrupcion protocolo I2C
+
 }
 
-//----------------------configuracion microprocesador---------------------------
 
-void main(void) {
-    ANSEL = 0x00;
-    ANSELH = 0x00;      // solo pines digitales
+void main(void){
+
+    ANSEL = 0b00000011; // hay i/o analogicas AN0 y AN1
+    ANSELH = 0x00;
+
+    TRISA = 0b00000011; // PORTA solo 2 pines como entradas
+    TRISC = 0x00; // PORTC todo salida
+    TRISD = 0x00; // PORTC todo salida
     
-    TRISA = 0x00;
+//                            //Confi. ADC
+//    ADCON1bits.ADFM = 0;    //Justificado a la izquierda
+//    ADCON1bits.VCFG0 = 0;   //voltaje de 0V-5V
+//    ADCON1bits.VCFG1 = 0;
+//    ADCON0bits.ADCS = 0b10; //Fosc/32
+//    ADCON0bits.CHS = 0;     //canal 0
+//    __delay_us(50);
+//    ADCON0bits.ADON = 1;    //activo el modulo
+//    
     
-    OSCCONbits.IRCF = 0b111; //Config. de oscilacion 8MHz
-    OSCCONbits.SCS = 1;      //reloj interno
+                            //Config. PWM
+    TRISCbits.TRISC2 = 1;   //RC2/CCP1 como entrada
+    TRISDbits.TRISD5 = 1;   //RC2/CCP1 como entrada
+    PR2 = 255;              //Valor de pwm
+    CCP1CONbits.P1M = 0;    //PWM mode
+    CCP1CONbits.CCP1M = 0b1100; 
+    CCPR1L = 0x0f;          //inicio de ciclo de trabajo
+    //
+    CCP2CONbits.CCP2M = 0;    //PWM mode
+    CCP2CONbits.CCP2M = 0b1100; 
+    CCPR1L = 0x0f;          //inicio de ciclo de trabajo
+    CCPR2L = 0x0f;          //inicio de ciclo de trabajo
+    CCP1CONbits.DC1B = 0;
+    CCP2CONbits.DC2B0 = 0;
+    CCP2CONbits.DC2B1 = 0;
+    //
+    PIR1bits.TMR2IF = 0;     //bajo la bandera
+    T2CONbits.T2CKPS = 0b11; //pre-escaler 1:16
+    T2CONbits.TMR2ON = 1;    //Enciendo el timmer 2
+    while(PIR1bits.TMR2IF == 0);    //espero a completar el un ciclo tmr2
+    PIR1bits.TMR2IF = 0;
+    TRISCbits.TRISC2 = 0;           // Salida PWM
+    TRISDbits.TRISD5 = 0;           // Salida PWM
     
-                           //Estado inicial
     
-    I2C_Master_Init(100000); // Inicializar Comuncación I2C
-    Init_AHT10();
+    OSCCONbits.IRCF = 0b111 ;  // config. de oscilador
+    OSCCONbits.SCS = 1;         //reloj interno
     
-    PORTA = 0x00;
     
+                            //confi. interrupciones
+    PIR1bits.ADIF = 0;
+    PIE1bits.ADIE = 1; 
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+    ADCON0bits.GO = 1;  
+    I2C_Slave_Init(0x50);
+    turno = 0;
+
+
     //------------------------------loop principal----------------------------------
-    while (1){
+    while (1) {
         
-        //inicio de medición del sensor
-        I2C_Master_Start();
-        I2C_Master_Write(0x38); //inicio comunicación   addres can be 0x70
-        I2C_Master_Write(0xAC); //comando de incio de medicion
-        I2C_Master_Write(0x33); //primer dato (humedad)
-        I2C_Master_Write(0x00); //primer dato (temperatura)
-        I2C_Master_Stop();
-        __delay_ms(80);         //de almenos 75mS
+        dc = recibido & 0b00000011;
+        servo = recibido & 0b00000100;
         
-        //lectura en loop principal
-        I2C_Master_Start();
-        I2C_Master_Write(0x39); //ubicacion para lectura
-        DataBuffer[0] = I2C_Master_Read(0); //humedad
-        DataBuffer[1] = I2C_Master_Read(0); //humedad
-        DataBuffer[2] = I2C_Master_Read(0); //humedad y temperatura
-        DataBuffer[3] = I2C_Master_Read(0); //temperatura
-        DataBuffer[4] = I2C_Master_Read(0); //temperatura
-        DataBuffer[5] = I2C_Master_Read(0); //temperatura
-        I2C_Master_Stop();
-        __delay_ms(200);
+        if(dc == 0b00000000){
+            dc = 0;
+        }else if (dc == 0b00000001){
+            dc = 85;
+        }else if (dc == 0b00000010){
+            dc = 170;
+        }else if (dc == 0b00000011){
+            dc = 255;
+        }
         
-        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4; //20 bits de datos
-        humedad = (char)(Raw_humedad * 0.000095);   //parte entera
+        if (servo == 0b00000100){
+            servo = 255;
+        }else if (servo == 0b00000000){
+            servo = 0;
+        }
         
-        //aseguro rango de humedad y esta con una presicion del 2%
-        if(humedad < 0){humedad = 0;}
-        if(humedad > 100){humedad = 100;}
+        if(turno == 1){
+            if(dc == 0){
+                CCPR1L = 0;   //DC
+            }else{
+                CCPR1L = (dc >> 1) + 124;   //DC
+            }
+            
+            turno = 0;
+        }
+        else if(turno == 0){
+            CCPR2L = (servo >> 1) + 124; //servo
+            turno = 1;
+        }
         
-//        entero = (char)temperatura;
-//        decimal = (char)((temperatura - entero)*10);        
-//        
-//        
-//         cen = centenas(temperatura) + 48;     //caracter de temperatura
-//         dec = decenas(temperatura) + 48;         
-//         uni = unidades(temperatura) + 48;         
-         
-        PORTA = humedad;
-        
-        __delay_ms(200);
-        
-        
+        __delay_us(250);
     }
-    return;
-}
-
-void Init_AHT10 (void){
-    //0x38 ubicacion del sensor  0x39 lectura del sensor
-    __delay_ms(40); //delay para que se inicialice el sensor
-    //soft reset
-    I2C_Master_Start();
-    I2C_Master_Write(0x38); //inicio comunicación  addres can be 0x70
-    I2C_Master_Write(0xBA); //comando de reinicio suave
-    I2C_Master_Stop();
-    __delay_ms(20);
-
-    //Init medidas
-    I2C_Master_Start();
-    I2C_Master_Write(0x38); //inicio comunicación   addres can be 0x70
-    I2C_Master_Write(0xE1); //comando de inicio
-    I2C_Master_Write(0xAC); //comando de inicio de medicion 
-    I2C_Master_Stop();
-    __delay_ms(350);
+    return;     //end
 }

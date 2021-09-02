@@ -2702,100 +2702,136 @@ void noBacklight();
 
 
 
+uint8_t z;
 
 
-char z;
-
-char DataBuffer[6];
-
-uint32_t Raw_humedad;
-int humedad;
-
-
-
-
-
-void Init_AHT10 (void);
+char recibido;
+char dc, servo;
+char turno;
 
 
 
 void __attribute__((picinterrupt((""))))isr(void){
+    if(PIR1bits.SSPIF == 1){
+
+        SSPCONbits.CKP = 0;
+
+        if ((SSPCONbits.SSPOV) || (SSPCONbits.WCOL)){
+            z = SSPBUF;
+            SSPCONbits.SSPOV = 0;
+            SSPCONbits.WCOL = 0;
+            SSPCONbits.CKP = 1;
+        }
+
+        if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW) {
+
+            z = SSPBUF;
+
+            PIR1bits.SSPIF = 0;
+            SSPCONbits.CKP = 1;
+            while(!SSPSTATbits.BF);
+            recibido = SSPBUF;
+            _delay((unsigned long)((250)*(8000000/4000000.0)));
+
+        }else if(!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+            z = SSPBUF;
+            BF = 0;
+            SSPBUF = 0x22;
+            SSPCONbits.CKP = 1;
+            _delay((unsigned long)((250)*(8000000/4000000.0)));
+            while(SSPSTATbits.BF);
+        }
+
+        PIR1bits.SSPIF = 0;
+    }
 
 }
 
 
+void main(void){
 
-void main(void) {
-    ANSEL = 0x00;
+    ANSEL = 0b00000011;
     ANSELH = 0x00;
 
-    TRISA = 0x00;
+    TRISA = 0b00000011;
+    TRISC = 0x00;
+    TRISD = 0x00;
+# 108 "main.c"
+    TRISCbits.TRISC2 = 1;
+    TRISDbits.TRISD5 = 1;
+    PR2 = 255;
+    CCP1CONbits.P1M = 0;
+    CCP1CONbits.CCP1M = 0b1100;
+    CCPR1L = 0x0f;
 
-    OSCCONbits.IRCF = 0b111;
+    CCP2CONbits.CCP2M = 0;
+    CCP2CONbits.CCP2M = 0b1100;
+    CCPR1L = 0x0f;
+    CCPR2L = 0x0f;
+    CCP1CONbits.DC1B = 0;
+    CCP2CONbits.DC2B0 = 0;
+    CCP2CONbits.DC2B1 = 0;
+
+    PIR1bits.TMR2IF = 0;
+    T2CONbits.T2CKPS = 0b11;
+    T2CONbits.TMR2ON = 1;
+    while(PIR1bits.TMR2IF == 0);
+    PIR1bits.TMR2IF = 0;
+    TRISCbits.TRISC2 = 0;
+    TRISDbits.TRISD5 = 0;
+
+
+    OSCCONbits.IRCF = 0b111 ;
     OSCCONbits.SCS = 1;
 
 
 
-    I2C_Master_Init(100000);
-    Init_AHT10();
-
-    PORTA = 0x00;
-
-
-    while (1){
-
-
-        I2C_Master_Start();
-        I2C_Master_Write(0x38);
-        I2C_Master_Write(0xAC);
-        I2C_Master_Write(0x33);
-        I2C_Master_Write(0x00);
-        I2C_Master_Stop();
-        _delay((unsigned long)((80)*(8000000/4000.0)));
+    PIR1bits.ADIF = 0;
+    PIE1bits.ADIE = 1;
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+    ADCON0bits.GO = 1;
+    I2C_Slave_Init(0x50);
+    turno = 0;
 
 
-        I2C_Master_Start();
-        I2C_Master_Write(0x39);
-        DataBuffer[0] = I2C_Master_Read(0);
-        DataBuffer[1] = I2C_Master_Read(0);
-        DataBuffer[2] = I2C_Master_Read(0);
-        DataBuffer[3] = I2C_Master_Read(0);
-        DataBuffer[4] = I2C_Master_Read(0);
-        DataBuffer[5] = I2C_Master_Read(0);
-        I2C_Master_Stop();
-        _delay((unsigned long)((200)*(8000000/4000.0)));
 
-        Raw_humedad = (((uint32_t)DataBuffer[1]<<16) | ((uint16_t)DataBuffer[2]<<8) | (DataBuffer[3]))>>4;
-        humedad = (char)(Raw_humedad * 0.000095);
+    while (1) {
 
+        dc = recibido & 0b00000011;
+        servo = recibido & 0b00000100;
 
-        if(humedad < 0){humedad = 0;}
-        if(humedad > 100){humedad = 100;}
-# 120 "main.c"
-        PORTA = humedad;
+        if(dc == 0b00000000){
+            dc = 0;
+        }else if (dc == 0b00000001){
+            dc = 85;
+        }else if (dc == 0b00000010){
+            dc = 170;
+        }else if (dc == 0b00000011){
+            dc = 255;
+        }
 
-        _delay((unsigned long)((200)*(8000000/4000.0)));
+        if (servo == 0b00000100){
+            servo = 255;
+        }else if (servo == 0b00000000){
+            servo = 0;
+        }
 
+        if(turno == 1){
+            if(dc == 0){
+                CCPR1L = 0;
+            }else{
+                CCPR1L = (dc >> 1) + 124;
+            }
 
+            turno = 0;
+        }
+        else if(turno == 0){
+            CCPR2L = (servo >> 1) + 124;
+            turno = 1;
+        }
+
+        _delay((unsigned long)((250)*(8000000/4000000.0)));
     }
     return;
-}
-
-void Init_AHT10 (void){
-
-    _delay((unsigned long)((40)*(8000000/4000.0)));
-
-    I2C_Master_Start();
-    I2C_Master_Write(0x38);
-    I2C_Master_Write(0xBA);
-    I2C_Master_Stop();
-    _delay((unsigned long)((20)*(8000000/4000.0)));
-
-
-    I2C_Master_Start();
-    I2C_Master_Write(0x38);
-    I2C_Master_Write(0xE1);
-    I2C_Master_Write(0xAC);
-    I2C_Master_Stop();
-    _delay((unsigned long)((350)*(8000000/4000.0)));
 }
