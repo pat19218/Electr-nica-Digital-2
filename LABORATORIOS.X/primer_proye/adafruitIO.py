@@ -19,7 +19,7 @@ temporal1 = 0
 temporal2 = 0
 
 #ubicación de mi plataforma
-ADAFRUIT_IO_KEY = "aio_PBxi203eGstth023a8heM7WJKKNh"  #contraseña
+ADAFRUIT_IO_KEY = " "  #contraseña
 ADAFRUIT_IO_USERNAME = "CRIS_PAT_99"                    #usuario
 aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 

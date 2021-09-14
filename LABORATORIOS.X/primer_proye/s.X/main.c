@@ -8,7 +8,7 @@
  * Hardware: Pic 16f887, leds, comunicación serial
  * 
  * Created on 23 de agosto 2021, 14:43
- * Last modification 23 de agosto 2021, 17:21
+* Last modification 02 de septiembre 2021, 12:48
  */
 
 // PIC16F887 Configuration Bit Settings
