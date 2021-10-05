@@ -125,7 +125,7 @@ void loop() {
   }
 
   //for (int x = 0; x < 320 - 32; x++)
-  if (x < (320 - 32)  && vas == 0) {
+  if (x <= (320 - 32)  && vas == 0) {
     int mario_index = (x / 11) % 8;
     //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
     LCD_Sprite(x, 20, 16, 32, mario, 8, mario_index, 1, 0);
