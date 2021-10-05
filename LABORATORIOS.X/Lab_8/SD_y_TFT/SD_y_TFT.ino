@@ -39,6 +39,12 @@ String text1;
 const int chipSelect = 12; //cs PIN
 
 int DPINS[] = {PB_0, PB_1, PB_2, PB_3, PB_4, PB_5, PB_6, PB_7};
+int x = 0;
+bool estado1 = 0;   //lectura del estado de los switches
+bool estado2 = 0;
+bool old_estado1 = 0;   //anti-rebote
+bool old_estado2 = 0;
+bool vas = 0;
 //***************************************************************************************************************************************
 // Functions Prototypes
 //***************************************************************************************************************************************
@@ -56,13 +62,16 @@ void LCD_Print(String text, int x, int y, int fontSize, int color, int backgroun
 void LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);
 void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[], int columns, int index, char flip, char offset);
 
+int ASCII_HEX(int a);
+void mapeo_SD(char doc[]);
 
-extern uint8_t fondo[];
-//extern uint8_t uvg[];
 //***************************************************************************************************************************************
 // Initialization
 //***************************************************************************************************************************************
 void setup() {
+  pinMode(PUSH1, INPUT_PULLUP); //config. Entrada en Pull-up
+  pinMode(PUSH2, INPUT_PULLUP); //estado sin presionar 'HIGH'
+
   SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
   Serial.begin(9600);
   GPIOPadConfigSet(GPIO_PORTB_BASE, 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7, GPIO_STRENGTH_8MA, GPIO_PIN_TYPE_STD_WPU);
@@ -89,66 +98,61 @@ void setup() {
   LCD_Print(text1, 110, 110, 2, 0xffff, 0x0000);
 
   delay(1000);
-  /*
-    //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);
-    LCD_Bitmap(0, 0, 320, 240, uvg);
 
-    for (int x = 0; x < 319; x++) {
-      LCD_Bitmap(x, 52, 16, 16, tile2);
-      LCD_Bitmap(x, 68, 16, 16, tile);
-      LCD_Bitmap(x, 207, 16, 16, tile);
-      LCD_Bitmap(x, 223, 16, 16, tile);
-      x += 15;
-    }
-  */
-  //********************aqui empiezo desmadre**********
-  dataFile = SD.open("data.txt");  //creo un espacio en la memoria para guardar la info del txt abierto para leer
-  if (dataFile) {                           //si no esta vacio/existe el archivo imprimo lo leido
-    while (dataFile.available()) {
-      //Serial.write(dataFile.read());
-      
-    }
-    dataFile.close();                       //cierro la comunicacion para que posterior a ello se pueda abrir para leer/escribir
-  }
-  else {                                    //si no se puede abrir un archivo con el nombre declarado
-    Serial.println("error opening mano.txt");
-  }
-
-  LCD_Bitmap(0, 0, 320, 240, uvg);
+  mapeo_SD("space.c");  //space.c
   delay(1500);
-  //*************aqui termino desmadre***********
 }
 //***************************************************************************************************************************************
 // Loop
 //***************************************************************************************************************************************
 void loop() {
-  for (int x = 0; x < 320 - 32; x++) {
-    delay(10);
+  old_estado1 = estado1;
+  old_estado2 = estado2;
+  estado1 = digitalRead(PUSH1);
+  estado2 = digitalRead(PUSH2);
 
+  if (estado1 == 0 && estado2 == 1) { //sw1 presionado, suma
+    if (estado1 != old_estado1) {
+      mapeo_SD("uvg.txt");  //space.c
+      delay(50);
+    }
+  }
+  else if (estado1 == 1 && estado2 == 0) { //sw2 presionado, suma
+    if (estado2 != old_estado2) {
+      mapeo_SD("space.c");  //uvg.txt
+      delay(50);
+    }
+  }
+
+  //for (int x = 0; x < 320 - 32; x++)
+  if (x < (320 - 32)  && vas == 0) {
     int mario_index = (x / 11) % 8;
-
     //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
     LCD_Sprite(x, 20, 16, 32, mario, 8, mario_index, 1, 0);
     V_line( x - 1, 20, 32, 0x0000);
-
     int bowser_index = (x / 11) % 4;
-
     LCD_Sprite(x, 175, 32, 32, bowser, 4, bowser_index, 1, 0);
     V_line( x - 1, 175, 32, 0x421b);
+    x++;
+    if (x == 287) {
+      vas = 1;
+    }
   }
-  for (int x = 320 - 32; x > 0; x--) {
-    delay(10);
-
+  //for (int x = 320 - 32; x > 0; x--)
+  if (vas == 1) {
     int mario_index = (x / 11) % 8;
-
     LCD_Sprite(x, 20, 16, 32, mario, 8, mario_index, 0, 0);
     V_line(x + 16, 20, 32, 0x0000);
-
     int bowser_index = (x / 11) % 4;
-
     LCD_Sprite(x, 175, 32, 32, bowser, 4, bowser_index, 0, 1);
     V_line(x + 32, 175, 32, 0x421b);
+    x--;
+    if (x == 0) {
+      vas = 0;
+    }
   }
+
+
 }
 //***************************************************************************************************************************************
 // Función para inicializar LCD
@@ -487,4 +491,80 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[], int
     }
   }
   digitalWrite(LCD_CS, HIGH);
+}
+//*****************************************************************************
+// Retorno de numero decimal a partir de hexadecimal
+//*****************************************************************************
+int ASCII_HEX(int a) {
+  switch (a) {
+    case 48:
+      return 0;
+    case 49:
+      return 1;
+    case 50:
+      return 2;
+    case 51:
+      return 3;
+    case 52:
+      return 4;
+    case 53:
+      return 5;
+    case 54:
+      return 6;
+    case 55:
+      return 7;
+    case 56:
+      return 8;
+    case 57:
+      return 9;
+    case 97:
+      return 10;
+    case 98:
+      return 11;
+    case 99:
+      return 12;
+    case 100:
+      return 13;
+    case 101:
+      return 14;
+    case 102:
+      return 15;
+  }
+}
+//*****************************************************************************
+// leer la sd espacio por espacio
+//*****************************************************************************
+void mapeo_SD(char doc[]) {
+  dataFile = SD.open(doc, FILE_READ);
+  int hex1 = 0;
+  int val1 = 0;
+  int val2 = 0;
+  int mapear = 0;
+  int vertical = 0;
+  unsigned char maps[640];
+
+  if (dataFile) {
+    Serial.println("Abriendo el archivo");
+    while (dataFile.available() ) {
+      mapear = 0;
+      while (mapear < 640) {
+        hex1 = dataFile.read();
+        if (hex1 == 120) {
+          val1 = dataFile.read();
+          val2 = dataFile.read();
+          val1 = ASCII_HEX(val1);
+          val2 = ASCII_HEX(val2);
+          maps[mapear] = val1 * 16 + val2;
+          mapear++;
+        }
+      }
+      LCD_Bitmap(0, vertical, 320, 1, maps);
+      vertical++;
+    }
+    dataFile.close();
+    Serial.println("cierro");
+  } else {
+    Serial.println("error opening el doc");
+    dataFile.close();
+  }
 }
