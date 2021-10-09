@@ -537,11 +537,11 @@ int ASCII_HEX(int a) {
 void mapeo_SD(char doc[]) {
   dataFile = SD.open(doc, FILE_READ);
   int hex1 = 0;
-  int val1 = 0;
+  int val1 = 0;       
   int val2 = 0;
   int mapear = 0;
   int vertical = 0;
-  unsigned char maps[640];
+  unsigned char maps[640];//320*240
 
   if (dataFile) {
     Serial.println("Abriendo el archivo");
